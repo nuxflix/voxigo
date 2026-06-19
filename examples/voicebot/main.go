@@ -1,9 +1,12 @@
 // Command voicebot is a full voice agent built on voxigo: microphone audio comes
-// in over WebRTC, Deepgram transcribes it, Anthropic reasons over it, ElevenLabs
-// speaks the reply, and the audio goes back out over WebRTC. RTVI events (the
-// handshake and live transcripts) flow over the data channel.
+// in over WebRTC, an STT service transcribes it, an LLM reasons over it, a TTS
+// service speaks the reply, and the audio goes back out over WebRTC. RTVI events
+// (the handshake and live transcripts) flow over the data channel.
 //
-// Set DEEPGRAM_API_KEY, ANTHROPIC_API_KEY and ELEVENLABS_API_KEY, run it, open
+// By default it uses Deepgram (STT), Anthropic (LLM) and ElevenLabs (TTS); set
+// DEEPGRAM_API_KEY, ANTHROPIC_API_KEY and ELEVENLABS_API_KEY. Swap providers
+// with the STT, LLM and TTS env vars (e.g. STT=assemblyai LLM=openai
+// TTS=cartesia) and set that provider's own API key env var. Then run it, open
 // http://localhost:8080, click start, and allow the microphone.
 package main
 
@@ -16,6 +19,7 @@ import (
 	"log"
 	"log/slog"
 	"net/http"
+	"os"
 
 	"github.com/nuxflix/voxigo/aggregators"
 	"github.com/nuxflix/voxigo/audio/opus"
@@ -26,8 +30,19 @@ import (
 	"github.com/nuxflix/voxigo/processor"
 	"github.com/nuxflix/voxigo/rtvi"
 	"github.com/nuxflix/voxigo/service/anthropic"
+	"github.com/nuxflix/voxigo/service/assemblyai"
+	"github.com/nuxflix/voxigo/service/cartesia"
 	"github.com/nuxflix/voxigo/service/deepgram"
+	"github.com/nuxflix/voxigo/service/deepseek"
 	"github.com/nuxflix/voxigo/service/elevenlabs"
+	"github.com/nuxflix/voxigo/service/gladia"
+	"github.com/nuxflix/voxigo/service/google"
+	"github.com/nuxflix/voxigo/service/groq"
+	"github.com/nuxflix/voxigo/service/lmnt"
+	"github.com/nuxflix/voxigo/service/ollama"
+	"github.com/nuxflix/voxigo/service/openai"
+	"github.com/nuxflix/voxigo/service/rime"
+	"github.com/nuxflix/voxigo/service/together"
 	"github.com/nuxflix/voxigo/transport"
 	"github.com/nuxflix/voxigo/transport/pionrtc"
 	"github.com/nuxflix/voxigo/turntaking"
@@ -39,6 +54,9 @@ var staticFiles embed.FS
 
 const systemPrompt = "You are a friendly voice assistant. Keep your replies short, " +
 	"warm and conversational — one or two sentences."
+
+// providerOpenAI is the env-var value selecting OpenAI in each category.
+const providerOpenAI = "openai"
 
 func main() {
 	const addr = ":8080"
@@ -87,9 +105,9 @@ func runBot(conn *pionrtc.Connection) {
 	params.AudioOutSampleRate = opus.SampleRate
 	t := pionrtc.NewTransport(conn, params)
 
-	stt := deepgram.New(deepgram.Config{SampleRate: opus.SampleRate})
-	llm := anthropic.New(anthropic.Config{})
-	tts := elevenlabs.New(elevenlabs.Config{})
+	stt := selectSTT()
+	llm := selectLLM()
+	tts := selectTTS()
 
 	convo := frames.NewLLMContext(systemPrompt)
 
@@ -135,6 +153,62 @@ func runBot(conn *pionrtc.Connection) {
 	}
 	_ = conn.Close()
 	slog.Info("voicebot pipeline stopped")
+}
+
+// selectSTT picks the STT service from the STT env var, defaulting to Deepgram.
+// The openai and groq options are segmented (batch) and need turn taking enabled
+// to delimit utterances.
+func selectSTT() processor.Processor {
+	switch os.Getenv("STT") {
+	case "assemblyai":
+		return assemblyai.NewSTT(assemblyai.Config{SampleRate: opus.SampleRate})
+	case "gladia":
+		return gladia.NewSTT(gladia.Config{SampleRate: opus.SampleRate})
+	case providerOpenAI:
+		return openai.NewSTT(openai.STTConfig{SampleRate: opus.SampleRate})
+	case "groq":
+		return groq.NewSTT(openai.STTConfig{SampleRate: opus.SampleRate})
+	default:
+		return deepgram.NewSTT(deepgram.Config{SampleRate: opus.SampleRate})
+	}
+}
+
+// selectLLM picks the LLM service from the LLM env var, defaulting to Anthropic.
+func selectLLM() processor.Processor {
+	switch os.Getenv("LLM") {
+	case providerOpenAI:
+		return openai.NewLLM(openai.LLMConfig{})
+	case "google":
+		return google.NewLLM(google.Config{})
+	case "groq":
+		return groq.NewLLM(openai.LLMConfig{})
+	case "together":
+		return together.NewLLM(openai.LLMConfig{})
+	case "deepseek":
+		return deepseek.NewLLM(openai.LLMConfig{})
+	case "ollama":
+		return ollama.NewLLM(openai.LLMConfig{})
+	default:
+		return anthropic.NewLLM(anthropic.Config{})
+	}
+}
+
+// selectTTS picks the TTS service from the TTS env var, defaulting to ElevenLabs.
+func selectTTS() processor.Processor {
+	switch os.Getenv("TTS") {
+	case "cartesia":
+		return cartesia.NewTTS(cartesia.Config{})
+	case providerOpenAI:
+		return openai.NewTTS(openai.TTSConfig{})
+	case "deepgram":
+		return deepgram.NewTTS(deepgram.TTSConfig{})
+	case "rime":
+		return rime.NewTTS(rime.Config{})
+	case "lmnt":
+		return lmnt.NewTTS(lmnt.Config{})
+	default:
+		return elevenlabs.NewTTS(elevenlabs.Config{})
+	}
 }
 
 // buildTurnTaking constructs a turn-taking detector from Silero VAD and Smart
