@@ -19,14 +19,18 @@ import (
 
 	"github.com/nuxflix/voxigo/aggregators"
 	"github.com/nuxflix/voxigo/audio/opus"
+	"github.com/nuxflix/voxigo/audio/turn"
+	"github.com/nuxflix/voxigo/audio/vad"
 	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
 	"github.com/nuxflix/voxigo/rtvi"
 	"github.com/nuxflix/voxigo/service/anthropic"
 	"github.com/nuxflix/voxigo/service/deepgram"
 	"github.com/nuxflix/voxigo/service/elevenlabs"
 	"github.com/nuxflix/voxigo/transport"
 	"github.com/nuxflix/voxigo/transport/pionrtc"
+	"github.com/nuxflix/voxigo/turntaking"
 	"github.com/pion/webrtc/v4"
 )
 
@@ -88,10 +92,20 @@ func runBot(conn *pionrtc.Connection) {
 	tts := elevenlabs.New(elevenlabs.Config{})
 
 	convo := frames.NewLLMContext(systemPrompt)
-	agg := aggregators.New(convo)
 
-	pipe := pipeline.New(
-		t.Input(),
+	// Turn taking (Silero VAD + Smart Turn) needs the ONNX runtime; when it is
+	// unavailable the bot still works, falling back to STT endpointing for
+	// turn-taking and losing barge-in.
+	detector := buildTurnTaking()
+
+	procs := []processor.Processor{t.Input()}
+	var aggOpts []aggregators.Option
+	if detector != nil {
+		procs = append(procs, detector)
+		aggOpts = append(aggOpts, aggregators.WithTurnTaking())
+	}
+	agg := aggregators.New(convo, aggOpts...)
+	procs = append(procs,
 		stt,
 		agg.User(),
 		llm,
@@ -100,7 +114,8 @@ func runBot(conn *pionrtc.Connection) {
 		t.Output(),
 		agg.Assistant(),
 	)
-	task := pipeline.NewTask(pipe, pipeline.TaskParams{
+
+	task := pipeline.NewTask(pipeline.New(procs...), pipeline.TaskParams{
 		AudioInSampleRate:  opus.SampleRate,
 		AudioOutSampleRate: opus.SampleRate,
 	})
@@ -120,4 +135,23 @@ func runBot(conn *pionrtc.Connection) {
 	}
 	_ = conn.Close()
 	slog.Info("voicebot pipeline stopped")
+}
+
+// buildTurnTaking constructs a turn-taking detector from Silero VAD and Smart
+// Turn. If the ONNX runtime or models cannot be loaded it logs a warning and
+// returns nil, so the bot runs without turn taking.
+func buildTurnTaking() *turntaking.Detector {
+	v, err := vad.NewSilero()
+	if err != nil {
+		slog.Warn("turn taking disabled: Silero VAD unavailable (set VOXIGO_ONNXRUNTIME_LIB)", "err", err)
+		return nil
+	}
+	tr, err := turn.NewSmartTurnV3()
+	if err != nil {
+		slog.Warn("turn taking disabled: Smart Turn unavailable", "err", err)
+		_ = v.Close()
+		return nil
+	}
+	slog.Info("turn taking enabled (Silero VAD + Smart Turn v3)")
+	return turntaking.New(turntaking.Config{VAD: v, Turn: tr})
 }
