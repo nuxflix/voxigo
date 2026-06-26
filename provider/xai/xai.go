@@ -1,7 +1,7 @@
 // Package xai provides xAI's (Grok) OpenAI-compatible LLM service.
 package xai
 
-import "github.com/nuxflix/voxigo/service/openai"
+import "github.com/nuxflix/voxigo/provider/openai"
 
 const (
 	baseURL      = "https://api.x.ai/v1"

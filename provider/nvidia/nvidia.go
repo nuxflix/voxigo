@@ -1,7 +1,7 @@
 // Package nvidia provides NVIDIA NIM's OpenAI-compatible LLM service.
 package nvidia
 
-import "github.com/nuxflix/voxigo/service/openai"
+import "github.com/nuxflix/voxigo/provider/openai"
 
 const (
 	baseURL      = "https://integrate.api.nvidia.com/v1"

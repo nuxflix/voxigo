@@ -1,7 +1,7 @@
 // Package together provides Together AI's OpenAI-compatible LLM service.
 package together
 
-import "github.com/nuxflix/voxigo/service/openai"
+import "github.com/nuxflix/voxigo/provider/openai"
 
 const (
 	baseURL      = "https://api.together.xyz/v1"

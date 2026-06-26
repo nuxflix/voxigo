@@ -2,7 +2,7 @@
 package groq
 
 import (
-	"github.com/nuxflix/voxigo/service/openai"
+	"github.com/nuxflix/voxigo/provider/openai"
 	"github.com/nuxflix/voxigo/service/stt"
 )
 

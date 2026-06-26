@@ -2,7 +2,7 @@
 // gateway to many models behind one API.
 package openrouter
 
-import "github.com/nuxflix/voxigo/service/openai"
+import "github.com/nuxflix/voxigo/provider/openai"
 
 const (
 	baseURL      = "https://openrouter.ai/api/v1"

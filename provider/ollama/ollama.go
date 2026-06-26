@@ -2,7 +2,7 @@
 // OpenAI-compatible LLM endpoint.
 package ollama
 
-import "github.com/nuxflix/voxigo/service/openai"
+import "github.com/nuxflix/voxigo/provider/openai"
 
 const (
 	baseURL      = "http://localhost:11434/v1"

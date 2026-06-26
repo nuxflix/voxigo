@@ -1,7 +1,7 @@
 // Package fireworks provides Fireworks AI's OpenAI-compatible LLM service.
 package fireworks
 
-import "github.com/nuxflix/voxigo/service/openai"
+import "github.com/nuxflix/voxigo/provider/openai"
 
 const (
 	baseURL      = "https://api.fireworks.ai/inference/v1"

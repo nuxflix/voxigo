@@ -2,7 +2,7 @@
 // base URL has no "/v1" path segment, unlike most compatible providers.
 package perplexity
 
-import "github.com/nuxflix/voxigo/service/openai"
+import "github.com/nuxflix/voxigo/provider/openai"
 
 const (
 	baseURL      = "https://api.perplexity.ai"

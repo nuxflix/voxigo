@@ -1,7 +1,7 @@
 // Package deepseek provides DeepSeek's OpenAI-compatible LLM service.
 package deepseek
 
-import "github.com/nuxflix/voxigo/service/openai"
+import "github.com/nuxflix/voxigo/provider/openai"
 
 const (
 	baseURL      = "https://api.deepseek.com/v1"
