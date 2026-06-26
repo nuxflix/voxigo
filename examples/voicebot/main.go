@@ -44,6 +44,7 @@ import (
 	"github.com/nuxflix/voxigo/provider/rime"
 	"github.com/nuxflix/voxigo/provider/together"
 	"github.com/nuxflix/voxigo/rtvi"
+	"github.com/nuxflix/voxigo/tracing"
 	"github.com/nuxflix/voxigo/transport"
 	"github.com/nuxflix/voxigo/transport/pionrtc"
 	"github.com/nuxflix/voxigo/turntaking"
@@ -60,17 +61,34 @@ const systemPrompt = "You are a friendly voice assistant. Keep your replies shor
 const providerOpenAI = "openai"
 
 func main() {
+	if err := run(); err != nil {
+		log.Fatal(err)
+	}
+}
+
+func run() error {
 	const addr = ":8080"
+
+	// Export OpenTelemetry traces when an OTLP endpoint is configured.
+	if os.Getenv("OTEL_EXPORTER_OTLP_ENDPOINT") != "" {
+		shutdown, err := tracing.Init(context.Background(), tracing.Config{ServiceName: "voxigo-voicebot"})
+		if err != nil {
+			slog.Error("tracing init failed", "err", err)
+		} else {
+			defer func() { _ = shutdown(context.Background()) }()
+			slog.Info("OpenTelemetry tracing enabled")
+		}
+	}
 
 	static, err := fs.Sub(staticFiles, "static")
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	http.Handle("/", http.FileServer(http.FS(static)))
 	http.HandleFunc("/offer", handleOffer)
 
 	slog.Info("voxigo voicebot listening", "url", "http://localhost"+addr)
-	log.Fatal(http.ListenAndServe(addr, nil))
+	return http.ListenAndServe(addr, nil)
 }
 
 func handleOffer(w http.ResponseWriter, r *http.Request) {
@@ -144,6 +162,9 @@ func runBot(conn *pionrtc.Connection) {
 	})
 
 	ctx, cancel := context.WithCancel(context.Background())
+	// Root span for the session; the LLM and TTS spans nest under it.
+	ctx, span := tracing.StartConversation(ctx, "")
+	defer span.End()
 	go func() {
 		<-conn.Done()
 		cancel()
