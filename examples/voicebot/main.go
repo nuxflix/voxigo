@@ -26,6 +26,7 @@ import (
 	"github.com/nuxflix/voxigo/audio/turn"
 	"github.com/nuxflix/voxigo/audio/vad"
 	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/metrics"
 	"github.com/nuxflix/voxigo/pipeline"
 	"github.com/nuxflix/voxigo/processor"
 	"github.com/nuxflix/voxigo/provider/anthropic"
@@ -69,14 +70,19 @@ func main() {
 func run() error {
 	const addr = ":8080"
 
-	// Export OpenTelemetry traces when an OTLP endpoint is configured.
+	// Export OpenTelemetry traces and metrics when an OTLP endpoint is configured.
 	if os.Getenv("OTEL_EXPORTER_OTLP_ENDPOINT") != "" {
-		shutdown, err := tracing.Init(context.Background(), tracing.Config{ServiceName: "voxigo-voicebot"})
-		if err != nil {
+		if shutdown, err := tracing.Init(context.Background(), tracing.Config{ServiceName: "voxigo-voicebot"}); err != nil {
 			slog.Error("tracing init failed", "err", err)
 		} else {
 			defer func() { _ = shutdown(context.Background()) }()
 			slog.Info("OpenTelemetry tracing enabled")
+		}
+		if shutdown, err := metrics.Init(context.Background(), metrics.Config{ServiceName: "voxigo-voicebot"}); err != nil {
+			slog.Error("metrics init failed", "err", err)
+		} else {
+			defer func() { _ = shutdown(context.Background()) }()
+			slog.Info("OpenTelemetry metrics enabled")
 		}
 	}
 
@@ -159,6 +165,10 @@ func runBot(conn *pionrtc.Connection) {
 	task := pipeline.NewTask(pipeline.New(procs...), pipeline.TaskParams{
 		AudioInSampleRate:  opus.SampleRate,
 		AudioOutSampleRate: opus.SampleRate,
+		// Emit per-turn metrics (TTFB, processing, tokens, characters) in-band so
+		// the RTVI client sees live latency.
+		EnableMetrics:      true,
+		EnableUsageMetrics: true,
 	})
 
 	ctx, cancel := context.WithCancel(context.Background())
