@@ -12,6 +12,15 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+### Changed
+
+- The per-provider `examples/voice/<provider>` bots are now self-contained,
+  headless **backends**: the shared `run` helper was removed and each example
+  inlines the full pipeline and serves only the WebRTC `/offer` endpoint (with
+  CORS), so a single file can be copied as a starting point. voxigo is a backend
+  framework; the browser client is the `nextjs-voicebot` example in
+  [voxigo-client-react](https://github.com/nuxflix/voxigo-client-react).
+
 ## [0.0.1] - 2026-06-29
 
 First tagged development release: a WebRTC-native, audio-first conversational-AI
