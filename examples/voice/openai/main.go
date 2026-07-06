@@ -21,6 +21,7 @@ import (
 
 	"github.com/nuxflix/voxigo/aggregators"
 	"github.com/nuxflix/voxigo/audio/opus"
+	"github.com/nuxflix/voxigo/audio/rnnoise"
 	"github.com/nuxflix/voxigo/audio/turn"
 	"github.com/nuxflix/voxigo/audio/vad"
 	"github.com/nuxflix/voxigo/audio/vadproc"
@@ -83,6 +84,16 @@ func runBot(conn *pionrtc.Connection) {
 	params := transport.DefaultParams()
 	params.AudioInSampleRate = opus.SampleRate
 	params.AudioOutSampleRate = opus.SampleRate
+	// Optional input noise reduction. Real denoising needs the "rnnoise" build
+	// tag (which links librnnoise); without it rnnoise.New returns a no-op.
+	//	VOXIGO_DENOISE=1 go run -tags rnnoise ./examples/voice/openai
+	if os.Getenv("VOXIGO_DENOISE") != "" {
+		if filter, err := rnnoise.New(); err != nil {
+			slog.Warn("noise reduction unavailable", "err", err)
+		} else {
+			params.AudioInFilter = filter
+		}
+	}
 	t := pionrtc.NewTransport(conn, params)
 
 	convo := frames.NewLLMContext(systemPrompt)
