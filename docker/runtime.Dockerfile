@@ -10,7 +10,7 @@
 #
 # Ship a bot by copying a voxigo binary (built with the voxigo-build base) in:
 #
-#   FROM ghcr.io/nuxflix/voxigo
+#   FROM nuxflix/voxigo
 #   COPY --from=build /out/bot /usr/local/bin/bot
 #   ENTRYPOINT ["/usr/local/bin/bot"]
 

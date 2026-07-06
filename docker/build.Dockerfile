@@ -6,16 +6,16 @@
 # application links against — libsoxr (resampling) and libopus (the -tags
 # libopus Opus encoder) — so a downstream image can compile a bot without
 # installing anything. Pair it with the distroless runtime base (docker/runtime
-# .Dockerfile, published as ghcr.io/nuxflix/voxigo):
+# .Dockerfile, published as nuxflix/voxigo):
 #
-#   FROM ghcr.io/nuxflix/voxigo-build AS build
+#   FROM nuxflix/voxigo-build AS build
 #   WORKDIR /src
 #   COPY go.mod go.sum ./
 #   RUN go mod download
 #   COPY . .
 #   RUN go build -tags libopus -ldflags="-s -w" -o /out/bot ./cmd/bot
 #
-#   FROM ghcr.io/nuxflix/voxigo            # distroless runtime base
+#   FROM nuxflix/voxigo            # distroless runtime base
 #   COPY --from=build /out/bot /usr/local/bin/bot
 #   ENTRYPOINT ["/usr/local/bin/bot"]
 
