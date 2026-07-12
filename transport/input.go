@@ -4,6 +4,7 @@ import (
 	"context"
 	"sync"
 
+	"github.com/nuxflix/voxigo/audio"
 	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/processor"
 )
@@ -16,7 +17,7 @@ type BaseInput struct {
 	*processor.Base
 	params Params
 	self   InputDriver
-	filter AudioFilter
+	filter audio.Filter
 
 	sampleRate   int
 	filterActive bool

@@ -49,11 +49,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/nuxflix/voxigo/aggregators"
 	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/language"
 	"github.com/nuxflix/voxigo/pipeline"
 	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/processor/aggregators"
 	"github.com/nuxflix/voxigo/provider/anthropic"
 	"github.com/nuxflix/voxigo/provider/deepgram"
 	"github.com/nuxflix/voxigo/provider/elevenlabs"

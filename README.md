@@ -6,7 +6,6 @@
 
 [![CI](https://github.com/nuxflix/voxigo/actions/workflows/ci.yml/badge.svg)](https://github.com/nuxflix/voxigo/actions/workflows/ci.yml)
 [![Go Reference](https://pkg.go.dev/badge/github.com/nuxflix/voxigo.svg)](https://pkg.go.dev/github.com/nuxflix/voxigo)
-[![Go Report Card](https://goreportcard.com/badge/github.com/nuxflix/voxigo)](https://goreportcard.com/report/github.com/nuxflix/voxigo)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/nuxflix/voxigo/badge)](https://securityscorecards.dev/viewer/?uri=github.com/nuxflix/voxigo)
 ![Go version](https://img.shields.io/github/go-mod/go-version/nuxflix/voxigo)
 [![Release](https://img.shields.io/github/v/release/nuxflix/voxigo?sort=semver)](https://github.com/nuxflix/voxigo/releases)

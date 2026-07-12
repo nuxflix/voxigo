@@ -19,21 +19,21 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/nuxflix/voxigo/aggregators"
 	"github.com/nuxflix/voxigo/audio/opus"
 	"github.com/nuxflix/voxigo/audio/turn"
 	"github.com/nuxflix/voxigo/audio/vad"
-	"github.com/nuxflix/voxigo/audio/vadproc"
 	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/pipeline"
 	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/processor/aggregators"
+	"github.com/nuxflix/voxigo/processor/rtvi"
+	"github.com/nuxflix/voxigo/processor/turns"
+	"github.com/nuxflix/voxigo/processor/vadproc"
 	"github.com/nuxflix/voxigo/provider/elevenlabs"
 	"github.com/nuxflix/voxigo/provider/groq"
 	"github.com/nuxflix/voxigo/provider/openai"
-	"github.com/nuxflix/voxigo/rtvi"
 	"github.com/nuxflix/voxigo/transport"
 	"github.com/nuxflix/voxigo/transport/pionrtc"
-	"github.com/nuxflix/voxigo/turns"
 	"github.com/pion/webrtc/v4"
 )
 
@@ -77,7 +77,7 @@ func runBot(conn *pionrtc.Connection) {
 	defer func() { _ = conn.Close() }()
 
 	// --- the provider stack: the only part that differs between examples ---
-	stt := groq.NewSTT(openai.STTConfig{APIKey: os.Getenv("GROQ_API_KEY"), SampleRate: opus.SampleRate})
+	stt := groq.NewSTT(groq.STTConfig{APIKey: os.Getenv("GROQ_API_KEY"), SampleRate: opus.SampleRate})
 	llm := groq.NewLLM(openai.LLMConfig{APIKey: os.Getenv("GROQ_API_KEY")})
 	tts := elevenlabs.NewTTS(elevenlabs.Config{APIKey: os.Getenv("ELEVENLABS_API_KEY")})
 	// ----------------------------------------------------------------------

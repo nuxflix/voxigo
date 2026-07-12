@@ -19,7 +19,7 @@ import (
 	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/pipeline"
 	"github.com/nuxflix/voxigo/processor"
-	"github.com/nuxflix/voxigo/rtvi"
+	"github.com/nuxflix/voxigo/processor/rtvi"
 	"github.com/nuxflix/voxigo/transport"
 	"github.com/nuxflix/voxigo/transport/pionrtc"
 	"github.com/pion/webrtc/v4"
