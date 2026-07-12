@@ -1,13 +1,15 @@
 # Deploy with Docker
 
-voxigo is cgo — it links libsoxr and libopus and loads the ONNX Runtime — so
-rather than a single image, voxigo publishes two **base images** that take the
-native-dependency pain out of containerising a bot:
+The default build is cgo-free, but a bot still uses native libraries at run
+time — the ONNX Runtime and RNNoise are loaded through purego, and the optional
+`-tags libsoxr` / `-tags libopus` builds link C libraries. Rather than a single
+image, two **base images** take the native-dependency pain out of containerising
+a bot:
 
 | Image | Purpose |
 | --- | --- |
-| `nuxflix/voxigo-build` | **Build base** — the Go toolchain plus the cgo dev libraries (libsoxr, libopus, pkg-config). Compile your bot here. |
-| `nuxflix/voxigo` | **Runtime base** — a [distroless](https://github.com/GoogleContainerTools/distroless) image (no shell, no package manager, non-root) carrying only the native runtime libraries (libsoxr, libgomp, libopus) and the ONNX Runtime. Ship your bot here. |
+| `nuxflix/voxigo-build` | **Build base** — the Go toolchain plus the cgo dev libraries for the optional `-tags libsoxr` / `-tags libopus` builds (libsoxr, libopus, pkg-config). Compile your bot here. |
+| `nuxflix/voxigo` | **Runtime base** — a [distroless](https://github.com/GoogleContainerTools/distroless) image (no shell, no package manager, non-root) carrying the native runtime libraries: the ONNX Runtime and RNNoise (loaded via purego), plus libsoxr, libgomp and libopus for the `-tags` builds. Ship your bot here. |
 
 Both live on [Docker Hub](https://hub.docker.com/u/nuxflix). amd64 only for now.
 
@@ -40,8 +42,8 @@ docker run --rm -p 8080:8080 \
   my-bot
 ```
 
-The runtime base sets `VOXIGO_ONNXRUNTIME_LIB`, so VAD and turn detection work
-with no extra configuration.
+The runtime base sets `VOXIGO_ONNXRUNTIME_LIB` and `VOXIGO_RNNOISE_LIB`, so VAD,
+turn detection and noise reduction work with no extra configuration.
 
 ## Try an example bot
 

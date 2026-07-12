@@ -84,9 +84,10 @@ func runBot(conn *pionrtc.Connection) {
 	params := transport.DefaultParams()
 	params.AudioInSampleRate = opus.SampleRate
 	params.AudioOutSampleRate = opus.SampleRate
-	// Optional input noise reduction. Real denoising needs the "rnnoise" build
-	// tag (which links librnnoise); without it rnnoise.New returns a no-op.
-	//	VOXIGO_DENOISE=1 go run -tags rnnoise ./examples/voice/openai
+	// Optional input noise reduction (RNNoise). It loads librnnoise at run time
+	// via purego — no build tag — so New errors only when the library is not
+	// installed, in which case we run without it.
+	//	VOXIGO_DENOISE=1 go run ./examples/voice/openai
 	if os.Getenv("VOXIGO_DENOISE") != "" {
 		if filter, err := rnnoise.New(); err != nil {
 			slog.Warn("noise reduction unavailable", "err", err)
