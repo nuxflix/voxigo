@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/nuxflix/voxigo/metrics"
+	"github.com/nuxflix/voxigo/telemetry/metrics"
 	"go.opentelemetry.io/otel"
 	sdkmetric "go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/metric/metricdata"

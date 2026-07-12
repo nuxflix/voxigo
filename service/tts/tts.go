@@ -16,9 +16,9 @@ import (
 
 	"github.com/nuxflix/voxigo/audio/onset"
 	"github.com/nuxflix/voxigo/frames"
-	"github.com/nuxflix/voxigo/metrics"
 	"github.com/nuxflix/voxigo/processor"
-	"github.com/nuxflix/voxigo/tracing"
+	"github.com/nuxflix/voxigo/telemetry/metrics"
+	"github.com/nuxflix/voxigo/telemetry/tracing"
 	"go.opentelemetry.io/otel/attribute"
 )
 
