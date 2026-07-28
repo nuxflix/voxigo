@@ -30,7 +30,7 @@ import (
 	"github.com/nuxflix/voxigo/processor/rtvi"
 	"github.com/nuxflix/voxigo/processor/turns"
 	"github.com/nuxflix/voxigo/processor/vadproc"
-	"github.com/nuxflix/voxigo/provider/openai"
+	"github.com/nuxflix/voxigo/provider/openai/chat"
 	"github.com/nuxflix/voxigo/transport"
 	"github.com/nuxflix/voxigo/transport/pionrtc"
 	"github.com/pion/webrtc/v4"
@@ -76,9 +76,9 @@ func runBot(conn *pionrtc.Connection) {
 	defer func() { _ = conn.Close() }()
 
 	// --- the provider stack: the only part that differs between examples ---
-	stt := openai.NewSTT(openai.STTConfig{APIKey: os.Getenv("OPENAI_API_KEY"), SampleRate: opus.SampleRate})
-	llm := openai.NewLLM(openai.LLMConfig{APIKey: os.Getenv("OPENAI_API_KEY")})
-	tts := openai.NewTTS(openai.TTSConfig{APIKey: os.Getenv("OPENAI_API_KEY")})
+	stt := chat.NewSTT(chat.STTConfig{APIKey: os.Getenv("OPENAI_API_KEY"), SampleRate: opus.SampleRate})
+	llm := chat.NewLLM(chat.LLMConfig{APIKey: os.Getenv("OPENAI_API_KEY")})
+	tts := chat.NewTTS(chat.TTSConfig{APIKey: os.Getenv("OPENAI_API_KEY")})
 	// ----------------------------------------------------------------------
 
 	params := transport.DefaultParams()

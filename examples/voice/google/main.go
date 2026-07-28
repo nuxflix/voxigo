@@ -31,7 +31,7 @@ import (
 	"github.com/nuxflix/voxigo/processor/vadproc"
 	"github.com/nuxflix/voxigo/provider/deepgram"
 	"github.com/nuxflix/voxigo/provider/elevenlabs"
-	"github.com/nuxflix/voxigo/provider/google"
+	"github.com/nuxflix/voxigo/provider/google/gemini"
 	"github.com/nuxflix/voxigo/transport"
 	"github.com/nuxflix/voxigo/transport/pionrtc"
 	"github.com/pion/webrtc/v4"
@@ -78,7 +78,7 @@ func runBot(conn *pionrtc.Connection) {
 
 	// --- the provider stack: the only part that differs between examples ---
 	stt := deepgram.NewSTT(deepgram.Config{APIKey: os.Getenv("DEEPGRAM_API_KEY"), SampleRate: opus.SampleRate})
-	llm := google.NewLLM(google.Config{APIKey: os.Getenv("GEMINI_API_KEY")})
+	llm := gemini.NewLLM(gemini.Config{APIKey: os.Getenv("GEMINI_API_KEY")})
 	tts := elevenlabs.NewTTS(elevenlabs.Config{APIKey: os.Getenv("ELEVENLABS_API_KEY")})
 	// ----------------------------------------------------------------------
 

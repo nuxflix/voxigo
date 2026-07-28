@@ -32,7 +32,7 @@ import (
 	"github.com/nuxflix/voxigo/provider/deepgram"
 	"github.com/nuxflix/voxigo/provider/elevenlabs"
 	"github.com/nuxflix/voxigo/provider/nebius"
-	"github.com/nuxflix/voxigo/provider/openai"
+	"github.com/nuxflix/voxigo/provider/openai/chat"
 	"github.com/nuxflix/voxigo/transport"
 	"github.com/nuxflix/voxigo/transport/pionrtc"
 	"github.com/pion/webrtc/v4"
@@ -79,7 +79,7 @@ func runBot(conn *pionrtc.Connection) {
 
 	// --- the provider stack: the only part that differs between examples ---
 	stt := deepgram.NewSTT(deepgram.Config{APIKey: os.Getenv("DEEPGRAM_API_KEY"), SampleRate: opus.SampleRate})
-	llm := nebius.NewLLM(openai.LLMConfig{APIKey: os.Getenv("NEBIUS_API_KEY")})
+	llm := nebius.NewLLM(chat.LLMConfig{APIKey: os.Getenv("NEBIUS_API_KEY")})
 	tts := elevenlabs.NewTTS(elevenlabs.Config{APIKey: os.Getenv("ELEVENLABS_API_KEY")})
 	// ----------------------------------------------------------------------
 

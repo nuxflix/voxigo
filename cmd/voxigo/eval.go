@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 
 	"github.com/nuxflix/voxigo/eval"
-	"github.com/nuxflix/voxigo/provider/openai"
+	"github.com/nuxflix/voxigo/provider/openai/chat"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 )
@@ -146,7 +146,7 @@ func buildJudge(model, baseURL, key string) eval.Judge {
 	if key == "" {
 		key = os.Getenv("OPENAI_API_KEY")
 	}
-	return eval.NewLLMJudge(openai.NewLLM(openai.LLMConfig{
+	return eval.NewLLMJudge(chat.NewLLM(chat.LLMConfig{
 		BaseURL: baseURL,
 		Model:   model,
 		APIKey:  key,
