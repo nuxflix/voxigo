@@ -11,6 +11,7 @@ import (
 	"strings"
 
 	"github.com/coder/websocket"
+	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/language"
 	"github.com/nuxflix/voxigo/service/tts"
 	"github.com/nuxflix/voxigo/service/wsutil"
@@ -67,7 +68,8 @@ type wsData struct {
 }
 
 // Synthesize opens a session, sends the transcript, and streams audio chunks.
-func (s *synthesizer) Synthesize(ctx context.Context, text string, emit func(pcm []byte) error) error {
+func (s *synthesizer) RunTTS(ctx context.Context, text, _ string, yield func(f frames.Frame) error) error {
+	emit := tts.PCMYielder(yield, s.SampleRate())
 	header := http.Header{}
 	header.Set("x-api-key", s.cfg.APIKey)
 

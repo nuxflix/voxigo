@@ -10,6 +10,7 @@ import (
 	"net/url"
 	"strconv"
 
+	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/language"
 	"github.com/nuxflix/voxigo/service/tts"
 )
@@ -62,7 +63,8 @@ func (s *synthesizer) Metadata() tts.Metadata {
 func (s *synthesizer) SampleRate() int { return s.cfg.SampleRate }
 
 // Synthesize requests speech for text and streams the raw PCM downstream.
-func (s *synthesizer) Synthesize(ctx context.Context, text string, emit func(pcm []byte) error) error {
+func (s *synthesizer) RunTTS(ctx context.Context, text, _ string, yield func(f frames.Frame) error) error {
+	emit := tts.PCMYielder(yield, s.SampleRate())
 	payload := map[string]any{
 		keyText:    text,
 		"model_id": s.cfg.Model,
