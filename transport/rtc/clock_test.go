@@ -1,4 +1,4 @@
-package pionrtc_test
+package rtc_test
 
 import (
 	"context"
@@ -11,7 +11,7 @@ import (
 	"github.com/nuxflix/voxigo/pipeline"
 	"github.com/nuxflix/voxigo/processor"
 	"github.com/nuxflix/voxigo/transport"
-	"github.com/nuxflix/voxigo/transport/pionrtc"
+	"github.com/nuxflix/voxigo/transport/rtc"
 	"github.com/pion/webrtc/v4"
 )
 
@@ -31,7 +31,7 @@ const stallGap = 700 * time.Millisecond
 // span between the first and last timestamp, which must cover the wall clock the
 // test actually spent, gap included.
 func TestOutputTimelineSurvivesAStall(t *testing.T) {
-	server, err := pionrtc.NewConnection(pionrtc.WithICEServers())
+	server, err := rtc.NewConnection(rtc.WithICEServers())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -98,7 +98,7 @@ func TestOutputTimelineSurvivesAStall(t *testing.T) {
 	params.AudioInEnabled = false
 	params.AudioInPassthrough = false
 	params.AudioOutSampleRate = opus.SampleRate
-	tr := pionrtc.NewTransport(server, params)
+	tr := rtc.NewTransport(server, params)
 
 	src := newBurstSource()
 	task := pipeline.NewTask(pipeline.New(src, tr.Output()), pipeline.TaskParams{

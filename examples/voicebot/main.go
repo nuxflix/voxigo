@@ -47,7 +47,7 @@ import (
 	"github.com/nuxflix/voxigo/telemetry/metrics"
 	"github.com/nuxflix/voxigo/telemetry/tracing"
 	"github.com/nuxflix/voxigo/transport"
-	"github.com/nuxflix/voxigo/transport/pionrtc"
+	"github.com/nuxflix/voxigo/transport/rtc"
 	"github.com/pion/webrtc/v4"
 	"github.com/spf13/viper"
 )
@@ -144,7 +144,7 @@ func handleOffer(w http.ResponseWriter, r *http.Request, v *viper.Viper) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	conn, err := pionrtc.NewConnection()
+	conn, err := rtc.NewConnection()
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -165,7 +165,7 @@ func handleOffer(w http.ResponseWriter, r *http.Request, v *viper.Viper) {
 }
 
 // runBot builds and runs the STT -> LLM -> TTS pipeline for one connection.
-func runBot(conn *pionrtc.Connection, v *viper.Viper) {
+func runBot(conn *rtc.Connection, v *viper.Viper) {
 	defer func() { _ = conn.Close() }()
 
 	stt, llm, tts, err := buildStack(v)
@@ -177,7 +177,7 @@ func runBot(conn *pionrtc.Connection, v *viper.Viper) {
 	params := transport.DefaultParams()
 	params.AudioInSampleRate = opus.SampleRate
 	params.AudioOutSampleRate = opus.SampleRate
-	t := pionrtc.NewTransport(conn, params)
+	t := rtc.NewTransport(conn, params)
 
 	convo := frames.NewLLMContext(systemPrompt)
 
