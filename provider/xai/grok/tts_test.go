@@ -15,6 +15,7 @@ import (
 	"github.com/nuxflix/voxigo/internal/providertest"
 	"github.com/nuxflix/voxigo/language"
 	"github.com/nuxflix/voxigo/service/tts"
+	uctx "github.com/nuxflix/voxigo/utils/context"
 )
 
 // TestTTSConfigValidate pins which TTSConfig fields the provider requires and
@@ -453,5 +454,12 @@ func runPCMTimed(s tts.WordTimestamps, ctx context.Context, text string,
 			return emit(af.Audio)
 		}
 		return nil
-	}, word)
+	}, func(words []uctx.WordTiming, _ tts.WordTimingOptions) error {
+		for _, w := range words {
+			if err := word(w.Word, w.Offset); err != nil {
+				return err
+			}
+		}
+		return nil
+	})
 }
