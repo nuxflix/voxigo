@@ -12,6 +12,7 @@ import (
 	"github.com/nuxflix/voxigo/internal/query"
 	"github.com/nuxflix/voxigo/language"
 	"github.com/nuxflix/voxigo/service/stt"
+	"github.com/nuxflix/voxigo/service/wsutil"
 )
 
 // NewSTT builds an AssemblyAI streaming STT service.
@@ -81,19 +82,15 @@ func (c *connector) Connect(ctx context.Context, sampleRate int) (stt.Stream, er
 	header := http.Header{}
 	header.Set("Authorization", c.cfg.APIKey)
 
-	conn, resp, err := websocket.Dial(ctx, c.cfg.BaseURL+"?"+q.Encode(), &websocket.DialOptions{HTTPHeader: header})
-	if resp != nil && resp.Body != nil {
-		_ = resp.Body.Close()
-	}
+	conn, err := wsutil.Dial(ctx, c.cfg.BaseURL+"?"+q.Encode(), header, readLimit)
 	if err != nil {
 		return nil, err
 	}
-	conn.SetReadLimit(readLimit)
 	return &stream{conn: conn, ctx: ctx}, nil
 }
 
 type stream struct {
-	conn    *websocket.Conn
+	conn    *wsutil.Conn
 	ctx     context.Context
 	writeMu sync.Mutex
 }

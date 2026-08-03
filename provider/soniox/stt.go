@@ -12,6 +12,7 @@ import (
 	"github.com/nuxflix/voxigo/language"
 	"github.com/nuxflix/voxigo/service/settings"
 	"github.com/nuxflix/voxigo/service/stt"
+	"github.com/nuxflix/voxigo/service/wsutil"
 )
 
 // NewSTT builds a Soniox streaming STT service.
@@ -133,14 +134,10 @@ func (c *connector) ServiceLanguage(l language.Language) string {
 // Connect dials the WebSocket and sends the config handshake (which carries the
 // API key).
 func (c *connector) Connect(ctx context.Context, sampleRate int) (stt.Stream, error) {
-	conn, resp, err := websocket.Dial(ctx, c.cfg.URL, nil)
-	if resp != nil && resp.Body != nil {
-		_ = resp.Body.Close()
-	}
+	conn, err := wsutil.Dial(ctx, c.cfg.URL, nil, readLimit)
 	if err != nil {
 		return nil, err
 	}
-	conn.SetReadLimit(readLimit)
 
 	if err := conn.Write(ctx, websocket.MessageText, c.config(sampleRate)); err != nil {
 		_ = conn.Close(websocket.StatusInternalError, "config failed")
@@ -183,7 +180,7 @@ func putOpt[T any](cfg map[string]any, key string, o settings.Opt[T]) {
 }
 
 type stream struct {
-	conn     *websocket.Conn
+	conn     *wsutil.Conn
 	ctx      context.Context
 	writeMu  sync.Mutex
 	finalBuf string
