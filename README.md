@@ -5,6 +5,7 @@
 **A WebRTC-native, audio-first conversational-AI framework for Go.**
 
 [![CI](https://github.com/nuxflix/voxigo/actions/workflows/ci.yml/badge.svg)](https://github.com/nuxflix/voxigo/actions/workflows/ci.yml)
+[![Coverage](https://codecov.io/gh/nuxflix/voxigo/graph/badge.svg)](https://codecov.io/gh/nuxflix/voxigo)
 [![Go Reference](https://pkg.go.dev/badge/github.com/nuxflix/voxigo.svg)](https://pkg.go.dev/github.com/nuxflix/voxigo)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/nuxflix/voxigo/badge)](https://securityscorecards.dev/viewer/?uri=github.com/nuxflix/voxigo)
 ![Go version](https://img.shields.io/github/go-mod/go-version/nuxflix/voxigo)
