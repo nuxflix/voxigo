@@ -22,13 +22,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/google/uuid"
-
 	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/processor"
 	"github.com/nuxflix/voxigo/service/settings"
 	"github.com/nuxflix/voxigo/telemetry/metrics"
 	"github.com/nuxflix/voxigo/telemetry/tracing"
+	"github.com/google/uuid"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/trace"
 )
