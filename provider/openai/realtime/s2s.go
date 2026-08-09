@@ -16,6 +16,7 @@ import (
 	realtimeadapter "github.com/nuxflix/voxigo/adapter/realtime"
 	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/service/llm"
 	"github.com/nuxflix/voxigo/service/wsutil"
 )
 
@@ -432,3 +433,8 @@ func (s *Service) reportUsage(ctx context.Context, ev serverEvent) {
 // the result, so the pipeline counts it when it collects the processors that
 // report metrics.
 func (s *Service) CanGenerateMetrics() bool { return true }
+
+// LLMAdapter returns the adapter this service converts through, so the base can
+// add the tools it implements itself to what every request advertises. It
+// implements llm.AdapterHolder.
+func (s *Service) LLMAdapter() llm.BuiltinToolHolder { return &s.adapter }
