@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
+	"github.com/nuxflix/voxigo/adapter"
 	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/service/llm"
 	"github.com/nuxflix/voxigo/service/wsutil"
@@ -176,7 +177,10 @@ func (s *Service) turn(ctx context.Context, convo *frames.LLMContext, sink llm.S
 		return err
 	}
 
-	req := s.cfg.newRequest(convo, withTools)
+	req, err := s.cfg.newRequest(convo, adapter.Options{}, withTools)
+	if err != nil {
+		return err
+	}
 	full := req.Input
 	sent := s.applyContinuation(&req)
 
