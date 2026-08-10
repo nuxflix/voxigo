@@ -10,6 +10,7 @@ import (
 
 	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
 	"github.com/nuxflix/voxigo/processor/aggregators"
 	"github.com/nuxflix/voxigo/service/llm"
 	"github.com/nuxflix/voxigo/service/settings"
@@ -32,7 +33,7 @@ type fakeEnq struct {
 	filter   pipeline.FrameFilter
 }
 
-func (e *fakeEnq) QueueFrame(f frames.Frame) {
+func (e *fakeEnq) QueueFrame(f frames.Frame, _ ...processor.Direction) {
 	e.mu.Lock()
 	e.queued = append(e.queued, f)
 	watchers := make([]func(frames.Frame), len(e.watchers))
@@ -48,7 +49,7 @@ func (e *fakeEnq) QueueFrame(f frames.Frame) {
 	}
 }
 
-func (e *fakeEnq) QueueFrames(fs []frames.Frame) {
+func (e *fakeEnq) QueueFrames(fs []frames.Frame, _ ...processor.Direction) {
 	for _, f := range fs {
 		e.QueueFrame(f)
 	}

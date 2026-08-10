@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 	"github.com/nuxflix/voxigo/processor/aggregators"
 	"github.com/nuxflix/voxigo/service/llm"
 	"github.com/nuxflix/voxigo/service/settings"
@@ -28,8 +29,8 @@ const summaryTimeout = 5 * time.Second
 // it. Everything a flow does to the conversation it does by queueing a frame, so
 // the change is ordered against whatever else is in flight.
 type Enqueuer interface {
-	QueueFrame(f frames.Frame)
-	QueueFrames(fs []frames.Frame)
+	QueueFrame(f frames.Frame, dir ...processor.Direction)
+	QueueFrames(fs []frames.Frame, dir ...processor.Direction)
 }
 
 // Config configures a FlowManager. The references are the same instances wired
