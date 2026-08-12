@@ -15,6 +15,8 @@
 package moshi
 
 import (
+	"time"
+
 	"github.com/nuxflix/voxigo/internal/validate"
 	"github.com/nuxflix/voxigo/language"
 )
@@ -44,6 +46,10 @@ type Config struct {
 	SampleRate int
 	// Language is informational; the model itself is fixed (e.g. en_fr).
 	Language language.Language
+
+	// TTFSP99 overrides the measured transcript latency the turn strategies
+	// size their wait by; 0 uses stt.DefaultTTFSP99.
+	TTFSP99 time.Duration
 }
 
 // Validate reports whether the configuration is usable.
