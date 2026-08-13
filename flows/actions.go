@@ -8,6 +8,7 @@ import (
 
 	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 // The built-in action types.
@@ -55,12 +56,14 @@ func NewActionFinishedFrame() *ActionFinishedFrame {
 	return &ActionFinishedFrame{BaseControlFrame: frames.NewBaseControlFrame("ActionFinishedFrame")}
 }
 
-// Watcher reports frames that reach the end of the pipeline. *pipeline.Task
+// Watcher reports frames that reach the end of the pipeline. *pipeline.Worker
 // satisfies it. The action manager uses it to learn when its actions have
 // finished and when the assistant's turn is over, and says which frames it
 // wants to hear about.
 type Watcher interface {
-	OnReachedDownstream(fn func(frames.Frame))
+	// Events is where the handler for the frames reaching the end of the
+	// pipeline is attached.
+	Events() *events.Registry
 	SetReachedDownstreamFilter(f pipeline.FrameFilter)
 }
 
@@ -107,7 +110,8 @@ func newActionManager(enq Enqueuer, watch Watcher, fm *FlowManager) *actionManag
 			&FunctionActionFrame{},
 			&frames.BotStoppedSpeakingFrame{},
 		))
-		watch.OnReachedDownstream(am.frameReachedDownstream)
+		events.On(watch.Events(), pipeline.EventFrameReachedDownstream,
+			func(_ context.Context, f frames.Frame) { am.frameReachedDownstream(f) })
 	}
 	return am
 }

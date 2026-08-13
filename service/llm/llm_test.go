@@ -9,6 +9,7 @@ import (
 	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/pipeline"
 	"github.com/nuxflix/voxigo/service/llm"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 // fakeGen emits a fixed list of text deltas.
@@ -34,24 +35,24 @@ func TestBaseBracketsResponse(t *testing.T) {
 	var mu sync.Mutex
 	var got []string
 	done := make(chan struct{}, 1)
-	task := pipeline.NewTask(pipeline.New(svc), pipeline.TaskParams{
+	task := pipeline.NewWorker(pipeline.New(svc), pipeline.WorkerConfig{
 		ReachedDownstreamFilter: pipeline.AnyFrame,
-		OnReachedDownstream: func(f frames.Frame) {
-			mu.Lock()
-			defer mu.Unlock()
-			switch fr := f.(type) {
-			case *frames.LLMFullResponseStartFrame:
-				got = append(got, "start")
-			case *frames.LLMTextFrame:
-				got = append(got, "text:"+fr.Text)
-			case *frames.LLMFullResponseEndFrame:
-				got = append(got, "end")
-				select {
-				case done <- struct{}{}:
-				default:
-				}
+	})
+	events.On(&task.Registry, pipeline.EventFrameReachedDownstream, func(_ context.Context, f frames.Frame) {
+		mu.Lock()
+		defer mu.Unlock()
+		switch fr := f.(type) {
+		case *frames.LLMFullResponseStartFrame:
+			got = append(got, "start")
+		case *frames.LLMTextFrame:
+			got = append(got, "text:"+fr.Text)
+		case *frames.LLMFullResponseEndFrame:
+			got = append(got, "end")
+			select {
+			case done <- struct{}{}:
+			default:
 			}
-		},
+		}
 	})
 	runDone := make(chan error, 1)
 	go func() { runDone <- task.Run(context.Background()) }()

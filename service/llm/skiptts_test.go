@@ -9,6 +9,7 @@ import (
 	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/pipeline"
 	"github.com/nuxflix/voxigo/service/llm"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 // stampGen answers every turn with one fixed reply.
@@ -39,10 +40,14 @@ func runStamped(t *testing.T, configure *bool) []*bool {
 		}
 	}
 
-	task := pipeline.NewTask(
+	task := pipeline.NewWorker(
 		pipeline.New(llm.New("StampLLM", stampGen{})),
-		pipeline.TaskParams{ReachedDownstreamFilter: pipeline.AnyFrame, OnReachedDownstream: record},
+		pipeline.WorkerConfig{
+			ReachedDownstreamFilter: pipeline.AnyFrame,
+		},
 	)
+	events.On(&task.Registry, pipeline.EventFrameReachedDownstream,
+		func(_ context.Context, f frames.Frame) { record(f) })
 	done := make(chan error, 1)
 	go func() { done <- task.Run(t.Context()) }()
 

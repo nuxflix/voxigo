@@ -8,25 +8,26 @@ import (
 	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/pipeline"
 	"github.com/nuxflix/voxigo/processor/rtvi"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 func TestMetricsFrameBecomesMetricsMessage(t *testing.T) {
 	out := make(chan rtvi.Message, 8)
 	rtviProc := rtvi.NewProcessor()
-	task := pipeline.NewTask(pipeline.New(rtviProc), pipeline.TaskParams{
+	task := pipeline.NewWorker(pipeline.New(rtviProc), pipeline.WorkerConfig{
 		// Events are reported by the observer; the processor only carries them.
 		Observers:               []pipeline.Observer{rtvi.NewObserver(rtviProc)},
 		ReachedDownstreamFilter: pipeline.AnyFrame,
-		OnReachedDownstream: func(f frames.Frame) {
-			if m, ok := f.(*frames.OutputTransportMessageUrgentFrame); ok {
-				if msg, ok := m.Message.(rtvi.Message); ok {
-					select {
-					case out <- msg:
-					default:
-					}
+	})
+	events.On(&task.Registry, pipeline.EventFrameReachedDownstream, func(_ context.Context, f frames.Frame) {
+		if m, ok := f.(*frames.OutputTransportMessageUrgentFrame); ok {
+			if msg, ok := m.Message.(rtvi.Message); ok {
+				select {
+				case out <- msg:
+				default:
 				}
 			}
-		},
+		}
 	})
 	runDone := make(chan error, 1)
 	go func() { runDone <- task.Run(context.Background()) }()
