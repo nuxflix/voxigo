@@ -11,6 +11,7 @@ import (
 	"github.com/nuxflix/voxigo/adapter"
 	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/service/llm"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 // HTTPService streams a Responses turn over one request.
@@ -81,7 +82,7 @@ func (s *HTTPService) run(ctx context.Context, convo *frames.LLMContext, sink ll
 	defer func() { _ = resp.Body.Close() }()
 	if resp.StatusCode != http.StatusOK {
 		msg, _ := io.ReadAll(io.LimitReader(resp.Body, 512))
-		return fmt.Errorf("%w %d: %s", errStatus, resp.StatusCode, msg)
+		return errs.NewHTTPStatusError(resp.StatusCode, fmt.Errorf("%w %d: %s", errStatus, resp.StatusCode, msg))
 	}
 
 	state := newStreamState(sink)

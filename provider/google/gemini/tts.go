@@ -13,6 +13,7 @@ import (
 	"github.com/nuxflix/voxigo/internal/validate"
 	"github.com/nuxflix/voxigo/language"
 	"github.com/nuxflix/voxigo/service/tts"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 const (
@@ -106,7 +107,7 @@ func (s *ttsSynthesizer) fetchPCM(req *http.Request) ([]byte, error) {
 	defer func() { _ = resp.Body.Close() }()
 	if resp.StatusCode != http.StatusOK {
 		msg, _ := io.ReadAll(io.LimitReader(resp.Body, 512))
-		return nil, fmt.Errorf("%w %d: %s", errStatus, resp.StatusCode, msg)
+		return nil, errs.NewHTTPStatusError(resp.StatusCode, fmt.Errorf("%w %d: %s", errStatus, resp.StatusCode, msg))
 	}
 	var out struct {
 		AudioContent string `json:"audioContent"` //nolint:tagliatelle // Google REST uses camelCase keys

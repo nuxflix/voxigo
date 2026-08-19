@@ -19,6 +19,7 @@ import (
 	"github.com/nuxflix/voxigo/language"
 	"github.com/nuxflix/voxigo/service/tts"
 	uctx "github.com/nuxflix/voxigo/utils/context"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 // errTTSStatus is returned when the synthesis API responds with a non-200
@@ -221,7 +222,7 @@ func (s *synthesizer) synthesize(
 	defer func() { _ = resp.Body.Close() }()
 	if resp.StatusCode != http.StatusOK {
 		msg, _ := io.ReadAll(io.LimitReader(resp.Body, 512))
-		return fmt.Errorf("%w %d: %s", errTTSStatus, resp.StatusCode, msg)
+		return errs.NewHTTPStatusError(resp.StatusCode, fmt.Errorf("%w %d: %s", errTTSStatus, resp.StatusCode, msg))
 	}
 	return s.stream(resp.Body, text, tts.PCMYielder(yield, s.SampleRate()), word)
 }

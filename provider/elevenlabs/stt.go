@@ -16,6 +16,7 @@ import (
 	"github.com/nuxflix/voxigo/internal/validate"
 	"github.com/nuxflix/voxigo/language"
 	"github.com/nuxflix/voxigo/service/stt"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 // errSTTStatus is returned when the transcription API responds with a non-200
@@ -155,7 +156,7 @@ func (t *sttTranscriber) Transcribe(ctx context.Context, audio []byte, sampleRat
 	defer func() { _ = resp.Body.Close() }()
 	if resp.StatusCode != http.StatusOK {
 		msg, _ := io.ReadAll(io.LimitReader(resp.Body, 512))
-		return "", fmt.Errorf("%w %d: %s", errSTTStatus, resp.StatusCode, msg)
+		return "", errs.NewHTTPStatusError(resp.StatusCode, fmt.Errorf("%w %d: %s", errSTTStatus, resp.StatusCode, msg))
 	}
 	var out struct {
 		Text string `json:"text"`
