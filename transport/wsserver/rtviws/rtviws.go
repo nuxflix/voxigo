@@ -16,6 +16,7 @@ import (
 	"encoding/json"
 
 	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 	"github.com/nuxflix/voxigo/processor/rtvi"
 	"github.com/nuxflix/voxigo/transport/wsserver"
 )
@@ -57,7 +58,7 @@ func New() *Serializer { return &Serializer{} }
 
 // Setup is a no-op: the RTVI channel carries no audio, so there is nothing to
 // configure from the StartFrame.
-func (*Serializer) Setup(*frames.StartFrame) error { return nil }
+func (*Serializer) Setup(processor.Setup) error { return nil }
 
 // Serialize drops outbound frames. RTVI server messages reach the socket through
 // the transport's own OutputTransportMessageUrgentFrame path rather than the

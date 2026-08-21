@@ -15,6 +15,7 @@ import (
 	"sync"
 
 	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 	"github.com/nuxflix/voxigo/transport/wsserver"
 )
 
@@ -84,7 +85,7 @@ func New(cfg Config) *Serializer {
 
 // Setup learns the pipeline's sample rate, so the 8 kHz companded audio on the
 // wire can be converted to it and back.
-func (s *Serializer) Setup(f *frames.StartFrame) error { return s.codec.Setup(f) }
+func (s *Serializer) Setup(st processor.Setup) error { return s.codec.Setup(st) }
 
 // Close releases the resamplers.
 func (s *Serializer) Close() { s.codec.Close() }
