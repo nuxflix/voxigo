@@ -11,6 +11,7 @@ import (
 	"github.com/nuxflix/voxigo/processor"
 	"github.com/nuxflix/voxigo/processor/aggregators"
 	"github.com/nuxflix/voxigo/processor/rtvi"
+	"github.com/nuxflix/voxigo/processor/turns"
 	"github.com/nuxflix/voxigo/service/tts"
 )
 
@@ -51,6 +52,19 @@ func newFakeAudioSTT() *fakeAudioSTT {
 func (s *fakeAudioSTT) ProcessFrame(ctx context.Context, f frames.Frame, dir processor.Direction) error {
 	if err := s.Base.ProcessFrame(ctx, f, dir); err != nil {
 		return err
+	}
+	if _, ok := f.(*frames.StartFrame); ok {
+		// It detects the turn boundaries itself and announces them, so the
+		// aggregator is asked to defer to what it reports rather than running
+		// its own detection alongside it. Without this the aggregator would open
+		// the turn on the transcript at the end of the utterance and barge in
+		// there, which is not where the turn began.
+		md := frames.NewSTTMetadataFrame(0)
+		md.ServiceName = s.Name()
+		md.UserTurnStrategies = turns.ExternalStrategies(turns.ExternalStrategiesConfig{})
+		if err := s.Broadcast(ctx, func() frames.Frame { return md }); err != nil {
+			return err
+		}
 	}
 	af, ok := f.(*frames.InputAudioRawFrame)
 	if !ok {
