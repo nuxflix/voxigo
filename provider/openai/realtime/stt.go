@@ -11,9 +11,9 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/nuxflix/voxigo/frames"
 	"github.com/nuxflix/voxigo/internal/validate"
 	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/processor/turns"
 	"github.com/nuxflix/voxigo/service/stt"
 	"github.com/nuxflix/voxigo/service/wsutil"
 )
@@ -92,9 +92,9 @@ type sttConnector struct {
 // Metadata tells downstream processors the session detects turns itself.
 func (c *sttConnector) Metadata() stt.Metadata {
 	return stt.Metadata{
-		RecommendedUserTurns: frames.UserTurnExternal,
-		TTFSP99:              cmp.Or(c.cfg.TTFSP99, stt.OpenAIRealtimeTTFSP99),
-		Model:                c.cfg.Model,
+		UserTurnStrategies: turns.ExternalStrategies(turns.ExternalStrategiesConfig{}),
+		TTFSP99:            cmp.Or(c.cfg.TTFSP99, stt.OpenAIRealtimeTTFSP99),
+		Model:              c.cfg.Model,
 	}
 }
 
