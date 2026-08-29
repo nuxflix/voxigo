@@ -14,6 +14,13 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Added
 
+- **Linear fades and silence padding.** `audio.Fade` ramps a buffer in and out.
+  `audio.PadSilence` and `processor.NewAudioPad` extend a chunk with zeros to a
+  minimum sample count, for a codec that wants a fixed leftover.
+
+- **Spoken user turns as text.** `frames.LLMContext.UserTexts` returns every
+  user message in order, skipping tool-result placeholders.
+
 - **A user turn processor.** `turns.NewUserTurnProcessor` decides the user's
   turn in a processor of its own, so the decision can be made once and shared
   by several aggregators, or placed at a particular point in the pipeline. The

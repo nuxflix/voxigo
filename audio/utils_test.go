@@ -64,6 +64,49 @@ func equal(got []int16, want ...int16) bool {
 	return true
 }
 
+func TestFade(t *testing.T) {
+	tests := []struct {
+		name       string
+		in         []byte
+		inS, outS  int
+		want       []int16
+	}{
+		{"empty", nil, 4, 4, nil},
+		{"no fade leaves the samples alone", pcm(100, -100), 0, 0, []int16{100, -100}},
+		{"fade in from silence", pcm(100, 100), 2, 0, []int16{0, 50}},
+		{"fade out to silence", pcm(100, 100), 0, 2, []int16{50, 0}},
+		{"negative lengths are zero", pcm(100, 100), -1, -1, []int16{100, 100}},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := samples(audio.Fade(tt.in, tt.inS, tt.outS)); !equal(got, tt.want...) {
+				t.Errorf("Fade() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestPadSilence(t *testing.T) {
+	tests := []struct {
+		name    string
+		in      []byte
+		samples int
+		want    []int16
+	}{
+		{"empty stays empty when no pad is asked", nil, 0, nil},
+		{"pads with zeros", pcm(1, 2), 4, []int16{1, 2, 0, 0}},
+		{"already long enough is copied", pcm(1, 2, 3), 2, []int16{1, 2, 3}},
+		{"odd trailing byte is dropped", append(pcm(1), 0xFF), 2, []int16{1, 0}},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := samples(audio.PadSilence(tt.in, tt.samples)); !equal(got, tt.want...) {
+				t.Errorf("PadSilence() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
 func TestMixAudio(t *testing.T) {
 	tests := []struct {
 		name string

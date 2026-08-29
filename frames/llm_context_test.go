@@ -244,3 +244,22 @@ func TestSetMessagesDoesNotAliasTheCaller(t *testing.T) {
 		t.Errorf("context result = %q, want it untouched by the caller's slice", got)
 	}
 }
+
+// TestUserTexts collects spoken user turns and ignores tool-result placeholders.
+func TestUserTexts(t *testing.T) {
+	c := frames.NewLLMContext("system")
+	if got := c.UserTexts(); len(got) != 0 {
+		t.Errorf("UserTexts() = %v, want empty", got)
+	}
+
+	c.AddUserMessage("one")
+	c.AddAssistantMessage("reply")
+	c.AddUserMessage("two")
+	c.AddAssistantToolCall(frames.ToolCall{ID: "c1", Name: "get_weather"})
+	c.AddToolResult(frames.ToolResult{ID: "c1", Name: "get_weather", Content: "sunny"})
+
+	got := c.UserTexts()
+	if len(got) != 2 || got[0] != "one" || got[1] != "two" {
+		t.Errorf("UserTexts() = %v, want [one two]", got)
+	}
+}

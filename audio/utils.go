@@ -35,6 +35,61 @@ func IsSilence(pcm []byte) bool {
 	return true
 }
 
+// Fade applies a linear fade-in of inSamples and a linear fade-out of
+// outSamples to a chunk of 16-bit signed PCM. A fade that is longer than the
+// buffer covers the whole buffer. Where the two ramps overlap, the gains
+// multiply. Negative lengths are treated as zero. The result is a copy.
+func Fade(pcm []byte, inSamples, outSamples int) []byte {
+	n := len(pcm) - len(pcm)%2
+	out := make([]byte, n)
+	copy(out, pcm[:n])
+	if n == 0 {
+		return out
+	}
+	if inSamples < 0 {
+		inSamples = 0
+	}
+	if outSamples < 0 {
+		outSamples = 0
+	}
+	total := n / 2
+	for i := 0; i < total; i++ {
+		g := 1.0
+		if inSamples > 0 && i < inSamples {
+			g *= float64(i) / float64(inSamples)
+		}
+		if outSamples > 0 && i >= total-outSamples {
+			k := i - (total - outSamples)
+			g *= 1 - float64(k+1)/float64(outSamples)
+		}
+		if g == 1 {
+			continue
+		}
+		s := float64(int16(binary.LittleEndian.Uint16(out[i*2:]))) * g
+		binary.LittleEndian.PutUint16(out[i*2:], uint16(clampInt16(int32(s))))
+	}
+	return out
+}
+
+// PadSilence extends a chunk of 16-bit signed PCM with zeros until it holds at
+// least samples samples. A buffer that is already that long, or longer, is
+// copied as it stands. A trailing odd byte is dropped. The result is a copy.
+func PadSilence(pcm []byte, samples int) []byte {
+	if samples < 0 {
+		samples = 0
+	}
+	need := samples * 2
+	n := len(pcm) - len(pcm)%2
+	if n >= need {
+		out := make([]byte, n)
+		copy(out, pcm[:n])
+		return out
+	}
+	out := make([]byte, need)
+	copy(out, pcm[:n])
+	return out
+}
+
 // MixAudio sums two streams of 16-bit signed PCM sample by sample, clipping the
 // result to the 16-bit range. The streams need not be the same length: the
 // shorter one is treated as though it were padded with silence, so the result is
