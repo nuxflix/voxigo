@@ -375,6 +375,32 @@ func (c *LLMContext) TransformMessages(transform func([]Message) []Message) {
 	c.SetMessages(transform(c.Messages()))
 }
 
+// ClearMessages drops every conversation message. The system prompt, tools and
+// recall stay.
+func (c *LLMContext) ClearMessages() {
+	c.SetMessages(nil)
+}
+
+// Transcript renders the conversation as "role: text" lines, one per message
+// that has text. Tool-only messages are omitted. The system prompt is not
+// included; it is not a conversation turn.
+func (c *LLMContext) Transcript() string {
+	msgs := c.Messages()
+	var b strings.Builder
+	for _, m := range msgs {
+		if m.Text == "" {
+			continue
+		}
+		if b.Len() > 0 {
+			b.WriteByte('\n')
+		}
+		b.WriteString(string(m.Role))
+		b.WriteString(": ")
+		b.WriteString(m.Text)
+	}
+	return b.String()
+}
+
 // AddUserMessage appends a user message.
 func (c *LLMContext) AddUserMessage(text string) {
 	c.mu.Lock()
