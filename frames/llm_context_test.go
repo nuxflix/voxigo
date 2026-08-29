@@ -244,3 +244,30 @@ func TestSetMessagesDoesNotAliasTheCaller(t *testing.T) {
 		t.Errorf("context result = %q, want it untouched by the caller's slice", got)
 	}
 }
+
+func TestKeepLastMessages(t *testing.T) {
+	c := frames.NewLLMContext("be brief")
+	c.AddUserMessage("one")
+	c.AddAssistantMessage("two")
+	c.AddUserMessage("three")
+	c.AddAssistantMessage("four")
+
+	c.KeepLastMessages(2)
+	got := c.Messages()
+	if len(got) != 2 || got[0].Text != "three" || got[1].Text != "four" {
+		t.Fatalf("KeepLastMessages(2) = %+v, want the last two turns", got)
+	}
+	if !strings.Contains(c.System(), "be brief") {
+		t.Error("KeepLastMessages dropped the system prompt")
+	}
+
+	c.KeepLastMessages(10)
+	if len(c.Messages()) != 2 {
+		t.Fatalf("KeepLastMessages(10) changed a shorter conversation: %d", len(c.Messages()))
+	}
+
+	c.KeepLastMessages(0)
+	if len(c.Messages()) != 0 {
+		t.Fatalf("KeepLastMessages(0) = %d messages, want none", len(c.Messages()))
+	}
+}

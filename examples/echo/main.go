@@ -17,6 +17,7 @@ import (
 
 	"github.com/nuxflix/voxigo/audio/opus"
 	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/health"
 	"github.com/nuxflix/voxigo/pipeline"
 	"github.com/nuxflix/voxigo/processor"
 	"github.com/nuxflix/voxigo/transport"
@@ -35,6 +36,7 @@ func main() {
 		log.Fatal(err)
 	}
 	http.Handle("/", http.FileServer(http.FS(static)))
+	http.Handle("/healthz", health.Handler("echo", ""))
 	http.HandleFunc("/offer", handleOffer)
 
 	slog.Info("voxigo echo bot listening", "url", "http://localhost"+addr)

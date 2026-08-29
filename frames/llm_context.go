@@ -375,6 +375,22 @@ func (c *LLMContext) TransformMessages(transform func([]Message) []Message) {
 	c.SetMessages(transform(c.Messages()))
 }
 
+// KeepLastMessages drops every conversation message except the last n. The
+// system prompt, tools and recall stay. n <= 0 clears the messages. A window
+// that would cut through a tool call and its result is the caller's to avoid;
+// the method does not regroup turns.
+func (c *LLMContext) KeepLastMessages(n int) {
+	c.TransformMessages(func(msgs []Message) []Message {
+		if n <= 0 {
+			return nil
+		}
+		if len(msgs) <= n {
+			return msgs
+		}
+		return msgs[len(msgs)-n:]
+	})
+}
+
 // AddUserMessage appends a user message.
 func (c *LLMContext) AddUserMessage(text string) {
 	c.mu.Lock()

@@ -89,6 +89,10 @@ Treat the error as "run without it" rather than fatal, so the bot works on
 machines that do not have the library. `AudioInFilter` takes any `audio.Filter`,
 so a custom one (gain, a high-pass, your own model) drops in the same way.
 
+To raise or lower PCM without a filter, `audio.ApplyGain` scales 16-bit samples
+and clips. `processor.NewAudioGain` does that to every audio frame in the
+pipeline.
+
 Denoising helps in genuinely noisy rooms and can hurt otherwise: it removes
 information the VAD uses. Measure before shipping it.
 

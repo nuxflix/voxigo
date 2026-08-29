@@ -64,6 +64,35 @@ func equal(got []int16, want ...int16) bool {
 	return true
 }
 
+func TestApplyGain(t *testing.T) {
+	tests := []struct {
+		name string
+		in   []byte
+		gain float64
+		want []int16
+	}{
+		{"unity returns the same samples", pcm(100, -200), 1, []int16{100, -200}},
+		{"double", pcm(100, -200), 2, []int16{200, -400}},
+		{"half", pcm(100, -200), 0.5, []int16{50, -100}},
+		{"silence", pcm(100, -200), 0, []int16{0, 0}},
+		{"phase invert", pcm(100, -200), -1, []int16{-100, 200}},
+		{"positive clip", pcm(20000), 2, []int16{32767}},
+		{"negative clip", pcm(-20000), 2, []int16{-32768}},
+		{"empty", nil, 2, nil},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := audio.ApplyGain(tt.in, tt.gain)
+			if tt.gain == 1 && len(tt.in) >= 2 && &got[0] != &tt.in[0] {
+				t.Error("gain of 1 should return the same slice")
+			}
+			if !equal(samples(got), tt.want...) {
+				t.Errorf("ApplyGain() = %v, want %v", samples(got), tt.want)
+			}
+		})
+	}
+}
+
 func TestMixAudio(t *testing.T) {
 	tests := []struct {
 		name string

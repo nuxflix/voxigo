@@ -36,6 +36,6 @@ func rootCmd() *cobra.Command {
 		Short:        "Tooling for building and testing voxigo voice agents",
 		SilenceUsage: true,
 	}
-	root.AddCommand(evalCmd())
+	root.AddCommand(evalCmd(), versionCmd())
 	return root
 }
