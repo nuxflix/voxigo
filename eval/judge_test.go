@@ -7,9 +7,9 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"github.com/gojargo/jargo/eval"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/llm"
+	"github.com/nuxflix/voxigo/eval"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/llm"
 )
 
 // errJudgeUnreachable stands in for a judge endpoint that cannot be reached.

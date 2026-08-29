@@ -8,9 +8,9 @@ import (
 	"net/url"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/tts"
-	"github.com/gojargo/jargo/service/wsutil"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/tts"
+	"github.com/nuxflix/voxigo/service/wsutil"
 )
 
 // NewTTS builds an Async TTS service.
@@ -77,7 +77,7 @@ func (s *synthesizer) request(ctx context.Context, conn *wsutil.Conn, text strin
 		return err
 	}
 	// force flushes the single sentence immediately rather than waiting for more.
-	return writeJSON(ctx, conn, map[string]any{"transcript": text, "context_id": "jargo", "force": true})
+	return writeJSON(ctx, conn, map[string]any{"transcript": text, "context_id": "voxigo", "force": true})
 }
 
 func writeJSON(ctx context.Context, conn *wsutil.Conn, msg map[string]any) error {

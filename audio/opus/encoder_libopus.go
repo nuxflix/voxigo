@@ -9,16 +9,16 @@ package opus
 
 // opus_encoder_ctl is variadic, which cgo cannot call directly, so wrap the
 // control requests we use in plain functions.
-static int jargo_opus_set_bitrate(OpusEncoder *enc, opus_int32 bitrate) {
+static int voxigo_opus_set_bitrate(OpusEncoder *enc, opus_int32 bitrate) {
 	return opus_encoder_ctl(enc, OPUS_SET_BITRATE(bitrate));
 }
-static int jargo_opus_set_signal_voice(OpusEncoder *enc) {
+static int voxigo_opus_set_signal_voice(OpusEncoder *enc) {
 	return opus_encoder_ctl(enc, OPUS_SET_SIGNAL(OPUS_SIGNAL_VOICE));
 }
-static int jargo_opus_set_inband_fec(OpusEncoder *enc, int on) {
+static int voxigo_opus_set_inband_fec(OpusEncoder *enc, int on) {
 	return opus_encoder_ctl(enc, OPUS_SET_INBAND_FEC(on));
 }
-static int jargo_opus_set_packet_loss_perc(OpusEncoder *enc, int perc) {
+static int voxigo_opus_set_packet_loss_perc(OpusEncoder *enc, int perc) {
 	return opus_encoder_ctl(enc, OPUS_SET_PACKET_LOSS_PERC(perc));
 }
 */
@@ -51,23 +51,23 @@ func NewEncoder(cfg EncoderConfig) (*Encoder, error) {
 		return nil, fmt.Errorf("opus_encoder_create failed: %d", int(cerr))
 	}
 	if cfg.Bitrate > 0 {
-		if rc := C.jargo_opus_set_bitrate(enc, C.opus_int32(cfg.Bitrate)); rc != C.OPUS_OK {
+		if rc := C.voxigo_opus_set_bitrate(enc, C.opus_int32(cfg.Bitrate)); rc != C.OPUS_OK {
 			C.opus_encoder_destroy(enc)
 			return nil, fmt.Errorf("opus set bitrate failed: %d", int(rc))
 		}
 	}
 	// Bias toward SILK for speech; harmless if the content is not voice.
-	C.jargo_opus_set_signal_voice(enc)
+	C.voxigo_opus_set_signal_voice(enc)
 
 	if cfg.InbandFEC {
-		if rc := C.jargo_opus_set_inband_fec(enc, 1); rc != C.OPUS_OK {
+		if rc := C.voxigo_opus_set_inband_fec(enc, 1); rc != C.OPUS_OK {
 			C.opus_encoder_destroy(enc)
 			return nil, fmt.Errorf("opus set inband fec failed: %d", int(rc))
 		}
 		// Without a loss estimate libopus assumes 0% and emits no redundancy,
 		// so FEC would be on in name only.
 		perc := min(max(cfg.ExpectedPacketLoss, 0), 100)
-		if rc := C.jargo_opus_set_packet_loss_perc(enc, C.int(perc)); rc != C.OPUS_OK {
+		if rc := C.voxigo_opus_set_packet_loss_perc(enc, C.int(perc)); rc != C.OPUS_OK {
 			C.opus_encoder_destroy(enc)
 			return nil, fmt.Errorf("opus set packet loss perc failed: %d", int(rc))
 		}

@@ -6,7 +6,7 @@ import (
 	"fmt"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/processor/rtvi"
+	"github.com/nuxflix/voxigo/processor/rtvi"
 )
 
 // readLimit bounds a single inbound message; RTVI control messages are small.

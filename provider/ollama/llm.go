@@ -1,6 +1,6 @@
 package ollama
 
-import "github.com/gojargo/jargo/provider/openai/chat"
+import "github.com/nuxflix/voxigo/provider/openai/chat"
 
 // NewLLM builds an LLM service backed by a local Ollama server. Set cfg.BaseURL
 // to reach a remote Ollama; no API key is required by default.

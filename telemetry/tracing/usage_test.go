@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/telemetry/tracing"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/telemetry/tracing"
 	"go.opentelemetry.io/otel"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	"go.opentelemetry.io/otel/sdk/trace/tracetest"

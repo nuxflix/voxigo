@@ -3,17 +3,17 @@ package context
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // The cases here are ported from upstream's summarization suite. Two of its
 // tests have no counterpart and are left out on purpose: one drives a message
-// whose content is a list of typed parts (an image beside text), which jargo has
+// whose content is a list of typed parts (an image beside text), which voxigo has
 // no representation for, and one covers a configuration type upstream has
 // already deprecated for removal.
 //
 // Upstream writes a tool result as its own message with role "tool" and a
-// tool_call_id. jargo writes the same thing as a message carrying ToolResults,
+// tool_call_id. voxigo writes the same thing as a message carrying ToolResults,
 // so the messages below are that shape; the sequences and the indices they
 // assert are upstream's.
 

@@ -10,8 +10,8 @@ package service
 import (
 	"context"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // MetadataDescriber is implemented by a service that describes itself to the

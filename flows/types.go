@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // Handler runs when the model calls a node function.

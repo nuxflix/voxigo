@@ -4,8 +4,8 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/settings"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/settings"
 )
 
 // Tests for reading an update that arrived from outside the process, where the

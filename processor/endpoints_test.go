@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
-	"github.com/gojargo/jargo/clock"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/clock"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // Tests for the two endpoints that close a pipeline off. Each hands the frames

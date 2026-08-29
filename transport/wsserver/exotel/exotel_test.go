@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 func pcm() []byte {

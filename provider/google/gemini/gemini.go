@@ -1,12 +1,12 @@
 // Package gemini is a streaming LLM service backed by Google's Gemini API
 // (generateContent with SSE). It consumes an LLMContextFrame and emits the
-// response as LLM response frames, like every other jargo LLM service.
+// response as LLM response frames, like every other voxigo LLM service.
 package gemini
 
 import (
 	"errors"
 
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/internal/validate"
 )
 
 // errStatus is returned when the API responds with a non-200 status. It is shared

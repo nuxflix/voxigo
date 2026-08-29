@@ -10,11 +10,11 @@ import (
 	"strings"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/tts"
-	"github.com/gojargo/jargo/service/wsutil"
-	uctx "github.com/gojargo/jargo/utils/context"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/tts"
+	"github.com/nuxflix/voxigo/service/wsutil"
+	uctx "github.com/nuxflix/voxigo/utils/context"
 )
 
 // GenerationConfig guides Cartesia generation; it applies to the sonic-3 series
@@ -177,7 +177,7 @@ func (s *synthesizer) request(ctx context.Context, conn *wsutil.Conn, text strin
 			"encoding":    s.cfg.Encoding,
 			"sample_rate": s.cfg.SampleRate,
 		},
-		"context_id": "jargo",
+		"context_id": "voxigo",
 		"continue":   false,
 	}
 	if timestamps {

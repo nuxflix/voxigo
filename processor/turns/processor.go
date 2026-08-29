@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // The events a UserTurnProcessor raises around each turn it decides.

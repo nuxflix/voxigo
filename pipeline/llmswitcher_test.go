@@ -7,10 +7,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/service/llm"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/service/llm"
 )
 
 // waitFor blocks until cond holds, failing the test with what it was waiting

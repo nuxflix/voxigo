@@ -7,7 +7,7 @@ package resembleai
 import (
 	"errors"
 
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/internal/validate"
 )
 
 // errProtocol is returned when Resemble reports an error message.

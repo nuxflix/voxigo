@@ -4,7 +4,7 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/gojargo/jargo/internal/query"
+	"github.com/nuxflix/voxigo/internal/query"
 )
 
 // TestSetBoolTrue covers the "on unless told otherwise" setter: a nil pointer
@@ -80,10 +80,10 @@ func TestOptionalSettersFormatting(t *testing.T) {
 // which is how providers take lists such as keyword boosts.
 func TestAddAll(t *testing.T) {
 	q := url.Values{}
-	query.AddAll(q, "keywords", []string{"jargo", "pipeline", "jargo"})
+	query.AddAll(q, "keywords", []string{"voxigo", "pipeline", "voxigo"})
 
 	got := q["keywords"]
-	want := []string{"jargo", "pipeline", "jargo"}
+	want := []string{"voxigo", "pipeline", "voxigo"}
 	if len(got) != len(want) {
 		t.Fatalf("keywords = %v, want %v", got, want)
 	}

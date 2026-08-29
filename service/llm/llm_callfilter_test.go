@@ -8,10 +8,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor/turns"
-	"github.com/gojargo/jargo/service/llm"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor/turns"
+	"github.com/nuxflix/voxigo/service/llm"
 )
 
 // filterGen requests a fixed list of tool calls on its first inference and

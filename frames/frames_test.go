@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // Sample concrete frames, defined the way downstream code will: embed a

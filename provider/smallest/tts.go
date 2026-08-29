@@ -8,9 +8,9 @@ import (
 	"net/http"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/tts"
-	"github.com/gojargo/jargo/service/wsutil"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/tts"
+	"github.com/nuxflix/voxigo/service/wsutil"
 )
 
 // NewTTS builds a Smallest AI TTS service.
@@ -54,7 +54,7 @@ func (s *synthesizer) RunTTS(ctx context.Context, text, _ string, yield func(f f
 	emit := tts.PCMYielder(yield, s.SampleRate())
 	header := http.Header{}
 	header.Set("Authorization", "Bearer "+s.cfg.APIKey)
-	header.Set("X-Source", "jargo")
+	header.Set("X-Source", "voxigo")
 
 	conn, err := wsutil.Dial(ctx, s.cfg.URL, header, wsutil.DefaultReadLimit)
 	if err != nil {

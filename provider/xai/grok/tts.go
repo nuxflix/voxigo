@@ -12,13 +12,13 @@ import (
 	"strconv"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/internal/query"
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/tts"
-	"github.com/gojargo/jargo/service/wsutil"
-	uctx "github.com/gojargo/jargo/utils/context"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/internal/query"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/tts"
+	"github.com/nuxflix/voxigo/service/wsutil"
+	uctx "github.com/nuxflix/voxigo/utils/context"
 )
 
 const (
@@ -28,7 +28,7 @@ const (
 	defaultTTSHTTPURL = "https://api.x.ai/v1/tts"
 	// defaultVoice is a current xAI voice.
 	defaultVoice = "eve"
-	// defaultTTSSampleRate is the PCM rate jargo requests from xAI.
+	// defaultTTSSampleRate is the PCM rate voxigo requests from xAI.
 	defaultTTSSampleRate = 24000
 	// ttsCodec is raw 16-bit little-endian mono PCM. xAI also offers wav, mulaw
 	// and alaw, but the pipeline carries linear PCM, so the codec is fixed.
@@ -235,7 +235,7 @@ func (s *ttsSynthesizer) run(
 }
 
 // request streams the sentence in and closes the utterance so xAI starts
-// synthesizing. jargo hands the base a whole sentence at a time, so one delta
+// synthesizing. voxigo hands the base a whole sentence at a time, so one delta
 // carries all of it.
 func (s *ttsSynthesizer) request(ctx context.Context, conn *wsutil.Conn, text string) error {
 	delta, err := json.Marshal(map[string]any{"type": ttsClientDelta, "delta": text})

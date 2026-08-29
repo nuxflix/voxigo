@@ -12,10 +12,10 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/adapter"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/llm"
-	"github.com/gojargo/jargo/service/wsutil"
+	"github.com/nuxflix/voxigo/adapter"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/llm"
+	"github.com/nuxflix/voxigo/service/wsutil"
 )
 
 // maxTurnAttempts bounds how many times a turn is retried after a recoverable

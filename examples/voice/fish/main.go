@@ -1,11 +1,11 @@
-// Command voice-fish is a headless jargo voice backend.
+// Command voice-fish is a headless voxigo voice backend.
 //
 // It uses Fish Audio text-to-speech (set FISH_REFERENCE_ID), with Deepgram STT and an Anthropic LLM.
 //
-// jargo is a backend framework, so this is a server only — it exposes the
+// voxigo is a backend framework, so this is a server only — it exposes the
 // WebRTC signaling endpoint POST /offer and no web UI. Point a browser client
-// at it (the nextjs-voicebot example in gojargo/jargo-client-react, with
-// NEXT_PUBLIC_JARGO_URL=http://localhost:8080).
+// at it (the nextjs-voicebot example in nuxflix/voxigo-client-react, with
+// NEXT_PUBLIC_VOXIGO_URL=http://localhost:8080).
 //
 //	DEEPGRAM_API_KEY=… ANTHROPIC_API_KEY=… FISH_API_KEY=… FISH_REFERENCE_ID=… go run ./examples/voice/fish
 package main
@@ -19,20 +19,20 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/gojargo/jargo/audio/opus"
-	"github.com/gojargo/jargo/audio/turn"
-	"github.com/gojargo/jargo/audio/vad"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/processor/aggregators"
-	"github.com/gojargo/jargo/processor/turns"
-	"github.com/gojargo/jargo/processor/vadproc"
-	"github.com/gojargo/jargo/provider/anthropic"
-	"github.com/gojargo/jargo/provider/deepgram"
-	"github.com/gojargo/jargo/provider/fish"
-	"github.com/gojargo/jargo/transport"
-	"github.com/gojargo/jargo/transport/rtc"
+	"github.com/nuxflix/voxigo/audio/opus"
+	"github.com/nuxflix/voxigo/audio/turn"
+	"github.com/nuxflix/voxigo/audio/vad"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/processor/aggregators"
+	"github.com/nuxflix/voxigo/processor/turns"
+	"github.com/nuxflix/voxigo/processor/vadproc"
+	"github.com/nuxflix/voxigo/provider/anthropic"
+	"github.com/nuxflix/voxigo/provider/deepgram"
+	"github.com/nuxflix/voxigo/provider/fish"
+	"github.com/nuxflix/voxigo/transport"
+	"github.com/nuxflix/voxigo/transport/rtc"
 	"github.com/pion/webrtc/v4"
 )
 
@@ -41,7 +41,7 @@ const systemPrompt = "You are a friendly voice assistant. Keep your replies shor
 
 func main() {
 	http.HandleFunc("/offer", withCORS(handleOffer))
-	slog.Info("jargo voice backend listening", "url", "http://localhost:8080", "signaling", "POST /offer")
+	slog.Info("voxigo voice backend listening", "url", "http://localhost:8080", "signaling", "POST /offer")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
@@ -136,7 +136,7 @@ func runBot(conn *rtc.Connection) {
 func buildTurnStack() (*vadproc.Processor, *turns.Config) {
 	vd, err := vad.NewSilero()
 	if err != nil {
-		slog.Warn("turn taking disabled: Silero VAD unavailable (set JARGO_ONNXRUNTIME_LIB)", "err", err)
+		slog.Warn("turn taking disabled: Silero VAD unavailable (set VOXIGO_ONNXRUNTIME_LIB)", "err", err)
 		return nil, nil
 	}
 	tr, err := turn.NewSmartTurnV3()

@@ -5,7 +5,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/gojargo/jargo/internal/onnxrt"
+	"github.com/nuxflix/voxigo/internal/onnxrt"
 )
 
 // toneFrames builds n frames of 512 mono 16-bit samples of a continuous 300 Hz
@@ -37,7 +37,7 @@ func silenceFrames(n int) [][]byte {
 // context and recurrent-state management match. It needs the ONNX runtime.
 func TestSileroMatchesReference(t *testing.T) {
 	if !onnxrt.Available() {
-		t.Skip("ONNX runtime not configured; set JARGO_ONNXRUNTIME_LIB")
+		t.Skip("ONNX runtime not configured; set VOXIGO_ONNXRUNTIME_LIB")
 	}
 
 	const tol = 1e-3

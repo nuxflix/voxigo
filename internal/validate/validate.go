@@ -1,4 +1,4 @@
-// Package validate provides jargo's shared struct validator. Provider Config
+// Package validate provides voxigo's shared struct validator. Provider Config
 // types expose a Validate method backed by it, and the service bases run that
 // validation at Setup so an invalid configuration fails when the pipeline starts
 // rather than at first use.

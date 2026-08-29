@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/transport"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/transport"
 )
 
 // The output transport converts incoming audio to the rate it was started at,

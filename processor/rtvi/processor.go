@@ -6,8 +6,8 @@ import (
 	"log/slog"
 	"sync"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // Processor bridges a pipeline to an RTVI client. It completes the handshake,

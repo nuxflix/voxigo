@@ -3,8 +3,8 @@ package cerebras_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/provider/cerebras"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/provider/cerebras"
 )
 
 // TestNewLLM checks the Cerebras shim wires the right service name and

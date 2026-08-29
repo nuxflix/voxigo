@@ -13,8 +13,8 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/language"
 )
 
 // Tests for the synthesis session. Neuphonic streams base64 PCM over a socket

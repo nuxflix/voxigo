@@ -1,15 +1,15 @@
 <div align="center">
 
-<img src="assets/logo.png" alt="jargo" width="200" />
+<img src="assets/logo.png" alt="voxigo" width="200" />
 
 **A WebRTC-native, audio-first conversational-AI framework for Go.**
 
-[![CI](https://github.com/gojargo/jargo/actions/workflows/ci.yml/badge.svg)](https://github.com/gojargo/jargo/actions/workflows/ci.yml)
-[![Coverage](https://codecov.io/gh/gojargo/jargo/graph/badge.svg)](https://codecov.io/gh/gojargo/jargo)
-[![Go Reference](https://pkg.go.dev/badge/github.com/gojargo/jargo.svg)](https://pkg.go.dev/github.com/gojargo/jargo)
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/gojargo/jargo/badge)](https://securityscorecards.dev/viewer/?uri=github.com/gojargo/jargo)
-![Go version](https://img.shields.io/github/go-mod/go-version/gojargo/jargo)
-[![Release](https://img.shields.io/github/v/release/gojargo/jargo?sort=semver)](https://github.com/gojargo/jargo/releases)
+[![CI](https://github.com/nuxflix/voxigo/actions/workflows/ci.yml/badge.svg)](https://github.com/nuxflix/voxigo/actions/workflows/ci.yml)
+[![Coverage](https://codecov.io/gh/nuxflix/voxigo/graph/badge.svg)](https://codecov.io/gh/nuxflix/voxigo)
+[![Go Reference](https://pkg.go.dev/badge/github.com/nuxflix/voxigo.svg)](https://pkg.go.dev/github.com/nuxflix/voxigo)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/nuxflix/voxigo/badge)](https://securityscorecards.dev/viewer/?uri=github.com/nuxflix/voxigo)
+![Go version](https://img.shields.io/github/go-mod/go-version/nuxflix/voxigo)
+[![Release](https://img.shields.io/github/v/release/nuxflix/voxigo?sort=semver)](https://github.com/nuxflix/voxigo/releases)
 [![License: BSD-2-Clause](https://img.shields.io/badge/license-BSD--2--Clause-blue.svg)](LICENSE)
 [![Status: early WIP](https://img.shields.io/badge/status-early%20WIP-orange)](CHANGELOG.md)
 
@@ -17,7 +17,7 @@
 
 ---
 
-**jargo** is a framework for real-time voice agents in Go: audio in over WebRTC,
+**voxigo** is a framework for real-time voice agents in Go: audio in over WebRTC,
 a streaming transcription → reasoning → speech pipeline with turn-taking and
 barge-in, and audio back out.
 
@@ -28,7 +28,7 @@ barge-in, and audio back out.
 
 ## Why?
 
-[Pipecat](https://github.com/pipecat-ai/pipecat) is great, and jargo is a port of
+[Pipecat](https://github.com/pipecat-ai/pipecat) is great, and voxigo is a port of
 it. The architecture and many design decisions are Pipecat's.
 
 ### Python might not be the way
@@ -42,7 +42,7 @@ binary. For that, Go is a better fit: one static binary to deploy, low and
 predictable memory, fast startup, and real concurrency for many simultaneous
 sessions without a GIL. The heavy numerics stay where they belong (the ONNX
 Runtime, the remote services), so giving up Python costs little here. See the
-[benchmarks](https://github.com/gojargo/jargo-benchmarks) for the honest performance picture.
+[benchmarks](https://github.com/nuxflix/voxigo-benchmarks) for the honest performance picture.
 
 ## Features
 
@@ -72,7 +72,7 @@ Pick any per category; each is a small `Config` + constructor.
 ## Usage
 
 ```sh
-go get github.com/gojargo/jargo
+go get github.com/nuxflix/voxigo
 ```
 
 A bot is an STT → LLM → TTS pipeline over a WebRTC transport. The heart of it:
@@ -94,8 +94,8 @@ task.Run(ctx)
 [`examples/voice/openai`](examples/voice/openai) is that pipeline as a complete
 server (WebRTC signaling, VAD/turn-taking, barge-in).
 
-**Run it in Docker**: build on the `gojargo/jargo-build` base and ship on the
-distroless `gojargo/jargo` runtime (it bundles the ONNX Runtime), then:
+**Run it in Docker**: build on the `nuxflix/voxigo-build` base and ship on the
+distroless `nuxflix/voxigo` runtime (it bundles the ONNX Runtime), then:
 
 ```sh
 docker run --rm -p 8080:8080 -e OPENAI_API_KEY=$OPENAI_API_KEY my-bot
@@ -115,7 +115,7 @@ Runnable bots live in [`examples/`](examples):
   explicitly and exposing the WebRTC `/offer` endpoint (no web UI). Run with
   `go run ./examples/voice/<provider>` (e.g. `deepgram`, `cartesia`, `openai`)
   and drive it from a browser client, the `nextjs-voicebot` in
-  [jargo-client-react](https://github.com/gojargo/jargo-client-react).
+  [voxigo-client-react](https://github.com/nuxflix/voxigo-client-react).
 - **twiliobot**: a phone agent over Twilio Media Streams, with the idle watchdog.
 
 The fastest way to try them (locally or with Docker) is the
@@ -127,14 +127,14 @@ go run ./examples/echo                 # then open http://localhost:8080
 
 ## Documentation
 
-**[gojargo.github.io/jargo](https://gojargo.github.io/jargo/)** is the full
+**[nuxflix.github.io/voxigo](https://nuxflix.github.io/voxigo/)** is the full
 documentation. The same pages live in [`docs/`](docs) and read fine on GitHub.
 
 Start with [Architecture](docs/concepts/architecture.md) for the model, or
 [Frames](docs/concepts/frames.md) and [Processors](docs/concepts/processors.md) for
 the engine. [Writing a processor](docs/extending/custom-processor.md) covers
 extending it. The API reference is the
-[Go reference](https://pkg.go.dev/github.com/gojargo/jargo).
+[Go reference](https://pkg.go.dev/github.com/nuxflix/voxigo).
 
 ## Dependencies
 
@@ -143,8 +143,8 @@ toolchain. Two native runtimes are still used, but bound through
 [purego](https://github.com/ebitengine/purego) and loaded at run time, so they need
 their shared library present at runtime and nothing at build time:
 
-- **ONNX Runtime**: VAD + end-of-turn detection (`JARGO_ONNXRUNTIME_LIB`).
-- **RNNoise**: optional input noise reduction (`JARGO_RNNOISE_LIB`).
+- **ONNX Runtime**: VAD + end-of-turn detection (`VOXIGO_ONNXRUNTIME_LIB`).
+- **RNNoise**: optional input noise reduction (`VOXIGO_RNNOISE_LIB`).
 
 Opus and resampling are pure Go by default; the C libopus (`-tags libopus`) and
 libsoxr (`-tags libsoxr`) are the only cgo in the tree, and both are optional. The
@@ -152,8 +152,8 @@ libsoxr (`-tags libsoxr`) are the only cgo in the tree, and both are optional. T
 
 ## License & attribution
 
-jargo is a Go port of [Pipecat](https://github.com/pipecat-ai/pipecat),
+voxigo is a Go port of [Pipecat](https://github.com/pipecat-ai/pipecat),
 distributed under the same **BSD 2-Clause License**. The upstream copyright
 (*Copyright (c) 2024–2026, Daily*) is preserved verbatim in [`LICENSE`](LICENSE);
-see [`NOTICE`](NOTICE) for details. jargo is an independent project, not
+see [`NOTICE`](NOTICE) for details. voxigo is an independent project, not
 affiliated with or endorsed by Daily.

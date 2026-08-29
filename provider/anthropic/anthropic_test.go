@@ -8,9 +8,9 @@ import (
 	"testing"
 
 	sdk "github.com/anthropics/anthropic-sdk-go"
-	"github.com/gojargo/jargo/adapter"
-	"github.com/gojargo/jargo/frames"
-	errs "github.com/gojargo/jargo/utils/errors"
+	"github.com/nuxflix/voxigo/adapter"
+	"github.com/nuxflix/voxigo/frames"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 // mustParams converts the conversation and fails the test if the conversion

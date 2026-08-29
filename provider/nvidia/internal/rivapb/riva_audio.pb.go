@@ -98,7 +98,7 @@ const file_riva_audio_proto_rawDesc = "" +
 	"\x04FLAC\x10\x02\x12\t\n" +
 	"\x05MULAW\x10\x03\x12\v\n" +
 	"\aOGGOPUS\x10\x04\x12\b\n" +
-	"\x04ALAW\x10\x14BAZ?github.com/gojargo/jargo/provider/nvidia/internal/rivapb;rivapbb\x06proto3"
+	"\x04ALAW\x10\x14BAZ?github.com/nuxflix/voxigo/provider/nvidia/internal/rivapb;rivapbb\x06proto3"
 
 var (
 	file_riva_audio_proto_rawDescOnce sync.Once

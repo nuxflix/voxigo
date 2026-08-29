@@ -6,11 +6,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/service/settings"
-	"github.com/gojargo/jargo/service/tts"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/service/settings"
+	"github.com/nuxflix/voxigo/service/tts"
 )
 
 // settingsSynth holds settings the way a provider does, names languages its own

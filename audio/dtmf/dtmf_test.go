@@ -7,8 +7,8 @@ import (
 	"math/cmplx"
 	"testing"
 
-	"github.com/gojargo/jargo/audio/dtmf"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/audio/dtmf"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 const sampleRate = 8000

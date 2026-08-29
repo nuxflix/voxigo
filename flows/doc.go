@@ -1,4 +1,4 @@
-// Package flows builds structured, multi-step conversations on top of jargo's
+// Package flows builds structured, multi-step conversations on top of voxigo's
 // LLM service.
 //
 // A conversation is a graph of nodes. Each node sets the assistant's persona and

@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"strings"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // The system instruction a service sends is composed rather than stored whole:

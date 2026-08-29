@@ -13,10 +13,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/service/llm"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/service/llm"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 // usageChunk is a streamed chunk carrying a snapshot of the token counts. The

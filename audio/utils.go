@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"encoding/binary"
 
-	"github.com/gojargo/jargo/audio/g711"
-	"github.com/gojargo/jargo/audio/resample"
+	"github.com/nuxflix/voxigo/audio/g711"
+	"github.com/nuxflix/voxigo/audio/resample"
 )
 
 // speakingThreshold is the largest absolute 16-bit sample amplitude a buffer can

@@ -3,9 +3,9 @@ package aggregators
 import (
 	"context"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/utils/text"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/utils/text"
 )
 
 // Sentence gathers text frames into whole sentences, pushing one on only once a

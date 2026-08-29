@@ -7,9 +7,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/observers"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/observers"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // latencyRecorder collects everything a UserBotLatency observer reports.

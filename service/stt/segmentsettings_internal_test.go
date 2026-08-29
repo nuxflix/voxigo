@@ -5,10 +5,10 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/service/settings"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/service/settings"
 )
 
 // Tests for changing a segmented service's settings while the pipeline runs.

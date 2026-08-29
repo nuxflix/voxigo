@@ -8,10 +8,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/provider/nvidia/internal/rivapb"
-	"github.com/gojargo/jargo/service/tts"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/provider/nvidia/internal/rivapb"
+	"github.com/nuxflix/voxigo/service/tts"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 )

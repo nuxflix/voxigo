@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/internal/onnxrt"
+	"github.com/nuxflix/voxigo/internal/onnxrt"
 )
 
 // probeFeatures returns a valid-shaped [1,80,800] input. Run cost is
@@ -44,7 +44,7 @@ func newProbeSession(tb testing.TB) *onnxrt.Session {
 //	CGO_ENABLED=0 go test ./audio/turn -run x -bench SmartTurnInference
 func BenchmarkSmartTurnInference(b *testing.B) {
 	if !onnxrt.Available() {
-		b.Skip("ONNX runtime not configured; set JARGO_ONNXRUNTIME_LIB")
+		b.Skip("ONNX runtime not configured; set VOXIGO_ONNXRUNTIME_LIB")
 	}
 	sess := newProbeSession(b)
 	defer func() { _ = sess.Close() }()
@@ -66,7 +66,7 @@ func BenchmarkSmartTurnInference(b *testing.B) {
 // both build configs and compare the hb_max column.
 func TestSmartTurnSchedulerProbe(t *testing.T) {
 	if !onnxrt.Available() {
-		t.Skip("ONNX runtime not configured; set JARGO_ONNXRUNTIME_LIB")
+		t.Skip("ONNX runtime not configured; set VOXIGO_ONNXRUNTIME_LIB")
 	}
 	if testing.Short() {
 		t.Skip("scheduler probe is slow; skipped under -short")

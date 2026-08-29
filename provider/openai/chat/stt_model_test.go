@@ -3,7 +3,7 @@ package chat
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/service/stt"
+	"github.com/nuxflix/voxigo/service/stt"
 )
 
 // TestSTTMetadataReportsTheModel checks the transcriber names the model it is

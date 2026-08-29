@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/service/llm"
+	"github.com/nuxflix/voxigo/service/llm"
 )
 
 // Tests for the Server-Sent Events scanner every streaming provider reads its

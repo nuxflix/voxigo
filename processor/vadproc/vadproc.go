@@ -16,10 +16,10 @@ import (
 	"context"
 	"time"
 
-	"github.com/gojargo/jargo/audio/vad"
-	"github.com/gojargo/jargo/audio/vad/controller"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/audio/vad"
+	"github.com/nuxflix/voxigo/audio/vad/controller"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // Config configures a Processor.

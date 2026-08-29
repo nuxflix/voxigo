@@ -3,8 +3,8 @@ package soniox_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/provider/soniox"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/provider/soniox"
 )
 
 // TestConfigValidate pins which Config fields the provider requires.

@@ -3,7 +3,7 @@ package mistral
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/adapter/openai"
+	"github.com/nuxflix/voxigo/adapter/openai"
 )
 
 // TestTransformMessagesFollowsATooResultWithAnAssistantMessage checks the first of

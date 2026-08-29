@@ -5,9 +5,9 @@ import (
 	"log/slog"
 	"sync"
 
-	"github.com/gojargo/jargo/frames"
-	errs "github.com/gojargo/jargo/utils/errors"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/frames"
+	errs "github.com/nuxflix/voxigo/utils/errors"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 // The events every processor raises.

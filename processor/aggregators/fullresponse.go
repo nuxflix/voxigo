@@ -3,8 +3,8 @@ package aggregators
 import (
 	"context"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // EventCompletion fires with a whole LLM response once it has been gathered.

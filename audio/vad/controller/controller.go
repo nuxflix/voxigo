@@ -19,10 +19,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/audio/resample"
-	"github.com/gojargo/jargo/audio/vad"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/audio/resample"
+	"github.com/nuxflix/voxigo/audio/vad"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // analyzerSampleRate is the fallback analyzer rate, used when the input rate is
@@ -90,7 +90,7 @@ type Controller struct {
 	// watchMu serializes the idle watch's lifecycle, which Start, Stop and
 	// Cleanup all reach and which the frame goroutine and the teardown reach
 	// from different goroutines. Upstream is single-threaded and needs none of
-	// this; it is jargo's own. It is never taken by the watch itself, so holding
+	// this; it is voxigo's own. It is never taken by the watch itself, so holding
 	// it while waiting for the watch to finish cannot deadlock.
 	watchMu    sync.Mutex
 	idleCancel context.CancelFunc

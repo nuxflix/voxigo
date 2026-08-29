@@ -3,8 +3,8 @@ package deepseek_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/provider/deepseek"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/provider/deepseek"
 )
 
 // TestNewLLM checks the DeepSeek shim wires the right service name and

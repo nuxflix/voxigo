@@ -7,7 +7,7 @@ weight: 5
 
 When the user starts talking over the bot, the bot has to stop: immediately, and
 including audio that has already been synthesized and queued. This is barge-in,
-and in jargo it is not a special code path. It is a frame.
+and in voxigo it is not a special code path. It is a frame.
 
 ## Why a frame
 

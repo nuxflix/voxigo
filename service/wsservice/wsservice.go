@@ -24,8 +24,8 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/utils/network"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/utils/network"
 )
 
 // DefaultMaxRetries is how many times the base redials before it reports the

@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/gojargo/jargo/provider/openai/chat"
+	"github.com/nuxflix/voxigo/provider/openai/chat"
 )
 
 func TestShaperEndpointAndAuth(t *testing.T) {

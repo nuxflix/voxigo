@@ -5,7 +5,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/gojargo/jargo/audio/resample"
+	"github.com/nuxflix/voxigo/audio/resample"
 )
 
 // minSINAD is the transparency floor in dB: a resampled pure tone must stay this

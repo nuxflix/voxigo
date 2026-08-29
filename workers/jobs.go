@@ -9,9 +9,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/bus"
-	"github.com/gojargo/jargo/pipeline/jobcontext"
-	"github.com/gojargo/jargo/registry"
+	"github.com/nuxflix/voxigo/bus"
+	"github.com/nuxflix/voxigo/pipeline/jobcontext"
+	"github.com/nuxflix/voxigo/registry"
 	"github.com/google/uuid"
 )
 

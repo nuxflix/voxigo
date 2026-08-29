@@ -3,8 +3,8 @@ package whispercpp
 import (
 	"cmp"
 
-	"github.com/gojargo/jargo/provider/openai/chat"
-	"github.com/gojargo/jargo/service/stt"
+	"github.com/nuxflix/voxigo/provider/openai/chat"
+	"github.com/nuxflix/voxigo/service/stt"
 )
 
 // NewSTT builds a whisper.cpp transcription service.

@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/settings"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/settings"
 )
 
 // Tests for the model name a service labels its telemetry with. The usage is

@@ -26,7 +26,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // Errors reported when a settings value does not fit where it is being put.

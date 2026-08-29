@@ -6,10 +6,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor/ivr"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor/ivr"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 func TestNavigatesAndStripsTags(t *testing.T) {

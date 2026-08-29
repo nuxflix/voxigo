@@ -15,11 +15,11 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/tts"
-	uctx "github.com/gojargo/jargo/utils/context"
-	errs "github.com/gojargo/jargo/utils/errors"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/tts"
+	uctx "github.com/nuxflix/voxigo/utils/context"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 // errTTSStatus is returned when the synthesis API responds with a non-200

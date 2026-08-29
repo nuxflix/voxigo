@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/internal/validate"
 )
 
 // defaultMaxTokens keeps spoken responses short and snappy.
@@ -63,7 +63,7 @@ type Config struct {
 	// default of two retries. Mid-stream failures are not retried.
 	MaxRetries int
 	// EnablePromptCaching caches the system prompt with an ephemeral cache
-	// breakpoint so repeated turns reuse it; nil defaults to true (jargo caches
+	// breakpoint so repeated turns reuse it; nil defaults to true (voxigo caches
 	// for latency). Set to false to disable caching.
 	EnablePromptCaching *bool
 	// Extra sets arbitrary additional top-level request-body fields not modeled

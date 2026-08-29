@@ -6,7 +6,7 @@
 // Vertex addresses a model by project and location rather than by name alone,
 // and authorizes with a short-lived OAuth access token rather than an API key.
 // Supply the credentials explicitly: either the service-account key JSON, or a
-// token source the application built itself. jargo reads no environment
+// token source the application built itself. voxigo reads no environment
 // variables, so Application Default Credentials are opt-in through a token
 // source:
 //
@@ -25,7 +25,7 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/internal/validate"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/jwt"
 )

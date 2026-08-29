@@ -14,12 +14,12 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/tts"
-	"github.com/gojargo/jargo/service/wsutil"
-	uctx "github.com/gojargo/jargo/utils/context"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/tts"
+	"github.com/nuxflix/voxigo/service/wsutil"
+	uctx "github.com/nuxflix/voxigo/utils/context"
 )
 
 // realtimeTTSPath is the multi-stream-input endpoint. Multi-stream is what

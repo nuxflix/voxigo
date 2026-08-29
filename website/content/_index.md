@@ -1,9 +1,9 @@
 ---
-title: jargo
+title: voxigo
 layout: hextra-home
 ---
 
-{{< hextra/hero-badge link="https://github.com/gojargo/jargo/releases" >}}
+{{< hextra/hero-badge link="https://github.com/nuxflix/voxigo/releases" >}}
   <span>Early work in progress</span>
 {{< /hextra/hero-badge >}}
 

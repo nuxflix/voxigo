@@ -6,10 +6,10 @@ weight: 1
 # Installation
 
 ```sh
-go get github.com/gojargo/jargo
+go get github.com/nuxflix/voxigo
 ```
 
-jargo needs Go 1.26 or newer.
+voxigo needs Go 1.26 or newer.
 
 ## The default build needs no C toolchain
 
@@ -22,15 +22,15 @@ the two native runtimes are bound through
 [purego](https://github.com/ebitengine/purego), located and loaded at *run* time
 from their shared libraries, with nothing required at build time.
 
-This is the property that makes jargo deployable as a single static binary. Keep
+This is the property that makes voxigo deployable as a single static binary. Keep
 it unless you have a measured reason not to.
 
 ## Runtime libraries
 
 | Library | Needed for | Env var | Without it |
 |---|---|---|---|
-| **ONNX Runtime** | Silero VAD + Smart Turn v3 | `JARGO_ONNXRUNTIME_LIB` | Bot still runs; falls back to STT endpointing, loses barge-in. |
-| **RNNoise** | Optional input noise reduction | `JARGO_RNNOISE_LIB` | Bot runs without denoising. |
+| **ONNX Runtime** | Silero VAD + Smart Turn v3 | `VOXIGO_ONNXRUNTIME_LIB` | Bot still runs; falls back to STT endpointing, loses barge-in. |
+| **RNNoise** | Optional input noise reduction | `VOXIGO_RNNOISE_LIB` | Bot runs without denoising. |
 
 Both are located by their conventional name on the loader's default search path
 when the variable is unset.
@@ -42,9 +42,9 @@ Download a build for your platform from the
 `onnxruntime-linux-*` archive contains `lib/libonnxruntime.so`:
 
 ```sh
-export JARGO_ONNXRUNTIME_LIB=/path/to/libonnxruntime.so     # Linux
-export JARGO_ONNXRUNTIME_LIB=/path/to/libonnxruntime.dylib  # macOS
-set JARGO_ONNXRUNTIME_LIB=C:\path\to\onnxruntime.dll        # Windows
+export VOXIGO_ONNXRUNTIME_LIB=/path/to/libonnxruntime.so     # Linux
+export VOXIGO_ONNXRUNTIME_LIB=/path/to/libonnxruntime.dylib  # macOS
+set VOXIGO_ONNXRUNTIME_LIB=C:\path\to\onnxruntime.dll        # Windows
 ```
 
 The VAD and turn models themselves are **embedded in the binary** with
@@ -54,7 +54,7 @@ The VAD and turn models themselves are **embedded in the binary** with
 
 ```sh
 sudo apt-get install -y librnnoise0     # or build from source
-export JARGO_RNNOISE_LIB=/path/to/librnnoise.so
+export VOXIGO_RNNOISE_LIB=/path/to/librnnoise.so
 ```
 
 Enable it per transport rather than globally:
@@ -91,8 +91,8 @@ These are the only cgo in the tree.
 The published base images bundle all of the above, so you do not have to think
 about any of it:
 
-- **`gojargo/jargo-build`**: build stage, with the toolchain and C headers.
-- **`gojargo/jargo`**: distroless runtime, carrying the ONNX Runtime, RNNoise,
+- **`nuxflix/voxigo-build`**: build stage, with the toolchain and C headers.
+- **`nuxflix/voxigo`**: distroless runtime, carrying the ONNX Runtime, RNNoise,
   libsoxr, libgomp and libopus.
 
 See **[Deploy with Docker](../deploy/docker.md)** for a copyable Dockerfile.

@@ -1,6 +1,6 @@
 // Package plivo is the wsserver.Serializer for Plivo Audio Streaming. Plivo
 // streams call audio as base64 μ-law 8 kHz mono in JSON text messages; this
-// serializer converts those to and from jargo audio frames, emits a "clearAudio"
+// serializer converts those to and from voxigo audio frames, emits a "clearAudio"
 // message on barge-in, and optionally hangs the call up over Plivo's REST API
 // when the pipeline ends.
 package plivo
@@ -14,9 +14,9 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/transport/wsserver"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/transport/wsserver"
 )
 
 // Serializer implements wsserver.Serializer.

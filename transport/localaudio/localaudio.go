@@ -17,9 +17,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/transport"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/transport"
 	"github.com/jfreymuth/pulse"
 	"github.com/jfreymuth/pulse/proto"
 )
@@ -47,7 +47,7 @@ var monoMap = proto.ChannelMap{proto.ChannelMono}
 
 // Config configures the local-audio transport.
 type Config struct {
-	// AppName is the client name PulseAudio shows for the streams; "" uses "jargo".
+	// AppName is the client name PulseAudio shows for the streams; "" uses "voxigo".
 	AppName string
 	// Params configures audio input and output; see transport.DefaultParams.
 	Params transport.Params
@@ -66,7 +66,7 @@ type Transport struct {
 func New(cfg Config) (*Transport, error) {
 	name := cfg.AppName
 	if name == "" {
-		name = "jargo"
+		name = "voxigo"
 	}
 	client, err := pulse.NewClient(pulse.ClientApplicationName(name))
 	if err != nil {
@@ -304,7 +304,7 @@ func (out *outputTransport) closeStream() {
 	}
 }
 
-// int16ToPCM packs native S16 samples into S16LE bytes, jargo's PCM layout.
+// int16ToPCM packs native S16 samples into S16LE bytes, voxigo's PCM layout.
 func int16ToPCM(samples []int16) []byte {
 	pcm := make([]byte, len(samples)*2)
 	for i, s := range samples {

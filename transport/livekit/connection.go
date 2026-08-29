@@ -1,4 +1,4 @@
-// Package livekit implements a jargo transport that joins a LiveKit room as a
+// Package livekit implements a voxigo transport that joins a LiveKit room as a
 // participant. It subscribes to a remote participant's Opus audio, decodes it to
 // PCM frames for the pipeline, and publishes the pipeline's audio back as an
 // Opus track. Room signaling and the access token are handled by the LiveKit
@@ -12,8 +12,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/internal/validate"
 	"github.com/livekit/protocol/livekit"
 	lksdk "github.com/livekit/server-sdk-go/v2"
 	"github.com/pion/webrtc/v4"

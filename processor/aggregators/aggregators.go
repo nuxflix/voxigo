@@ -28,12 +28,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/audio/vad"
-	"github.com/gojargo/jargo/audio/vad/controller"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/processor/turns"
-	"github.com/gojargo/jargo/utils/text"
+	"github.com/nuxflix/voxigo/audio/vad"
+	"github.com/nuxflix/voxigo/audio/vad/controller"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/processor/turns"
+	"github.com/nuxflix/voxigo/utils/text"
 )
 
 // The placeholder contents a tool-result message holds while its call has not

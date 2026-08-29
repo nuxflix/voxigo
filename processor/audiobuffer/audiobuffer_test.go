@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor/audiobuffer"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor/audiobuffer"
 )
 
 func TestRecordsAndMergesTracks(t *testing.T) {

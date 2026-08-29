@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/gojargo/jargo/provider/google/live"
+	"github.com/nuxflix/voxigo/provider/google/live"
 )
 
 // liveBidiPath is the Vertex AI bidirectional-streaming endpoint. Vertex serves

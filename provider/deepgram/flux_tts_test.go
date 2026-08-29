@@ -10,8 +10,8 @@ import (
 	"testing"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/tts"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/tts"
 )
 
 func TestFluxTTSValidate(t *testing.T) {

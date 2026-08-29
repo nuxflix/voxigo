@@ -1,6 +1,6 @@
 package pipeline
 
-import "github.com/gojargo/jargo/processor"
+import "github.com/nuxflix/voxigo/processor"
 
 // Observer watches frames flowing through a pipeline. See processor.Observer,
 // which is where the contract lives so a processor can report every handover.

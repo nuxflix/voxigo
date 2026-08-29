@@ -3,8 +3,8 @@ package together_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/provider/together"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/provider/together"
 )
 
 // TestConfigValidateSTT pins which STTConfig fields the provider requires.

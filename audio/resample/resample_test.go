@@ -5,7 +5,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/gojargo/jargo/audio/resample"
+	"github.com/nuxflix/voxigo/audio/resample"
 )
 
 func sine(freq float64, rate, n int) []byte {

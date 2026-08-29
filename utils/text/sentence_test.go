@@ -3,7 +3,7 @@ package text_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/utils/text"
+	"github.com/nuxflix/voxigo/utils/text"
 )
 
 // A boundary is only reported once the text holds a complete sentence, and an

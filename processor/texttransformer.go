@@ -3,7 +3,7 @@ package processor
 import (
 	"context"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // StatelessTextTransformer rewrites the text of every TextFrame passing through

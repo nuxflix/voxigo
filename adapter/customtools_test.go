@@ -5,10 +5,10 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/gojargo/jargo/adapter"
-	"github.com/gojargo/jargo/adapter/gemini"
-	openaiadapter "github.com/gojargo/jargo/adapter/openai"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/adapter"
+	"github.com/nuxflix/voxigo/adapter/gemini"
+	openaiadapter "github.com/nuxflix/voxigo/adapter/openai"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // TestCustomToolsReachTheirOwnAdapter checks a tool written for one format is

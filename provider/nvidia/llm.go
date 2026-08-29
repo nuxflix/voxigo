@@ -1,6 +1,6 @@
 package nvidia
 
-import "github.com/gojargo/jargo/provider/openai/chat"
+import "github.com/nuxflix/voxigo/provider/openai/chat"
 
 // NewLLM builds an NVIDIA NIM LLM service.
 func NewLLM(cfg chat.LLMConfig) *chat.LLMService {

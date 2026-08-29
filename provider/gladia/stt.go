@@ -13,10 +13,10 @@ import (
 	"sync"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/processor/turns"
-	"github.com/gojargo/jargo/service/stt"
-	"github.com/gojargo/jargo/service/wsutil"
-	errs "github.com/gojargo/jargo/utils/errors"
+	"github.com/nuxflix/voxigo/processor/turns"
+	"github.com/nuxflix/voxigo/service/stt"
+	"github.com/nuxflix/voxigo/service/wsutil"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 // NewSTT builds a Gladia streaming STT service. It works best behind a turn

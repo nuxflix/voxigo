@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/gojargo/jargo/processor/rtvi"
+	"github.com/nuxflix/voxigo/processor/rtvi"
 )
 
 // msg builds an inbound RTVI server message with the given payload.

@@ -13,9 +13,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/tts"
-	errs "github.com/gojargo/jargo/utils/errors"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/tts"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 // NewTTS builds a Pocket TTS service against a local pocket-tts server.

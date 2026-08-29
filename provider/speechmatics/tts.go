@@ -11,9 +11,9 @@ import (
 	"net/url"
 	"strconv"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/service/tts"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/service/tts"
 )
 
 const (

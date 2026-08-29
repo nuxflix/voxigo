@@ -3,8 +3,8 @@ package context
 import (
 	"strings"
 
-	"github.com/gojargo/jargo/frames"
-	ttstext "github.com/gojargo/jargo/utils/text"
+	"github.com/nuxflix/voxigo/frames"
+	ttstext "github.com/nuxflix/voxigo/utils/text"
 )
 
 // parallelAggregation is one completed sentence, in each of the three channels

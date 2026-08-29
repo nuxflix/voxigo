@@ -1,6 +1,6 @@
 package openrouter
 
-import "github.com/gojargo/jargo/provider/openai/chat"
+import "github.com/nuxflix/voxigo/provider/openai/chat"
 
 // NewLLM builds an OpenRouter LLM service. Set cfg.Model to any "vendor/model"
 // slug OpenRouter exposes.

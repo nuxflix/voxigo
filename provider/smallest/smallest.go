@@ -6,7 +6,7 @@ package smallest
 import (
 	"errors"
 
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/internal/validate"
 )
 
 // errProtocol is returned when Smallest reports an error message.

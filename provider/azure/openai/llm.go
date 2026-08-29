@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gojargo/jargo/provider/openai/chat"
+	"github.com/nuxflix/voxigo/provider/openai/chat"
 )
 
 // shaper addresses and authorizes requests the Azure OpenAI way.

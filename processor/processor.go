@@ -1,4 +1,4 @@
-// Package processor defines the frame processor: the building block of a jargo
+// Package processor defines the frame processor: the building block of a voxigo
 // pipeline. Processors link into a chain, receive frames, process them, and
 // push them on to the next or previous processor. Each processor handles system
 // frames with priority, processes data and control frames in order on its own
@@ -13,11 +13,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/gojargo/jargo/clock"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/telemetry/metrics"
-	"github.com/gojargo/jargo/telemetry/tracing"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/clock"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/telemetry/metrics"
+	"github.com/nuxflix/voxigo/telemetry/tracing"
+	"github.com/nuxflix/voxigo/utils/events"
 	"go.opentelemetry.io/otel/trace"
 	"go.opentelemetry.io/otel/trace/noop"
 )

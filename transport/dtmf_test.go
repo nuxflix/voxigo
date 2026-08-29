@@ -5,10 +5,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/audio/dtmf"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/transport"
+	"github.com/nuxflix/voxigo/audio/dtmf"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/transport"
 )
 
 // startFakeOutput runs o in a task and returns the task plus a stop.

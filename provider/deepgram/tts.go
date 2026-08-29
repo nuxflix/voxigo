@@ -8,9 +8,9 @@ import (
 	"net/url"
 	"strconv"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/service/tts"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/service/tts"
 )
 
 const (
@@ -18,7 +18,7 @@ const (
 	speakPath = "/v1/speak"
 	// defaultTTSModel is a current Aura-2 English voice.
 	defaultTTSModel = "aura-2-thalia-en"
-	// defaultTTSEncoding is the audio encoding jargo requests from Aura.
+	// defaultTTSEncoding is the audio encoding voxigo requests from Aura.
 	defaultTTSEncoding = "linear16"
 )
 

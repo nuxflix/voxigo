@@ -3,8 +3,8 @@ package fish_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/provider/fish"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/provider/fish"
 )
 
 // TestConfigValidate pins which Config fields the provider requires.

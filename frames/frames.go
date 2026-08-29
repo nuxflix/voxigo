@@ -1,5 +1,5 @@
 // Package frames defines the Frame type and the core frame categories — system,
-// data and control — that flow through a jargo pipeline.
+// data and control — that flow through a voxigo pipeline.
 //
 // # Categories
 //

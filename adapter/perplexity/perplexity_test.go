@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/gojargo/jargo/adapter"
-	"github.com/gojargo/jargo/adapter/openai"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/adapter"
+	"github.com/nuxflix/voxigo/adapter/openai"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // msg builds a message with plain text content.

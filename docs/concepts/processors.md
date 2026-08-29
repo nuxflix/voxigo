@@ -6,11 +6,11 @@ weight: 3
 # Processors
 
 A processor is a node in the chain. It receives frames, does something, and
-pushes frames on. Every processor in jargo (a transport, an STT service, an
+pushes frames on. Every processor in voxigo (a transport, an STT service, an
 aggregator, a whole nested pipeline) is one of these.
 
 Concrete processors embed `*processor.Base`, which supplies everything in the
-[`Processor`](https://pkg.go.dev/github.com/gojargo/jargo/processor#Processor)
+[`Processor`](https://pkg.go.dev/github.com/nuxflix/voxigo/processor#Processor)
 interface except the one method you write yourself:
 
 ```go

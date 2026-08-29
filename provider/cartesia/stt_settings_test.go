@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/settings"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/settings"
 )
 
 func sttConfig() STTConfig {

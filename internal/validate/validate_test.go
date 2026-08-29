@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/go-playground/validator/v10"
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/internal/validate"
 )
 
 // credentials stands in for the shape every provider Config has: a handful of

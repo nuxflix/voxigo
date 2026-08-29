@@ -3,7 +3,7 @@ package processor
 import (
 	"time"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // FramePushed is one frame moving from one processor to the next.

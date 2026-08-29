@@ -4,7 +4,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // observerDrainTimeout bounds how long the pipeline waits, once it has stopped,

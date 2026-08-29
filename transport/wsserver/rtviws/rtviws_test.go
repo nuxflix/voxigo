@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor/rtvi"
-	"github.com/gojargo/jargo/transport/wsserver/rtviws"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor/rtvi"
+	"github.com/nuxflix/voxigo/transport/wsserver/rtviws"
 )
 
 func TestDeserializeWrapsRTVIMessage(t *testing.T) {

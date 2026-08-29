@@ -11,8 +11,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/llm"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/llm"
 )
 
 // fenced matches the markdown code fences a judge model wraps its JSON in when

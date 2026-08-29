@@ -4,14 +4,14 @@
 // raw 24 kHz PCM for each sentence.
 //
 // Deprecated: XTTS has no replacement. The maintained local text-to-speech
-// services are [github.com/gojargo/jargo/provider/kokoro] and
-// [github.com/gojargo/jargo/provider/piper].
+// services are [github.com/nuxflix/voxigo/provider/kokoro] and
+// [github.com/nuxflix/voxigo/provider/piper].
 package xtts
 
 import (
 	"errors"
 
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/internal/validate"
 )
 
 // Sentinel errors for the studio-speaker lookup.

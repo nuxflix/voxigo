@@ -12,7 +12,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // wavHeader builds the header the server writes before the samples exist: mono

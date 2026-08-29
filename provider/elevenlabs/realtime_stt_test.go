@@ -11,8 +11,8 @@ import (
 	"testing"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/language"
 )
 
 // TestRealtimeSTTConfigValidate pins the fields the provider requires and the
@@ -93,7 +93,7 @@ func TestRealtimeSTTEndpoint(t *testing.T) {
 			Host:                 defaultRealtimeSTTHost,
 			Model:                defaultRealtimeSTTModel,
 			Language:             language.French,
-			Keyterms:             []string{"jargo", "Pion"},
+			Keyterms:             []string{"voxigo", "Pion"},
 			SilenceThresholdSecs: &silence,
 			VADThreshold:         &confidence,
 			MinSpeechMS:          120,

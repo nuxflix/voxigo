@@ -18,7 +18,7 @@ Run them with Docker (no host setup) or with a local Go toolchain.
 
 ## Run with Docker
 
-jargo publishes a build base and a distroless runtime base image, so you can
+voxigo publishes a build base and a distroless runtime base image, so you can
 containerise a bot without installing any native dependencies on the host. The
 **[Deploy with Docker](../deploy/docker.md)** guide has a copyable two-stage
 Dockerfile for the example bots and the run command (`-e DEEPGRAM_API_KEY=…`
@@ -35,14 +35,14 @@ native library is loaded at run time, through
 - **ONNX Runtime**: VAD and end-of-turn detection.
 
 ```sh
-# Download a build for your platform, then point jargo at it:
-export JARGO_ONNXRUNTIME_LIB=/path/to/libonnxruntime.so
+# Download a build for your platform, then point voxigo at it:
+export VOXIGO_ONNXRUNTIME_LIB=/path/to/libonnxruntime.so
 ```
 
 Get it from the
 [onnxruntime releases](https://github.com/microsoft/onnxruntime/releases); the
 `onnxruntime-linux-*` archive contains `lib/libonnxruntime.so`. If the variable is
-unset, jargo looks for the library by its conventional name on the loader's
+unset, voxigo looks for the library by its conventional name on the loader's
 default search path.
 
 Without the ONNX Runtime the voice bot **still runs**: it falls back to STT
@@ -80,8 +80,8 @@ go run ./examples/voice/groq         # Groq STT + LLM, ElevenLabs TTS
 
 These are **headless backends**: they expose the WebRTC `/offer` endpoint and no
 web UI. Point a browser client at `http://localhost:8080`, such as the `nextjs-voicebot`
-example in [jargo-client-react](https://github.com/gojargo/jargo-client-react),
-with `NEXT_PUBLIC_JARGO_URL=http://localhost:8080`. Each example's doc comment
+example in [voxigo-client-react](https://github.com/nuxflix/voxigo-client-react),
+with `NEXT_PUBLIC_VOXIGO_URL=http://localhost:8080`. Each example's doc comment
 lists the API keys it needs.
 
 ## Next

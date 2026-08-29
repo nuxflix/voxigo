@@ -11,11 +11,11 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/processor/turns"
-	"github.com/gojargo/jargo/service/stt"
-	"github.com/gojargo/jargo/service/wsutil"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/processor/turns"
+	"github.com/nuxflix/voxigo/service/stt"
+	"github.com/nuxflix/voxigo/service/wsutil"
 )
 
 const (
@@ -169,7 +169,7 @@ type sttStream struct {
 	lang    string
 	writeMu sync.Mutex
 	// partial accumulates the utterance in progress. The API streams each
-	// interim as a fragment rather than the running text, and every other jargo
+	// interim as a fragment rather than the running text, and every other voxigo
 	// STT service reports interims cumulatively, so the fragments are joined
 	// here. It is cleared when the utterance finalizes.
 	partial string

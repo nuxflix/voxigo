@@ -4,10 +4,10 @@ import (
 	"log/slog"
 	"maps"
 
-	mistraladapter "github.com/gojargo/jargo/adapter/mistral"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/provider/openai/chat"
-	"github.com/gojargo/jargo/service/llm"
+	mistraladapter "github.com/nuxflix/voxigo/adapter/mistral"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/provider/openai/chat"
+	"github.com/nuxflix/voxigo/service/llm"
 )
 
 // NewLLM builds a Mistral AI LLM service. Mistral speaks the OpenAI

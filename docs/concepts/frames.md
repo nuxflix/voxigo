@@ -9,7 +9,7 @@ A frame is the unit of everything that moves through a pipeline: a chunk of
 audio, a transcription, an LLM token, a request to stop talking. Processors do
 not call each other; they push frames.
 
-Every frame satisfies [`frames.Frame`](https://pkg.go.dev/github.com/gojargo/jargo/frames#Frame),
+Every frame satisfies [`frames.Frame`](https://pkg.go.dev/github.com/nuxflix/voxigo/frames#Frame),
 which is deliberately tiny:
 
 ```go

@@ -1,22 +1,22 @@
 # syntax=docker/dockerfile:1
 #
-# jargo build base image.
+# voxigo build base image.
 #
 # It carries the Go toolchain plus the native development libraries the optional
 # cgo build tags link against — libsoxr (`-tags libsoxr`) and libopus (`-tags
 # libopus`). The default build is cgo-free and needs none of them; this base
 # exists so a downstream image can compile the tagged variants without
 # installing anything. Pair it with the distroless runtime base (docker/runtime
-# .Dockerfile, published as gojargo/jargo):
+# .Dockerfile, published as nuxflix/voxigo):
 #
-#   FROM gojargo/jargo-build AS build
+#   FROM nuxflix/voxigo-build AS build
 #   WORKDIR /src
 #   COPY go.mod go.sum ./
 #   RUN go mod download
 #   COPY . .
 #   RUN go build -tags libopus -ldflags="-s -w" -o /out/bot ./cmd/bot
 #
-#   FROM gojargo/jargo            # distroless runtime base
+#   FROM nuxflix/voxigo            # distroless runtime base
 #   COPY --from=build /out/bot /usr/local/bin/bot
 #   ENTRYPOINT ["/usr/local/bin/bot"]
 

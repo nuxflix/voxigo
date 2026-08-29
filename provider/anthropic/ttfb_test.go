@@ -5,7 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/gojargo/jargo/internal/providertest"
+	"github.com/nuxflix/voxigo/internal/providertest"
 )
 
 // ttfbService points an Anthropic service at a stub streaming the given SSE

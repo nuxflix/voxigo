@@ -7,11 +7,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/service/tts"
-	"github.com/gojargo/jargo/transport"
-	"github.com/gojargo/jargo/transport/wsserver"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/service/tts"
+	"github.com/nuxflix/voxigo/transport"
+	"github.com/nuxflix/voxigo/transport/wsserver"
 )
 
 // Bot builds the bot's pipeline task around the harness-provided transport
@@ -29,7 +29,7 @@ type Options struct {
 	// UserTTS selects audio mode. When set, each user turn is synthesized with
 	// this TTS service and streamed to the bot as microphone audio (so the bot's
 	// real VAD, turn detection and STT run), instead of the text-mode send-text.
-	// Any jargo TTS service works, e.g. cartesia.NewTTS(...).
+	// Any voxigo TTS service works, e.g. cartesia.NewTTS(...).
 	UserTTS *tts.Base
 	// OnProgress, when set, is called as each turn and expectation resolves, for
 	// a caller reporting a long run as it happens rather than at the end. It runs
@@ -82,7 +82,7 @@ func Host(ctx context.Context, scenario *Scenario, buildBot Bot, opts Options) (
 // Handler serves buildBot over RTVI on a plain WebSocket: it accepts one client
 // per connection, wires the transport into the bot's pipeline, and runs it until
 // the client disconnects. Mount it in a bot's own HTTP server to expose an eval
-// endpoint that `jargo eval run`, or any RTVI WebSocket client, can drive. The
+// endpoint that `voxigo eval run`, or any RTVI WebSocket client, can drive. The
 // in-process Host uses it too.
 //
 // The endpoint speaks RTVI through the eval serializer, which additionally

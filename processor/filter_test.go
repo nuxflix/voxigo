@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
-	"github.com/gojargo/jargo/clock"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/clock"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // filterRig is a filter with a recorder on each side, set up and started. A
@@ -91,7 +91,7 @@ func TestFunctionFilterPassthrough(t *testing.T) {
 	down := processor.Downstream
 	r := newFilterRig(t, &down, allowAll)
 
-	if !r.send(t, frames.NewTextFrame("Hello jargo!"), processor.Downstream) {
+	if !r.send(t, frames.NewTextFrame("Hello voxigo!"), processor.Downstream) {
 		t.Error("an accepted frame did not come out")
 	}
 }
@@ -102,7 +102,7 @@ func TestFunctionFilterNoPassthrough(t *testing.T) {
 	down := processor.Downstream
 	r := newFilterRig(t, &down, blockAll)
 
-	if r.send(t, frames.NewTextFrame("Hello jargo!"), processor.Downstream) {
+	if r.send(t, frames.NewTextFrame("Hello voxigo!"), processor.Downstream) {
 		t.Error("a rejected frame came out anyway")
 	}
 }

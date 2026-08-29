@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // wakePhraseDefaultTimeout is how long a wake-phrase session stays awake without
@@ -266,7 +266,7 @@ func (s *WakePhraseStart) processAwake(f frames.Frame) ProcessFrameResult {
 // phrase is now in it.
 //
 // Punctuation is stripped before matching, so transcription output like
-// "Hey, Jargo!" still matches the phrase "hey jargo".
+// "Hey, Voxigo!" still matches the phrase "hey voxigo".
 func (s *WakePhraseStart) checkWakePhrase(text string) bool {
 	s.accum += " " + wakePunctuation.ReplaceAllString(text, "")
 	// Cap the accumulator so it cannot grow without bound. Counted in

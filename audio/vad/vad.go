@@ -12,7 +12,7 @@ package vad
 import (
 	"math"
 
-	"github.com/gojargo/jargo/audio/loudness"
+	"github.com/nuxflix/voxigo/audio/loudness"
 )
 
 // State is the voice-activity state of the audio stream.

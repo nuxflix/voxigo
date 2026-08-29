@@ -7,9 +7,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/audio/loudness"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/audio/loudness"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // Observer reports pipeline events to an RTVI client. It watches every frame

@@ -6,7 +6,7 @@ weight: 1
 # Getting started
 
 ```sh
-go get github.com/gojargo/jargo
+go get github.com/nuxflix/voxigo
 go run ./examples/echo      # then open http://localhost:8080
 ```
 

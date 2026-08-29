@@ -9,12 +9,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/processor/aggregators"
-	"github.com/gojargo/jargo/processor/turns"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/processor/aggregators"
+	"github.com/nuxflix/voxigo/processor/turns"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 // runPair starts a task around the given processors and collects the frames that

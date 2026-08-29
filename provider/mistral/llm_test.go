@@ -6,9 +6,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/provider/mistral"
-	"github.com/gojargo/jargo/provider/openai/chat"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/provider/mistral"
+	"github.com/nuxflix/voxigo/provider/openai/chat"
 )
 
 // sentBody runs one generation against a recording endpoint and returns the

@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/clock"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/clock"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // pausePair links an echo to a capture, sets both up and starts them, returning

@@ -3,7 +3,7 @@ package moshi
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/service/stt"
+	"github.com/nuxflix/voxigo/service/stt"
 )
 
 func TestPCMRoundTrip(t *testing.T) {

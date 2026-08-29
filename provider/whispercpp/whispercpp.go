@@ -10,8 +10,8 @@ package whispercpp
 import (
 	"time"
 
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/language"
 )
 
 // defaultModel is sent as the transcription model. whisper.cpp uses the model it

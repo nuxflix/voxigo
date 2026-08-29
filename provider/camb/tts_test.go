@@ -9,8 +9,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/language"
 )
 
 // Tests for the synthesis request. Camb.ai takes the text, a numeric voice and

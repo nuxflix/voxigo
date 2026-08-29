@@ -4,10 +4,10 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/gojargo/jargo/audio/turn"
-	"github.com/gojargo/jargo/audio/vad"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/audio/turn"
+	"github.com/nuxflix/voxigo/audio/vad"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // defaultUserSpeechTimeout is the policy floor a speech-timeout stop waits

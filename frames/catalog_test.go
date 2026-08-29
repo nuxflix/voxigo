@@ -16,9 +16,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/audio/turn"
-	"github.com/gojargo/jargo/audio/vad"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/audio/turn"
+	"github.com/nuxflix/voxigo/audio/vad"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // category is the frame class a type belongs to. Every frame belongs to exactly

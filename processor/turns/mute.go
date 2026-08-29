@@ -3,7 +3,7 @@ package turns
 import (
 	"log/slog"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // MuteStrategy decides whether user input should be suppressed right now.

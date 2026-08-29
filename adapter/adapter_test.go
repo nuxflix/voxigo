@@ -4,8 +4,8 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/gojargo/jargo/adapter"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/adapter"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // names returns the name of each tool, which is what these tests compare.

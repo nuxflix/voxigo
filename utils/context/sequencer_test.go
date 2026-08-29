@@ -5,9 +5,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	uctx "github.com/gojargo/jargo/utils/context"
-	ttstext "github.com/gojargo/jargo/utils/text"
+	"github.com/nuxflix/voxigo/frames"
+	uctx "github.com/nuxflix/voxigo/utils/context"
+	ttstext "github.com/nuxflix/voxigo/utils/text"
 )
 
 func newSeq(t *testing.T, streaming bool) *uctx.AggregatedFrameSequencer {

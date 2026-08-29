@@ -10,9 +10,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/service/llm"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/service/llm"
 )
 
 // sse renders data lines as streamGenerateContent delivers them with alt=sse.

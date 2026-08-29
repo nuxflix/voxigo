@@ -3,10 +3,10 @@ package eval
 import (
 	"encoding/json"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor/rtvi"
-	"github.com/gojargo/jargo/transport/wsserver"
-	"github.com/gojargo/jargo/transport/wsserver/rtviws"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor/rtvi"
+	"github.com/nuxflix/voxigo/transport/wsserver"
+	"github.com/nuxflix/voxigo/transport/wsserver/rtviws"
 )
 
 // evalConfigureMessage is the client-message `t` the harness uses to reconfigure

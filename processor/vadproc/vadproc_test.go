@@ -6,11 +6,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/audio/vad"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor/vadproc"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/audio/vad"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor/vadproc"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 // fakeVAD returns scripted states, one per AnalyzeAudio call.

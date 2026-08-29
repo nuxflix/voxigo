@@ -3,7 +3,7 @@ package transport
 import (
 	"sync"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // frameQueue holds the frames a sender has yet to pace out. It is a queue rather

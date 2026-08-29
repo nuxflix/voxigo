@@ -9,8 +9,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/internal/providertest"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/internal/providertest"
 )
 
 // speakTripper answers every request from a canned body, recording what it was

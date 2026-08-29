@@ -10,8 +10,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	errs "github.com/gojargo/jargo/utils/errors"
+	"github.com/nuxflix/voxigo/frames"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 // This package cannot use internal/providertest: that package builds on this one

@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/llm"
-	"github.com/gojargo/jargo/service/settings"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/llm"
+	"github.com/nuxflix/voxigo/service/settings"
 )
 
 // plainGenerator is a provider with no settings of its own, which is what makes

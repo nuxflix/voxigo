@@ -7,10 +7,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/audio/opus"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/transport"
+	"github.com/nuxflix/voxigo/audio/opus"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/transport"
 )
 
 // readDeadline bounds a blocking RTP read so the read loop can notice

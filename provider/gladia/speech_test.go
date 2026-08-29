@@ -3,8 +3,8 @@ package gladia
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/processor/turns"
-	"github.com/gojargo/jargo/service/stt"
+	"github.com/nuxflix/voxigo/processor/turns"
+	"github.com/nuxflix/voxigo/service/stt"
 )
 
 // speechMessage is one of the boundary messages Gladia sends when its own

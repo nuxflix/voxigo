@@ -5,7 +5,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/gojargo/jargo/audio/loudness"
+	"github.com/nuxflix/voxigo/audio/loudness"
 )
 
 // The expected values below were produced by the reference implementation the

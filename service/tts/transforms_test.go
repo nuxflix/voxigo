@@ -8,12 +8,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/service/tts"
-	errs "github.com/gojargo/jargo/utils/errors"
-	"github.com/gojargo/jargo/utils/events"
-	ttstext "github.com/gojargo/jargo/utils/text"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/service/tts"
+	errs "github.com/nuxflix/voxigo/utils/errors"
+	"github.com/nuxflix/voxigo/utils/events"
+	ttstext "github.com/nuxflix/voxigo/utils/text"
 )
 
 // errTransform is what a failing transform reports.

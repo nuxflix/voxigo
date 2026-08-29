@@ -3,8 +3,8 @@ package text_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/utils/text"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/utils/text"
 )
 
 func newAggregator(t *testing.T, by frames.AggregationType) *text.SimpleAggregator {

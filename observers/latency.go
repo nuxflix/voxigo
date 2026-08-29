@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // TTFBBreakdown is one time-to-first-byte measurement, placed on the timeline of

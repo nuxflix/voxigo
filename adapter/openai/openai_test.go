@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/adapter"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/adapter"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // capturedWarnings swaps the default logger for one writing into a buffer and

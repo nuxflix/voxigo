@@ -3,7 +3,7 @@ package pipeline
 import (
 	"reflect"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // FrameFilter reports whether a frame is one the caller asked to hear about. It

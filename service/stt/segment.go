@@ -5,11 +5,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/service"
-	"github.com/gojargo/jargo/telemetry/metrics"
-	"github.com/gojargo/jargo/telemetry/tracing"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/service"
+	"github.com/nuxflix/voxigo/telemetry/metrics"
+	"github.com/nuxflix/voxigo/telemetry/tracing"
 )
 
 // Transcriber turns a complete audio segment into text. The audio is 16-bit

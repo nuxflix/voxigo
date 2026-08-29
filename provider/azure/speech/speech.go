@@ -6,8 +6,8 @@
 package speech
 
 import (
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/language"
 )
 
 const (
@@ -15,7 +15,7 @@ const (
 	defaultTTSRate  = 24000
 	// ttsUserAgent is sent on every request: Azure requires a non-empty
 	// User-Agent and rejects the request otherwise.
-	ttsUserAgent = "jargo"
+	ttsUserAgent = "voxigo"
 )
 
 // TTSConfig configures the Azure AI Speech TTS service.

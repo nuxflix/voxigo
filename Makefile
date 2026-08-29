@@ -1,4 +1,4 @@
-# jargo developer commands.
+# voxigo developer commands.
 #
 # The Go toolchain is the build system. This file holds only the recipes that
 # are more than a single command, so nothing here restates what AGENTS.md
@@ -159,7 +159,7 @@ generate-check: generate ## Fail if the checked-in generated code is stale
 ##@ Security
 
 .PHONY: vuln
-vuln: ## Report vulnerabilities jargo's code actually reaches
+vuln: ## Report vulnerabilities voxigo's code actually reaches
 	$(GO) install golang.org/x/vuln/cmd/govulncheck@$(GOVULNCHECK_VERSION)
 	govulncheck ./...
 
@@ -221,7 +221,7 @@ deps-onnx: require-linux ## Fetch the ONNX Runtime for VAD and turn detection
 	tar -xzf $(NATIVE_DIR)/ort.tgz -C $(NATIVE_DIR) --strip-components=1
 	@rm -f $(NATIVE_DIR)/ort.tgz
 	@echo
-	@echo "export JARGO_ONNXRUNTIME_LIB=$(NATIVE_DIR)/lib/libonnxruntime.so"
+	@echo "export VOXIGO_ONNXRUNTIME_LIB=$(NATIVE_DIR)/lib/libonnxruntime.so"
 
 .PHONY: deps-rnnoise
 deps-rnnoise: require-linux ## Build RNNoise from source for the optional denoiser
@@ -234,7 +234,7 @@ deps-rnnoise: require-linux ## Build RNNoise from source for the optional denois
 		&& make -j"$$(nproc)" \
 		&& make install
 	@echo
-	@echo "export JARGO_RNNOISE_LIB=$(NATIVE_DIR)/lib/librnnoise.so.0"
+	@echo "export VOXIGO_RNNOISE_LIB=$(NATIVE_DIR)/lib/librnnoise.so.0"
 
 ##@ Packaging
 
@@ -244,13 +244,13 @@ deps-rnnoise: require-linux ## Build RNNoise from source for the optional denois
 # reproducible locally. Treat both as smoke tests of the Dockerfiles.
 
 .PHONY: image-build
-image-build: ## Build the jargo-build base image for the host platform
-	docker build -f docker/build.Dockerfile -t jargo-build:local .
+image-build: ## Build the voxigo-build base image for the host platform
+	docker build -f docker/build.Dockerfile -t voxigo-build:local .
 
 .PHONY: image-runtime
 image-runtime: ## Build the distroless runtime base image for the host platform
 	docker build -f docker/runtime.Dockerfile --build-arg ORT_VERSION=$(ORT_VERSION) \
-		-t jargo:local .
+		-t voxigo:local .
 
 .PHONY: release-snapshot
 release-snapshot: ## Build the release artifacts without tagging or publishing

@@ -7,7 +7,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/gojargo/jargo/audio/resample"
+	"github.com/nuxflix/voxigo/audio/resample"
 	pion "github.com/pion/opus"
 )
 

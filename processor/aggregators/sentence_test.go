@@ -6,11 +6,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/processor/aggregators"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/processor/aggregators"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 // runProcessor runs one processor and collects the text frames that reach the

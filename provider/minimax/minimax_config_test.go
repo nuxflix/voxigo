@@ -3,8 +3,8 @@ package minimax_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/provider/minimax"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/provider/minimax"
 )
 
 // TestConfigValidate pins which Config fields the provider requires.

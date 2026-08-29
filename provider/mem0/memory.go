@@ -12,8 +12,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // Service is the memory frame processor.
@@ -174,7 +174,7 @@ func (s *Service) add(batch []apiMessage) {
 		UserID:   s.cfg.UserID,
 		AgentID:  s.cfg.AgentID,
 		RunID:    s.cfg.RunID,
-		Metadata: map[string]any{"platform": "jargo"},
+		Metadata: map[string]any{"platform": "voxigo"},
 	}
 	if err := s.post(ctx, "/memories", body, nil); err != nil {
 		slog.Warn("mem0 store failed", "processor", s.Name(), "error", err)

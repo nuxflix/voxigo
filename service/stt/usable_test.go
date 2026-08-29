@@ -7,10 +7,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/service/stt"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/service/stt"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 // countingStream counts the audio chunks it is sent and never produces a result.

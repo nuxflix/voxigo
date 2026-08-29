@@ -3,8 +3,8 @@ package processor
 import (
 	"context"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/utils/notify"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/utils/notify"
 )
 
 // FrameFilter forwards only the frame types it was built for, and drops the

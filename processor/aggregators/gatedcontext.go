@@ -4,9 +4,9 @@ import (
 	"context"
 	"sync"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/utils/notify"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/utils/notify"
 )
 
 // GatedContext holds the conversation back from the model until a notifier says

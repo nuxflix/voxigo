@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // IdleFrameProcessor calls back when nothing it is watching for has come

@@ -21,12 +21,12 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/observers"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/transport"
-	"github.com/gojargo/jargo/transport/wsserver"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/observers"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/transport"
+	"github.com/nuxflix/voxigo/transport/wsserver"
 )
 
 // errSerialize is the failure the test serializer reports on demand.

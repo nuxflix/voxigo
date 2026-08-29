@@ -11,7 +11,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/credentials"
 	"github.com/aws/aws-sdk-go-v2/service/transcribestreaming"
 	"github.com/aws/aws-sdk-go-v2/service/transcribestreaming/types"
-	"github.com/gojargo/jargo/service/stt"
+	"github.com/nuxflix/voxigo/service/stt"
 )
 
 // loadOptions builds the AWS config load options from the static fields. An

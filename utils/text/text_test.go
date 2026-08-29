@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/utils/text"
+	"github.com/nuxflix/voxigo/utils/text"
 )
 
 // A bare transform satisfies the Filter interface, so the package's own

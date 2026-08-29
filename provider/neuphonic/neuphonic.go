@@ -7,8 +7,8 @@ package neuphonic
 import (
 	"errors"
 
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/language"
 )
 
 // errProtocol is returned when Neuphonic reports an error message.

@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/audio/opus"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/transport"
+	"github.com/nuxflix/voxigo/audio/opus"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/transport"
 )
 
 // newTestOutput builds an output transport over an unconnected peer connection.

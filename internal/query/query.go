@@ -1,4 +1,4 @@
-// Package query provides jargo's shared URL-query helpers. Provider Config types
+// Package query provides voxigo's shared URL-query helpers. Provider Config types
 // map their optional fields onto url.Values through these small setters, which
 // keep the conditional "omit when unset" logic in one place across providers
 // rather than copied into each package.

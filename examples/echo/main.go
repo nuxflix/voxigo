@@ -1,4 +1,4 @@
-// Command echo is a WebRTC echo bot built on jargo: it receives microphone
+// Command echo is a WebRTC echo bot built on voxigo: it receives microphone
 // audio from a browser, runs it through a pipeline, and sends it back so you
 // hear yourself.
 //
@@ -15,12 +15,12 @@ import (
 	"log/slog"
 	"net/http"
 
-	"github.com/gojargo/jargo/audio/opus"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/transport"
-	"github.com/gojargo/jargo/transport/rtc"
+	"github.com/nuxflix/voxigo/audio/opus"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/transport"
+	"github.com/nuxflix/voxigo/transport/rtc"
 	"github.com/pion/webrtc/v4"
 )
 
@@ -37,7 +37,7 @@ func main() {
 	http.Handle("/", http.FileServer(http.FS(static)))
 	http.HandleFunc("/offer", handleOffer)
 
-	slog.Info("jargo echo bot listening", "url", "http://localhost"+addr)
+	slog.Info("voxigo echo bot listening", "url", "http://localhost"+addr)
 	log.Fatal(http.ListenAndServe(addr, nil))
 }
 

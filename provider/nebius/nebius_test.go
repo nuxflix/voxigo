@@ -3,8 +3,8 @@ package nebius_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/provider/nebius"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/provider/nebius"
 )
 
 // TestNewLLM checks the Nebius AI Studio shim wires the right service name and

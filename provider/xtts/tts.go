@@ -9,15 +9,15 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/tts"
-	errs "github.com/gojargo/jargo/utils/errors"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/tts"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 // NewTTS builds a Coqui XTTS TTS service.
 //
-// Deprecated: XTTS has no replacement. Use [github.com/gojargo/jargo/provider/kokoro]
-// or [github.com/gojargo/jargo/provider/piper], the maintained local
+// Deprecated: XTTS has no replacement. Use [github.com/nuxflix/voxigo/provider/kokoro]
+// or [github.com/nuxflix/voxigo/provider/piper], the maintained local
 // text-to-speech services.
 func NewTTS(cfg Config) *tts.Base {
 	if cfg.Language == "" {

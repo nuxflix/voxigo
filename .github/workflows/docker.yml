@@ -1,6 +1,6 @@
 name: Docker
 
-# Build and publish the jargo base images to Docker Hub on a release tag, or on
+# Build and publish the voxigo base images to Docker Hub on a release tag, or on
 # demand. amd64 only for now.
 on:
   push:
@@ -18,9 +18,9 @@ jobs:
     strategy:
       matrix:
         include:
-          - image: jargo-build # build base: Go toolchain + cgo dev deps
+          - image: voxigo-build # build base: Go toolchain + cgo dev deps
             file: docker/build.Dockerfile
-          - image: jargo # runtime base: distroless + native runtime libs
+          - image: voxigo # runtime base: distroless + native runtime libs
             file: docker/runtime.Dockerfile
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -30,7 +30,7 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
         with:
-          username: gojargo
+          username: nuxflix
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
       - name: Image metadata
@@ -38,7 +38,7 @@ jobs:
         uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
         with:
           images: |
-            docker.io/gojargo/${{ matrix.image }}
+            docker.io/nuxflix/${{ matrix.image }}
           # latest=auto: a semver release tag also updates :latest.
           tags: |
             type=semver,pattern={{version}}

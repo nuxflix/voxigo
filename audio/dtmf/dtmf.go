@@ -11,7 +11,7 @@ import (
 	"math"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // ErrUnknownKey is returned for a key that is not on a telephone keypad and so

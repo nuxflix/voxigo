@@ -1,4 +1,4 @@
-// Command twiliobot is a telephony voice agent built on jargo: a Twilio phone
+// Command twiliobot is a telephony voice agent built on voxigo: a Twilio phone
 // call streams audio over a WebSocket (μ-law 8 kHz), an STT service transcribes
 // it, an LLM reasons over it, a TTS service speaks the reply, and the audio goes
 // back to the caller. A user-idle watchdog re-engages a silent caller and hangs
@@ -10,7 +10,7 @@
 // ELEVENLABS_API_KEY; set TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN to let the
 // bot hang the call up itself.
 //
-// jargo reads no environment variables; this app sources and validates config.
+// voxigo reads no environment variables; this app sources and validates config.
 package main
 
 import (
@@ -23,20 +23,20 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/gojargo/jargo/audio/turn"
-	"github.com/gojargo/jargo/audio/vad"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/processor/aggregators"
-	"github.com/gojargo/jargo/processor/turns"
-	"github.com/gojargo/jargo/processor/vadproc"
-	"github.com/gojargo/jargo/provider/anthropic"
-	"github.com/gojargo/jargo/provider/deepgram"
-	"github.com/gojargo/jargo/provider/elevenlabs"
-	"github.com/gojargo/jargo/transport"
-	"github.com/gojargo/jargo/transport/wsserver"
-	"github.com/gojargo/jargo/transport/wsserver/twilio"
+	"github.com/nuxflix/voxigo/audio/turn"
+	"github.com/nuxflix/voxigo/audio/vad"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/processor/aggregators"
+	"github.com/nuxflix/voxigo/processor/turns"
+	"github.com/nuxflix/voxigo/processor/vadproc"
+	"github.com/nuxflix/voxigo/provider/anthropic"
+	"github.com/nuxflix/voxigo/provider/deepgram"
+	"github.com/nuxflix/voxigo/provider/elevenlabs"
+	"github.com/nuxflix/voxigo/transport"
+	"github.com/nuxflix/voxigo/transport/wsserver"
+	"github.com/nuxflix/voxigo/transport/wsserver/twilio"
 	"github.com/spf13/viper"
 )
 
@@ -62,7 +62,7 @@ func run() error {
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) { handleStream(w, r, v) })
 
 	addr := v.GetString("addr")
-	slog.Info("jargo twiliobot listening", "addr", addr, "twiml", "POST /twiml", "stream", "GET /ws")
+	slog.Info("voxigo twiliobot listening", "addr", addr, "twiml", "POST /twiml", "stream", "GET /ws")
 	return http.ListenAndServe(addr, nil)
 }
 
@@ -176,7 +176,7 @@ func runBot(t *wsserver.Transport, v *viper.Viper) {
 func newTurnStack(v *viper.Viper) (*vadproc.Processor, *turns.Config) {
 	vd, err := vad.NewSilero()
 	if err != nil {
-		slog.Warn("turn taking disabled: Silero VAD unavailable (set JARGO_ONNXRUNTIME_LIB)", "err", err)
+		slog.Warn("turn taking disabled: Silero VAD unavailable (set VOXIGO_ONNXRUNTIME_LIB)", "err", err)
 		return nil, nil
 	}
 	tr, err := turn.NewSmartTurnV3()

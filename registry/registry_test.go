@@ -5,7 +5,7 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/gojargo/jargo/registry"
+	"github.com/nuxflix/voxigo/registry"
 )
 
 // Ported from upstream's registry suite. Upstream dedups a watch by comparing

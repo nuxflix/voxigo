@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // textAggregationMetrics times how long grouping text into sentences takes: from

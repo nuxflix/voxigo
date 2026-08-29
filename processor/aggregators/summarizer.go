@@ -7,10 +7,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/llm"
-	uctx "github.com/gojargo/jargo/utils/context"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/llm"
+	uctx "github.com/nuxflix/voxigo/utils/context"
+	"github.com/nuxflix/voxigo/utils/events"
 	"github.com/google/uuid"
 )
 

@@ -1,5 +1,5 @@
-// Package onnxrt centralizes jargo's use of the ONNX runtime. It owns the
-// single native boundary in jargo: the ONNX runtime shared library is located
+// Package onnxrt centralizes voxigo's use of the ONNX runtime. It owns the
+// single native boundary in voxigo: the ONNX runtime shared library is located
 // and initialized here once for the whole process, and every model session is
 // created through New.
 //
@@ -10,10 +10,10 @@
 //     ONNX Runtime C API with no cgo. See backend_purego.go.
 //
 // Either way the runtime is loaded at run time from its shared library
-// (libonnxruntime.so / .dylib / onnxruntime.dll). Point jargo at it with the
-// JARGO_ONNXRUNTIME_LIB environment variable:
+// (libonnxruntime.so / .dylib / onnxruntime.dll). Point voxigo at it with the
+// VOXIGO_ONNXRUNTIME_LIB environment variable:
 //
-//	export JARGO_ONNXRUNTIME_LIB=/usr/local/lib/libonnxruntime.so
+//	export VOXIGO_ONNXRUNTIME_LIB=/usr/local/lib/libonnxruntime.so
 //
 // The library is not bundled; download a build matching your platform from
 // https://github.com/microsoft/onnxruntime/releases. Models themselves are
@@ -30,12 +30,12 @@ import (
 
 // LibPathEnv is the environment variable that points at the ONNX runtime
 // shared library.
-const LibPathEnv = "JARGO_ONNXRUNTIME_LIB"
+const LibPathEnv = "VOXIGO_ONNXRUNTIME_LIB"
 
 // Tensor is a backend-neutral dense tensor: a shape plus flat data of exactly
 // one element type. It is the currency of Run, so neither the models nor their
 // callers depend on a particular binding's tensor type. Only the element types
-// jargo's models use are represented; exactly one data field is non-nil.
+// voxigo's models use are represented; exactly one data field is non-nil.
 type Tensor struct {
 	Shape []int64
 	F32   []float32

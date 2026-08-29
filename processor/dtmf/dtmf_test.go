@@ -5,10 +5,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor/dtmf"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor/dtmf"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 func TestAggregatorFlushesOnTerminator(t *testing.T) {

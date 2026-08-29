@@ -11,7 +11,7 @@ package piper
 import (
 	"errors"
 
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/internal/validate"
 )
 
 // defaultSampleRate is the rate of Piper's "medium" voices.

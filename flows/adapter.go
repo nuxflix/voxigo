@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/llm"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/llm"
 )
 
 // summaryHeader introduces the summary in the message that carries it into the

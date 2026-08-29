@@ -10,9 +10,9 @@ import (
 	"sync"
 	"syscall"
 
-	"github.com/gojargo/jargo/bus"
-	"github.com/gojargo/jargo/registry"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/bus"
+	"github.com/nuxflix/voxigo/registry"
+	"github.com/nuxflix/voxigo/utils/events"
 	"github.com/google/uuid"
 )
 

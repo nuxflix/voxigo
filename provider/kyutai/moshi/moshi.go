@@ -10,15 +10,15 @@
 // on that end-of-turn signal.
 //
 // Kyutai's other self-hosted model, the CPU-only Pocket TTS, is in
-// [github.com/gojargo/jargo/provider/kyutai/pockettts]. It is a separate server
+// [github.com/nuxflix/voxigo/provider/kyutai/pockettts]. It is a separate server
 // speaking a separate protocol.
 package moshi
 
 import (
 	"time"
 
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/language"
 )
 
 // moshiSampleRate is the PCM rate the moshi-server models run at, for both the

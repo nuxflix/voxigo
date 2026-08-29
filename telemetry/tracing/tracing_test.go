@@ -5,7 +5,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/gojargo/jargo/telemetry/tracing"
+	"github.com/nuxflix/voxigo/telemetry/tracing"
 	"go.opentelemetry.io/otel"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	"go.opentelemetry.io/otel/sdk/trace/tracetest"

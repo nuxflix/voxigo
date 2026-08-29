@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // defaultZeroAudioContextLimit is how many contexts in a row may complete with

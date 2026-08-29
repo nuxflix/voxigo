@@ -4,9 +4,9 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/gojargo/jargo/audio"
-	"github.com/gojargo/jargo/audio/resample"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/audio"
+	"github.com/nuxflix/voxigo/audio/resample"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // DefaultWireSampleRate is the rate telephony providers stream at: 8 kHz mono,

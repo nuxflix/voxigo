@@ -10,7 +10,7 @@ import (
 	"syscall"
 	"testing"
 
-	errs "github.com/gojargo/jargo/utils/errors"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 // The failures the tests classify.

@@ -12,13 +12,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/language"
 )
 
 const (
 	wsBase = "wss://streaming.assemblyai.com/v3/ws"
-	// defaultEncoding is the audio encoding AssemblyAI expects from jargo.
+	// defaultEncoding is the audio encoding AssemblyAI expects from voxigo.
 	defaultEncoding = "pcm_s16le"
 	// readLimit bounds a single WebSocket message; long turns carry many words.
 	readLimit = 1 << 20

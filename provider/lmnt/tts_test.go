@@ -9,7 +9,7 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // Tests for the synthesis request. LMNT takes the text, voice and model as JSON

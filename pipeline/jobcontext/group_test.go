@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/pipeline/jobcontext"
+	"github.com/nuxflix/voxigo/pipeline/jobcontext"
 )
 
 // Upstream's job-group suite drives everything through the worker that runs a

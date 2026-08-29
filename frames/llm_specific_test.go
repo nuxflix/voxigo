@@ -3,7 +3,7 @@ package frames_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // TestMessagesForKeepsUniversalAndItsOwn checks a provider is sent every

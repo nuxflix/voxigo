@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // pushUsageMetrics reports the audio a service was given, downstream as a

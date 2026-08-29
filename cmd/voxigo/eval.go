@@ -6,8 +6,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/gojargo/jargo/eval"
-	"github.com/gojargo/jargo/provider/openai/chat"
+	"github.com/nuxflix/voxigo/eval"
+	"github.com/nuxflix/voxigo/provider/openai/chat"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 )
@@ -20,17 +20,17 @@ var (
 	errScenariosFailed = errors.New("scenarios failed")
 )
 
-// evalCmd is the `jargo eval` command group.
+// evalCmd is the `voxigo eval` command group.
 func evalCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "eval",
-		Short: "Run behavioral eval scenarios against a jargo bot",
+		Short: "Run behavioral eval scenarios against a voxigo bot",
 	}
 	cmd.AddCommand(evalRunCmd(), evalSuiteCmd())
 	return cmd
 }
 
-// evalRunCmd is `jargo eval run` — play scenarios against a running bot.
+// evalRunCmd is `voxigo eval run` — play scenarios against a running bot.
 func evalRunCmd() *cobra.Command {
 	var botURL string
 	cmd := &cobra.Command{
@@ -75,7 +75,7 @@ func evalRunCmd() *cobra.Command {
 	return cmd
 }
 
-// evalSuiteCmd is `jargo eval suite` — run a manifest of scenarios concurrently.
+// evalSuiteCmd is `voxigo eval suite` — run a manifest of scenarios concurrently.
 func evalSuiteCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "suite <manifest.yaml>",

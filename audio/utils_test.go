@@ -5,7 +5,7 @@ import (
 	"encoding/binary"
 	"testing"
 
-	"github.com/gojargo/jargo/audio"
+	"github.com/nuxflix/voxigo/audio"
 )
 
 // pcm builds a little-endian S16LE buffer from samples.

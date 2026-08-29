@@ -3,7 +3,7 @@
 package fish
 
 import (
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/internal/validate"
 )
 
 const (

@@ -11,8 +11,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gojargo/jargo/service/stt"
-	errs "github.com/gojargo/jargo/utils/errors"
+	"github.com/nuxflix/voxigo/service/stt"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 // NewSTT builds a Fal Wizper transcription service. It is segmented: a turn

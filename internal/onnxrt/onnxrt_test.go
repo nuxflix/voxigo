@@ -62,7 +62,7 @@ func (f *fakeSession) counts() (runs, closes int) {
 
 // TestLibraryPathFromEnv checks an operator-supplied path is used when it points
 // at a real file, and rejected with a useful error when it does not — a typo in
-// JARGO_ONNXRUNTIME_LIB must not silently fall back to the default name and load
+// VOXIGO_ONNXRUNTIME_LIB must not silently fall back to the default name and load
 // some other runtime.
 func TestLibraryPathFromEnv(t *testing.T) {
 	t.Run("existing file is used", func(t *testing.T) {

@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/gojargo/jargo/service/settings"
+	"github.com/nuxflix/voxigo/service/settings"
 )
 
 // store builds a TTS store: a service holding a voice and a language.

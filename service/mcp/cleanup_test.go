@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/llm"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/llm"
 )
 
 // countingGenerator is the least an LLM service needs to exist. Nothing here

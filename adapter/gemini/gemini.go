@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"log/slog"
 
-	"github.com/gojargo/jargo/adapter"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/adapter"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // The keys Gemini's generateContent body is built from.

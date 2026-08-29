@@ -12,10 +12,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/stt"
-	errs "github.com/gojargo/jargo/utils/errors"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/stt"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 const sttEndpoint = "https://speech.googleapis.com/v1/speech:recognize"

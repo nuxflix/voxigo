@@ -1,6 +1,6 @@
 package sarvam
 
-import "github.com/gojargo/jargo/provider/openai/chat"
+import "github.com/nuxflix/voxigo/provider/openai/chat"
 
 const (
 	llmBaseURL      = "https://api.sarvam.ai/v1"

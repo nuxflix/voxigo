@@ -4,7 +4,7 @@ import (
 	"context"
 	"sync"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // item is a frame traveling through a processor's internal queues together

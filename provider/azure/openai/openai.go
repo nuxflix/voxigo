@@ -6,8 +6,8 @@
 package openai
 
 import (
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/provider/openai/chat"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/provider/openai/chat"
 )
 
 // defaultAPIVersion is a recent stable Azure OpenAI REST API version.

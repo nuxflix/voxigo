@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/internal/tagscan"
+	"github.com/nuxflix/voxigo/internal/tagscan"
 )
 
 // tagEvent is one tag the scanner reported.

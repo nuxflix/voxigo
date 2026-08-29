@@ -9,7 +9,7 @@ package audio
 import (
 	"context"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // Filter transforms input audio before it enters the pipeline. Start is called

@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/provider/openai/chat"
-	"github.com/gojargo/jargo/service/stt"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/provider/openai/chat"
+	"github.com/nuxflix/voxigo/service/stt"
 )
 
 // defaultSTTAPIVersion is a recent stable Azure OpenAI audio API version.

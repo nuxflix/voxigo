@@ -9,13 +9,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/eval"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/processor/aggregators"
-	"github.com/gojargo/jargo/processor/dtmf"
-	"github.com/gojargo/jargo/processor/rtvi"
+	"github.com/nuxflix/voxigo/eval"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/processor/aggregators"
+	"github.com/nuxflix/voxigo/processor/dtmf"
+	"github.com/nuxflix/voxigo/processor/rtvi"
 )
 
 // fakeLLM answers each turn deterministically so the harness can be exercised

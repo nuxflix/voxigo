@@ -4,8 +4,8 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/utils/text"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/utils/text"
 )
 
 // spellTag is the tag pair most of these tests aggregate around.

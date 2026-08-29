@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/utils/network"
+	"github.com/nuxflix/voxigo/utils/network"
 )
 
 func TestExponentialBackoffTime(t *testing.T) {

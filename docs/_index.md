@@ -3,15 +3,15 @@ title: Documentation
 weight: 1
 ---
 
-# jargo documentation
+# voxigo documentation
 
-**jargo** is a WebRTC-native, audio-first conversational-AI framework for Go:
+**voxigo** is a WebRTC-native, audio-first conversational-AI framework for Go:
 audio in over WebRTC, a streaming transcription → reasoning → speech pipeline with
 turn-taking and barge-in, and audio back out.
 
 > **Early work in progress.** The public API is unstable and changes in any
 > release. Pin an exact version and read the
-> [changelog](https://github.com/gojargo/jargo/blob/main/CHANGELOG.md) before
+> [changelog](https://github.com/nuxflix/voxigo/blob/main/CHANGELOG.md) before
 > upgrading.
 
 ## Three ways in
@@ -67,11 +67,11 @@ between them. Understanding it makes everything else obvious.
 
 ## Elsewhere
 
-- **[Go reference](https://pkg.go.dev/github.com/gojargo/jargo)**: the API. These
+- **[Go reference](https://pkg.go.dev/github.com/nuxflix/voxigo)**: the API. These
   pages deliberately do not duplicate it.
-- **[Examples](https://github.com/gojargo/jargo/tree/main/examples)**: runnable
+- **[Examples](https://github.com/nuxflix/voxigo/tree/main/examples)**: runnable
   bots, one per provider.
-- **[Benchmarks](https://github.com/gojargo/jargo-benchmarks)**: the honest
+- **[Benchmarks](https://github.com/nuxflix/voxigo-benchmarks)**: the honest
   performance picture.
-- **[Changelog](https://github.com/gojargo/jargo/blob/main/CHANGELOG.md)**: what
+- **[Changelog](https://github.com/nuxflix/voxigo/blob/main/CHANGELOG.md)**: what
   changed, and what broke.

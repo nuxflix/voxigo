@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/utils/notify"
+	"github.com/nuxflix/voxigo/utils/notify"
 )
 
 // A waiter already waiting is released by a signal.

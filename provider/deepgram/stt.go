@@ -13,11 +13,11 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/settings"
-	"github.com/gojargo/jargo/service/stt"
-	"github.com/gojargo/jargo/service/wsutil"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/settings"
+	"github.com/nuxflix/voxigo/service/stt"
+	"github.com/nuxflix/voxigo/service/wsutil"
 )
 
 const (
@@ -44,7 +44,7 @@ const (
 )
 
 // Config configures the STT service. Fields left at their zero value fall back
-// to jargo's defaults (which preserve its tuned turn detection); several of
+// to voxigo's defaults (which preserve its tuned turn detection); several of
 // those defaults differ from Deepgram's own and are noted per field. Optional
 // fields modeled as pointers or slices are omitted from the request when unset.
 type Config struct {
@@ -79,7 +79,7 @@ type Config struct {
 	// the param.
 	Endpointing *int
 	// UtteranceEndMs is the silence in ms before an utterance-end event; nil omits
-	// the param (jargo does not consume Deepgram's UtteranceEnd events).
+	// the param (voxigo does not consume Deepgram's UtteranceEnd events).
 	UtteranceEndMs *int
 
 	// The remaining options are omitted from the request unless set, matching

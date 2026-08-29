@@ -3,8 +3,8 @@ package camb_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/provider/camb"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/provider/camb"
 )
 
 // TestConfigValidate pins which Config fields the provider requires.

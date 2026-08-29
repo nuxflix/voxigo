@@ -10,7 +10,7 @@ package transcribe
 import (
 	"time"
 
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/internal/validate"
 )
 
 const (

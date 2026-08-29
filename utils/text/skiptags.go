@@ -3,7 +3,7 @@ package text
 import (
 	"strings"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // SkipTagsAggregator groups text into sentences the way SimpleAggregator does,

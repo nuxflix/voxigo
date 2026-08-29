@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>jargo · echo bot</title>
+  <title>voxigo · echo bot</title>
   <style>
     body { font-family: system-ui, sans-serif; max-width: 36rem; margin: 4rem auto; padding: 0 1rem; }
     button { font-size: 1rem; padding: 0.6rem 1.2rem; cursor: pointer; }
@@ -14,7 +14,7 @@
   </style>
 </head>
 <body>
-  <h1>jargo echo bot</h1>
+  <h1>voxigo echo bot</h1>
   <p>Click start, allow the microphone, and you should hear yourself back. The
      RTVI handshake and events appear in the log.</p>
   <button id="start">Start</button>
@@ -48,7 +48,7 @@
           log("data channel open → sending client-ready");
           dc.send(JSON.stringify({
             label: "rtvi-ai", type: "client-ready", id: "web-1",
-            data: { version: "2.0.0", about: { library: "jargo-example" } },
+            data: { version: "2.0.0", about: { library: "voxigo-example" } },
           }));
         };
         dc.onmessage = (e) => {

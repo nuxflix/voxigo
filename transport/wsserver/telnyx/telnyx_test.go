@@ -5,10 +5,10 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/gojargo/jargo/audio/g711"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/transport/wsserver"
+	"github.com/nuxflix/voxigo/audio/g711"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/transport/wsserver"
 )
 
 // wireRate is what Telnyx streams at, whatever the pipeline runs at.

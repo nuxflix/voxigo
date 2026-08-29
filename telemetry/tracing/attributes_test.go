@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/gojargo/jargo/telemetry/tracing"
+	"github.com/nuxflix/voxigo/telemetry/tracing"
 )
 
 // TestProviderName checks that a service name reduces to the provider name the

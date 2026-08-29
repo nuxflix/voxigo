@@ -17,9 +17,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/provider/openai/chat"
-	errs "github.com/gojargo/jargo/utils/errors"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/provider/openai/chat"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 // CompatLLMBuilder builds an OpenAI-compatible LLM service from a config, i.e.

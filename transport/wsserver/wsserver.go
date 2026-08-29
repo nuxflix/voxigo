@@ -1,6 +1,6 @@
 // Package wsserver is a WebSocket media transport for telephony. It serves a
 // WebSocket endpoint a phone provider (Twilio, Telnyx, Plivo) streams call audio
-// over, and bridges that socket to a jargo pipeline: inbound messages become
+// over, and bridges that socket to a voxigo pipeline: inbound messages become
 // InputAudioRawFrames and outbound audio becomes provider media messages.
 //
 // The wire format is provider-specific, so it is supplied as a Serializer; the
@@ -22,17 +22,17 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/processor/rtvi"
-	"github.com/gojargo/jargo/transport"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/processor/rtvi"
+	"github.com/nuxflix/voxigo/transport"
 )
 
 // readLimit bounds a single inbound WebSocket message. Telephony media messages
 // are small, but a generous limit keeps any provider's control messages safe.
 const readLimit = 1 << 20
 
-// Serializer converts between jargo frames and a provider's WebSocket wire
+// Serializer converts between voxigo frames and a provider's WebSocket wire
 // format. One Serializer serves one session; it is not safe for concurrent use
 // across sessions.
 type Serializer interface {

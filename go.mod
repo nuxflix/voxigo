@@ -1,4 +1,4 @@
-module github.com/gojargo/jargo
+module github.com/nuxflix/voxigo
 
 go 1.26
 
@@ -159,4 +159,4 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260803160001-6ac0973c030d // indirect
 )
 
-replace github.com/pion/opus => github.com/gojargo/opus v0.1.1-0.20260710133549-77e753c0dd49
+replace github.com/pion/opus => github.com/nuxflix/opus v0.1.1-0.20260710133549-77e753c0dd49

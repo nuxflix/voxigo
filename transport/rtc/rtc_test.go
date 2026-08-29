@@ -9,13 +9,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/audio/opus"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/processor/rtvi"
-	"github.com/gojargo/jargo/transport"
-	"github.com/gojargo/jargo/transport/rtc"
+	"github.com/nuxflix/voxigo/audio/opus"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/processor/rtvi"
+	"github.com/nuxflix/voxigo/transport"
+	"github.com/nuxflix/voxigo/transport/rtc"
 	"github.com/pion/webrtc/v4"
 	"github.com/pion/webrtc/v4/pkg/media"
 )
@@ -43,10 +43,10 @@ func (e *echoProcessor) ProcessFrame(ctx context.Context, f frames.Frame, dir pr
 }
 
 // TestWebRTCEchoLoopback runs the full transport between two in-process Pion
-// peers: a client sends Opus audio, the jargo echo pipeline decodes, echoes and
+// peers: a client sends Opus audio, the voxigo echo pipeline decodes, echoes and
 // re-encodes it, and the client must receive audio back.
 func TestWebRTCEchoLoopback(t *testing.T) {
-	// Server side: a jargo connection with no STUN (host candidates only).
+	// Server side: a voxigo connection with no STUN (host candidates only).
 	server, err := rtc.NewConnection(rtc.WithICEServers())
 	if err != nil {
 		t.Fatal(err)

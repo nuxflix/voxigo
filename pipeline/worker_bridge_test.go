@@ -6,12 +6,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/bus"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/registry"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/bus"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/registry"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 // A bridged worker puts its pipeline on the bus: what comes out of either end

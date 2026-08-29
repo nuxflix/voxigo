@@ -1,10 +1,10 @@
 package bus
 
 import (
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline/jobcontext"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/registry"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline/jobcontext"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/registry"
 )
 
 // Every message carries who sent it and, optionally, who it is for. A message

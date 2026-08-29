@@ -1,5 +1,5 @@
 // Package rtviws is the wsserver.Serializer that carries the RTVI protocol over
-// a plain WebSocket, so an RTVI client can drive a jargo bot without WebRTC.
+// a plain WebSocket, so an RTVI client can drive a voxigo bot without WebRTC.
 // Inbound RTVI messages are handed to the pipeline's RTVI processor; a client's
 // microphone audio arrives as raw-audio messages and enters the pipeline as
 // InputAudioRawFrames (VAD, turn detection and STT then see it as a live mic).
@@ -15,10 +15,10 @@ import (
 	"encoding/base64"
 	"encoding/json"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/processor/rtvi"
-	"github.com/gojargo/jargo/transport/wsserver"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/processor/rtvi"
+	"github.com/nuxflix/voxigo/transport/wsserver"
 )
 
 // TypeRawAudio is the RTVI message type carrying a chunk of microphone PCM from

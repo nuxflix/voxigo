@@ -9,8 +9,8 @@ package pipeline
 import (
 	"context"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // Pipeline is a linear chain of processors. It wraps the chain with a source

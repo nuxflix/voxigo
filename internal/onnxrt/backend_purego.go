@@ -171,7 +171,7 @@ func backendInit(libPath string) error {
 	purego.RegisterFunc(&a.releaseMemInfo, member(base, fnReleaseMemoryInfo))
 	purego.RegisterFunc(&a.releaseTypeShape, member(base, fnReleaseTensorTypeShape))
 
-	logid := cstr("jargo")
+	logid := cstr("voxigo")
 	if err := a.check(a.createEnv(loggingLevelWarning, &logid[0], &sharedEnv), "CreateEnv"); err != nil {
 		return err
 	}

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"testing"
 
-	uctx "github.com/gojargo/jargo/utils/context"
+	uctx "github.com/nuxflix/voxigo/utils/context"
 )
 
 // TestCharAccumulatorAssemblesWords checks the common case: characters split on

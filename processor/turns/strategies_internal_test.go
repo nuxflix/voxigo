@@ -14,11 +14,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/audio/turn"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/service/llm"
-	"github.com/gojargo/jargo/service/settings"
+	"github.com/nuxflix/voxigo/audio/turn"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/service/llm"
+	"github.com/nuxflix/voxigo/service/settings"
 )
 
 // spy records everything a strategy signals through its environment.
@@ -293,7 +293,7 @@ func TestMinWordsStartInterim(t *testing.T) {
 // TestWakePhraseStartGates is the core wake-phrase contract: asleep it blocks the
 // rest of the start chain, the phrase wakes it, and it stays awake afterwards.
 func TestWakePhraseStartGates(t *testing.T) {
-	s := NewWakePhraseStart(WakePhraseStartConfig{Phrases: []string{"hey jargo"}, Timeout: time.Minute})
+	s := NewWakePhraseStart(WakePhraseStartConfig{Phrases: []string{"hey voxigo"}, Timeout: time.Minute})
 	spy := attachStart(s)
 	defer s.Cleanup()
 
@@ -307,7 +307,7 @@ func TestWakePhraseStartGates(t *testing.T) {
 		t.Errorf("pre-wake speech should be dropped: resets = %d, want 1", spy.resets)
 	}
 
-	if got := spy.send(s, transcript("ok Hey   Jargo please")); got != Stop {
+	if got := spy.send(s, transcript("ok Hey   Voxigo please")); got != Stop {
 		t.Errorf("waking: Process = %v, want Stop", got)
 	}
 	if spy.starts() != 1 {
@@ -329,7 +329,7 @@ func TestWakePhraseStartGates(t *testing.T) {
 // TestWakePhraseStartMatchesAcrossTranscripts checks the accumulator: a phrase
 // split over two transcripts still matches.
 func TestWakePhraseStartMatchesAcrossTranscripts(t *testing.T) {
-	s := NewWakePhraseStart(WakePhraseStartConfig{Phrases: []string{"hey jargo"}, Timeout: time.Minute})
+	s := NewWakePhraseStart(WakePhraseStartConfig{Phrases: []string{"hey voxigo"}, Timeout: time.Minute})
 	spy := attachStart(s)
 	defer s.Cleanup()
 
@@ -337,7 +337,7 @@ func TestWakePhraseStartMatchesAcrossTranscripts(t *testing.T) {
 	if spy.starts() != 0 {
 		t.Fatal("half a phrase must not wake the session")
 	}
-	spy.send(s, transcript("jargo are you there"))
+	spy.send(s, transcript("voxigo are you there"))
 	if spy.starts() != 1 {
 		t.Errorf("phrase split across transcripts should match: starts = %d", spy.starts())
 	}
@@ -346,7 +346,7 @@ func TestWakePhraseStartMatchesAcrossTranscripts(t *testing.T) {
 // TestWakePhraseStartAccumCap checks the accumulator stays bounded and that a
 // phrase still matches once older speech has been trimmed away.
 func TestWakePhraseStartAccumCap(t *testing.T) {
-	s := NewWakePhraseStart(WakePhraseStartConfig{Phrases: []string{"hey jargo"}, Timeout: time.Minute})
+	s := NewWakePhraseStart(WakePhraseStartConfig{Phrases: []string{"hey voxigo"}, Timeout: time.Minute})
 	spy := attachStart(s)
 	defer s.Cleanup()
 
@@ -359,7 +359,7 @@ func TestWakePhraseStartAccumCap(t *testing.T) {
 	if spy.starts() != 0 {
 		t.Fatal("filler must not wake the session")
 	}
-	spy.send(s, transcript("hey jargo"))
+	spy.send(s, transcript("hey voxigo"))
 	if spy.starts() != 1 {
 		t.Error("wake phrase should still match after the accumulator was trimmed")
 	}
@@ -367,14 +367,14 @@ func TestWakePhraseStartAccumCap(t *testing.T) {
 
 func TestWakePhraseStartSingleActivation(t *testing.T) {
 	s := NewWakePhraseStart(WakePhraseStartConfig{
-		Phrases:          []string{"hey jargo"},
+		Phrases:          []string{"hey voxigo"},
 		Timeout:          500 * time.Millisecond,
 		SingleActivation: true,
 	})
 	spy := attachStart(s)
 	defer s.Cleanup()
 
-	spy.send(s, transcript("hey jargo"))
+	spy.send(s, transcript("hey voxigo"))
 	if spy.starts() != 1 {
 		t.Fatal("wake phrase should open the first turn")
 	}
@@ -400,14 +400,14 @@ func TestWakePhraseStartSingleActivation(t *testing.T) {
 // strategy sleeps again and the phrase is required for the next turn.
 func TestWakePhraseStartSingleActivationKeepaliveSleeps(t *testing.T) {
 	s := NewWakePhraseStart(WakePhraseStartConfig{
-		Phrases:          []string{"hey jargo"},
+		Phrases:          []string{"hey voxigo"},
 		Timeout:          20 * time.Millisecond,
 		SingleActivation: true,
 	})
 	spy := attachStart(s)
 	defer s.Cleanup()
 
-	spy.send(s, transcript("hey jargo"))
+	spy.send(s, transcript("hey voxigo"))
 	eventually(t, func() bool {
 		spy.mu.Lock()
 		defer spy.mu.Unlock()
@@ -421,7 +421,7 @@ func TestWakePhraseStartSingleActivationKeepaliveSleeps(t *testing.T) {
 		t.Errorf("the phrase must be required again: starts = %d", spy.starts())
 	}
 
-	if got := spy.send(s, transcript("hey jargo")); got != Stop {
+	if got := spy.send(s, transcript("hey voxigo")); got != Stop {
 		t.Errorf("waking again: Process = %v, want Stop", got)
 	}
 	if spy.starts() != 2 {
@@ -430,13 +430,13 @@ func TestWakePhraseStartSingleActivationKeepaliveSleeps(t *testing.T) {
 }
 
 // TestWakePhraseStartStripsPunctuation checks transcription output like
-// "Hey, Jargo!" still matches the phrase "hey jargo".
+// "Hey, Voxigo!" still matches the phrase "hey voxigo".
 func TestWakePhraseStartStripsPunctuation(t *testing.T) {
-	s := NewWakePhraseStart(WakePhraseStartConfig{Phrases: []string{"hey jargo"}, Timeout: time.Minute})
+	s := NewWakePhraseStart(WakePhraseStartConfig{Phrases: []string{"hey voxigo"}, Timeout: time.Minute})
 	spy := attachStart(s)
 	defer s.Cleanup()
 
-	if got := spy.send(s, transcript("Hey, Jargo!")); got != Stop {
+	if got := spy.send(s, transcript("Hey, Voxigo!")); got != Stop {
 		t.Errorf("Process = %v, want Stop", got)
 	}
 	if spy.starts() != 1 {
@@ -450,7 +450,7 @@ func TestWakePhraseStartEvents(t *testing.T) {
 	var detected string
 	timedOut := make(chan struct{}, 1)
 	s := NewWakePhraseStart(WakePhraseStartConfig{
-		Phrases:              []string{"hey jargo", "ok jargo"},
+		Phrases:              []string{"hey voxigo", "ok voxigo"},
 		Timeout:              20 * time.Millisecond,
 		OnWakePhraseDetected: func(phrase string) { detected = phrase },
 		OnWakePhraseTimeout: func() {
@@ -463,12 +463,12 @@ func TestWakePhraseStartEvents(t *testing.T) {
 	spy := attachStart(s)
 	defer s.Cleanup()
 
-	spy.send(s, transcript("ok jargo"))
+	spy.send(s, transcript("ok voxigo"))
 	spy.mu.Lock()
 	got := detected
 	spy.mu.Unlock()
-	if got != "ok jargo" {
-		t.Errorf("detected phrase = %q, want %q", got, "ok jargo")
+	if got != "ok voxigo" {
+		t.Errorf("detected phrase = %q, want %q", got, "ok voxigo")
 	}
 
 	select {
@@ -481,11 +481,11 @@ func TestWakePhraseStartEvents(t *testing.T) {
 // TestWakePhraseStartTimeout checks the inactivity timer puts the session back
 // to sleep.
 func TestWakePhraseStartTimeout(t *testing.T) {
-	s := NewWakePhraseStart(WakePhraseStartConfig{Phrases: []string{"hey jargo"}, Timeout: 20 * time.Millisecond})
+	s := NewWakePhraseStart(WakePhraseStartConfig{Phrases: []string{"hey voxigo"}, Timeout: 20 * time.Millisecond})
 	spy := attachStart(s)
 	defer s.Cleanup()
 
-	spy.send(s, transcript("hey jargo"))
+	spy.send(s, transcript("hey voxigo"))
 	if spy.starts() != 1 {
 		t.Fatal("wake phrase should wake the session")
 	}
@@ -517,17 +517,17 @@ func TestCompileWakePatterns(t *testing.T) {
 		want     bool
 		wantPats int
 	}{
-		{"case insensitive", []string{"hey jargo"}, "HEY JARGO", true, 1},
-		{"flexible whitespace", []string{"hey jargo"}, "hey    jargo", true, 1},
-		{"word boundary", []string{"hey jargo"}, "theyjargo", false, 1},
+		{"case insensitive", []string{"hey voxigo"}, "HEY VOXIGO", true, 1},
+		{"flexible whitespace", []string{"hey voxigo"}, "hey    voxigo", true, 1},
+		{"word boundary", []string{"hey voxigo"}, "theyvoxigo", false, 1},
 		{"regex metacharacters are literal", []string{"a.b"}, "axb", false, 1},
 		// Punctuation is stripped from the transcript before matching, so a
 		// phrase written with punctuation in it cannot match: the pattern still
 		// holds the punctuation the text no longer has.
 		{"a punctuated phrase cannot match", []string{"a.b"}, "a.b", false, 1},
-		{"punctuation in the transcript is stripped", []string{"hey jargo"}, "Hey, Jargo!", true, 1},
+		{"punctuation in the transcript is stripped", []string{"hey voxigo"}, "Hey, Voxigo!", true, 1},
 		{"blank phrases are skipped", []string{"", "   "}, "anything", false, 0},
-		{"any phrase matches", []string{"hey jargo", "ok jargo"}, "ok jargo", true, 2},
+		{"any phrase matches", []string{"hey voxigo", "ok voxigo"}, "ok voxigo", true, 2},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

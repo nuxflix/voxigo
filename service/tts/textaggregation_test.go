@@ -6,11 +6,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/service/tts"
-	"github.com/gojargo/jargo/utils/events"
-	ttstext "github.com/gojargo/jargo/utils/text"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/service/tts"
+	"github.com/nuxflix/voxigo/utils/events"
+	ttstext "github.com/nuxflix/voxigo/utils/text"
 )
 
 // collectTextAggregation runs a TTS base over feed and returns every text

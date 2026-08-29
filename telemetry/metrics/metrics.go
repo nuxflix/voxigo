@@ -1,4 +1,4 @@
-// Package metrics exports jargo's service measurements — time-to-first-byte,
+// Package metrics exports voxigo's service measurements — time-to-first-byte,
 // processing time, LLM token usage and TTS characters — as OpenTelemetry metrics
 // over OTLP. It is the aggregate, fleet-level counterpart to the per-turn
 // frames.MetricsFrame the services emit in-band (and the RTVI metrics messages
@@ -22,8 +22,8 @@ import (
 	"go.opentelemetry.io/otel/sdk/resource"
 )
 
-// meterName identifies jargo's instruments.
-const meterName = "github.com/gojargo/jargo"
+// meterName identifies voxigo's instruments.
+const meterName = "github.com/nuxflix/voxigo"
 
 // Instruments are created lazily from the global meter, which delegates to the
 // installed provider (or no-ops). once guards their creation.
@@ -42,17 +42,17 @@ var (
 func instruments() {
 	once.Do(func() {
 		m := otel.Meter(meterName)
-		ttfbHist, _ = m.Float64Histogram("jargo.ttfb",
+		ttfbHist, _ = m.Float64Histogram("voxigo.ttfb",
 			metric.WithUnit("s"), metric.WithDescription("service time to first byte"))
-		ttfaHist, _ = m.Float64Histogram("jargo.ttfa",
+		ttfaHist, _ = m.Float64Histogram("voxigo.ttfa",
 			metric.WithUnit("s"), metric.WithDescription("TTS time to first audible sample"))
-		procHist, _ = m.Float64Histogram("jargo.processing",
+		procHist, _ = m.Float64Histogram("voxigo.processing",
 			metric.WithUnit("s"), metric.WithDescription("service processing time"))
-		tokCounter, _ = m.Int64Counter("jargo.llm.tokens",
+		tokCounter, _ = m.Int64Counter("voxigo.llm.tokens",
 			metric.WithDescription("LLM tokens, by direction"))
-		charCount, _ = m.Int64Counter("jargo.tts.characters",
+		charCount, _ = m.Int64Counter("voxigo.tts.characters",
 			metric.WithDescription("characters synthesized by TTS"))
-		sttAudio, _ = m.Float64Counter("jargo.stt.audio",
+		sttAudio, _ = m.Float64Counter("voxigo.stt.audio",
 			metric.WithUnit("s"), metric.WithDescription("audio transcribed by STT"))
 	})
 }
@@ -112,7 +112,7 @@ func RecordSTTAudio(ctx context.Context, service, model string, seconds float64)
 
 // Config configures OTLP metric export.
 type Config struct {
-	// ServiceName labels the metrics; defaults to "jargo".
+	// ServiceName labels the metrics; defaults to "voxigo".
 	ServiceName string
 	// ServiceVersion is an optional version label.
 	ServiceVersion string
@@ -142,7 +142,7 @@ func Init(ctx context.Context, cfg Config) (func(context.Context) error, error) 
 
 	name := cfg.ServiceName
 	if name == "" {
-		name = "jargo"
+		name = "voxigo"
 	}
 	attrs := []attribute.KeyValue{attribute.String("service.name", name)}
 	if cfg.ServiceVersion != "" {

@@ -3,7 +3,7 @@
 package rime
 
 import (
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/internal/validate"
 )
 
 const (
@@ -15,7 +15,7 @@ const (
 	// defaultLang is English as Rime names it. Rime takes three-letter codes
 	// ("eng", "fra", "ger", "spa", "hin"), not the two-letter ones.
 	defaultLang = "eng"
-	// defaultSampleRate is the PCM rate jargo requests from Rime.
+	// defaultSampleRate is the PCM rate voxigo requests from Rime.
 	defaultSampleRate = 24000
 )
 

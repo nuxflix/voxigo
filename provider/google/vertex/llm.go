@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/gojargo/jargo/provider/google/gemini"
+	"github.com/nuxflix/voxigo/provider/google/gemini"
 )
 
 // LLMConfig configures the Vertex AI Gemini LLM service. The generation

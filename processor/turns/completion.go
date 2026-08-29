@@ -1,10 +1,10 @@
 package turns
 
 import (
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/service/llm"
-	"github.com/gojargo/jargo/service/settings"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/service/llm"
+	"github.com/nuxflix/voxigo/service/settings"
 )
 
 // LLMTurnCompletionStop finalizes a turn on the LLM's own verdict that the user

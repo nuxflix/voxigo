@@ -1,12 +1,12 @@
 package observers
 
 import (
-	awsnovasonic "github.com/gojargo/jargo/provider/aws/novasonic"
-	googlelive "github.com/gojargo/jargo/provider/google/live"
-	openairealtime "github.com/gojargo/jargo/provider/openai/realtime"
-	xairealtime "github.com/gojargo/jargo/provider/xai/realtime"
-	"github.com/gojargo/jargo/service/llm"
-	"github.com/gojargo/jargo/service/stt"
+	awsnovasonic "github.com/nuxflix/voxigo/provider/aws/novasonic"
+	googlelive "github.com/nuxflix/voxigo/provider/google/live"
+	openairealtime "github.com/nuxflix/voxigo/provider/openai/realtime"
+	xairealtime "github.com/nuxflix/voxigo/provider/xai/realtime"
+	"github.com/nuxflix/voxigo/service/llm"
+	"github.com/nuxflix/voxigo/service/stt"
 )
 
 // The service filters the LLM and transcription loggers apply are interfaces

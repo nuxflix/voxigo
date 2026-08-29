@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/language"
 )
 
 // roundTripper answers every request from a canned reply, recording what it was

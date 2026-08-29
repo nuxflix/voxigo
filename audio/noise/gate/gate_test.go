@@ -5,7 +5,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/gojargo/jargo/audio/noise/gate"
+	"github.com/nuxflix/voxigo/audio/noise/gate"
 )
 
 // tone builds n samples of constant amplitude, expressed as a fraction of full

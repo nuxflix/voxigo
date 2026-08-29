@@ -8,10 +8,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/audio"
-	"github.com/gojargo/jargo/audio/resample"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/audio"
+	"github.com/nuxflix/voxigo/audio/resample"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // mediaSender streams one outgoing destination. Everything it holds is per

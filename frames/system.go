@@ -3,7 +3,7 @@ package frames
 import (
 	"fmt"
 
-	"github.com/gojargo/jargo/utils/errors"
+	"github.com/nuxflix/voxigo/utils/errors"
 )
 
 // The sample rates NewStartFrame applies when the application does not override

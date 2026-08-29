@@ -3,7 +3,7 @@ package audio
 import (
 	"context"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // Chain applies several Filters in sequence, composing multiple input-audio

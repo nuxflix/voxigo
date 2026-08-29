@@ -11,7 +11,7 @@ as they arrive, who is speaking right now, and when the bot is thinking. RTVI
 WebRTC data channel.
 
 Because it is an open protocol with existing web, iOS and Android client SDKs, a
-jargo server works with clients you did not write.
+voxigo server works with clients you did not write.
 
 ## Adding it
 
@@ -107,13 +107,13 @@ enough audio has arrived to measure.
 ## Clients
 
 For the browser, use the client packages in
-[jargo-client-react](https://github.com/gojargo/jargo-client-react). The
+[voxigo-client-react](https://github.com/nuxflix/voxigo-client-react). The
 `nextjs-voicebot` example there talks to any of the `examples/voice/<provider>`
 backends:
 
 ```sh
 go run ./examples/voice/openai                        # backend on :8080
-NEXT_PUBLIC_JARGO_URL=http://localhost:8080 npm run dev   # client
+NEXT_PUBLIC_VOXIGO_URL=http://localhost:8080 npm run dev   # client
 ```
 
 The per-provider examples are **headless**: they expose the `/offer` endpoint and

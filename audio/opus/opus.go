@@ -1,4 +1,4 @@
-// Package opus wraps the Opus codec for jargo's audio path: it decodes Opus
+// Package opus wraps the Opus codec for voxigo's audio path: it decodes Opus
 // packets to PCM on the way in and encodes PCM to Opus packets on the way out.
 //
 // The codec runs at 48 kHz — the rate WebRTC negotiates for Opus — so audio

@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gojargo/jargo/audio/resample"
-	"github.com/gojargo/jargo/internal/onnxrt"
+	"github.com/nuxflix/voxigo/audio/resample"
+	"github.com/nuxflix/voxigo/internal/onnxrt"
 )
 
 //go:embed smart-turn-v3.2-cpu.onnx

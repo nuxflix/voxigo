@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 func TestMetricsFrameIsSystemFrame(t *testing.T) {

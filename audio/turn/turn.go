@@ -27,7 +27,7 @@ func (s EndOfTurnState) String() string {
 	return "incomplete"
 }
 
-// Default timing parameters, matching the Smart Turn defaults jargo ports.
+// Default timing parameters, matching the Smart Turn defaults voxigo ports.
 const (
 	defaultStopSecs        = 3.0
 	defaultPreSpeechMs     = 500.0

@@ -1,4 +1,4 @@
-module github.com/gojargo/jargo/website
+module github.com/nuxflix/voxigo/website
 
 go 1.26.5
 

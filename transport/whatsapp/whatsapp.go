@@ -1,5 +1,5 @@
 // Package whatsapp answers inbound WhatsApp Business calls and bridges their
-// audio into a jargo pipeline. It runs a webhook endpoint for the WhatsApp Cloud
+// audio into a voxigo pipeline. It runs a webhook endpoint for the WhatsApp Cloud
 // (Graph) API: it verifies the webhook, answers a "connect" event by building a
 // WebRTC answer with the Pion transport (transport/rtc) and accepting the
 // call over the Graph API, and closes the media on a "terminate" event.
@@ -22,8 +22,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/transport/rtc"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/transport/rtc"
 	"github.com/pion/webrtc/v4"
 )
 

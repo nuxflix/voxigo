@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor/rtvi"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor/rtvi"
 )
 
 // Tests for the audio levels a client draws a speaking meter from. They are off

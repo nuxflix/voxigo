@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/bus"
+	"github.com/nuxflix/voxigo/bus"
 )
 
 // Ported from upstream's bus suite. Upstream sleeps for a fixed spell after

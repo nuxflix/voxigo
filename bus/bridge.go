@@ -5,8 +5,8 @@ import (
 	"reflect"
 	"slices"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // The two processors here put a pipeline on the bus, in the two shapes a worker

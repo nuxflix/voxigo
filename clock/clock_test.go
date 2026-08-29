@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/clock"
+	"github.com/nuxflix/voxigo/clock"
 )
 
 // TestTimeBeforeStart pins the documented contract: an unstarted clock reports

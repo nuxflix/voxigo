@@ -1,9 +1,9 @@
-// Throwaway: exercise jargo's audio/opus Encoder end-to-end, the way the
+// Throwaway: exercise voxigo's audio/opus Encoder end-to-end, the way the
 // transport does — feeding 20 ms frames of 48 kHz mono S16LE PCM and decoding
 // the packets back. Build with `-tags silk` to run the pure-Go SILK encoder
 // (our pion/opus branch), or without tags for the CELT default. It resamples a
 // clip to 48 kHz with the pure-Go resampler, encodes/decodes frame by frame,
-// and writes jargo_in.wav / jargo_out.wav plus a bitrate/SNR summary.
+// and writes voxigo_in.wav / voxigo_out.wav plus a bitrate/SNR summary.
 //
 //	go run -tags silk ./examples/silktest [input.wav]   # needs go.work -> our branch
 package main
@@ -14,8 +14,8 @@ import (
 	"math"
 	"os"
 
-	"github.com/gojargo/jargo/audio/opus"
-	"github.com/gojargo/jargo/audio/resample"
+	"github.com/nuxflix/voxigo/audio/opus"
+	"github.com/nuxflix/voxigo/audio/resample"
 )
 
 const frame48 = opus.SampleRate / 1000 * 20 // 960 samples / 20 ms
@@ -28,7 +28,7 @@ func main() {
 	pcm, rate := readWAV(src)
 	fmt.Printf("input: %s (%d Hz, %d samples)\n", src, rate, len(pcm))
 
-	// Pure-Go resample to jargo's 48 kHz stream rate.
+	// Pure-Go resample to voxigo's 48 kHz stream rate.
 	pcm48 := resampleI16(pcm, rate, opus.SampleRate)
 
 	enc, err := opus.NewEncoder(opus.EncoderConfig{Channels: 1, Bitrate: 24000})
@@ -48,12 +48,12 @@ func main() {
 		decoded = append(decoded, bytesToI16(out)...)
 	}
 
-	writeWAV("jargo_in.wav", pcm48, opus.SampleRate)
-	writeWAV("jargo_out.wav", decoded, opus.SampleRate)
+	writeWAV("voxigo_in.wav", pcm48, opus.SampleRate)
+	writeWAV("voxigo_out.wav", decoded, opus.SampleRate)
 
 	kbps := float64(totalBytes) * 8 / (float64(frames) * 0.02) / 1000
 	fmt.Printf("encoded %d frames, ~%.1f kbit/s, SNR %.1f dB @48k\n", frames, kbps, alignedSNR(pcm48, decoded))
-	fmt.Println("wrote jargo_in.wav and jargo_out.wav — play both to compare")
+	fmt.Println("wrote voxigo_in.wav and voxigo_out.wav — play both to compare")
 }
 
 func resampleI16(in []int16, inRate, outRate int) []int16 {

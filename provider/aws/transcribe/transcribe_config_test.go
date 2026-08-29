@@ -3,8 +3,8 @@ package transcribe_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/provider/aws/transcribe"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/provider/aws/transcribe"
 )
 
 // TestConfigValidate pins which Config fields the provider requires.

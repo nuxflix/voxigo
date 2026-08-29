@@ -6,7 +6,7 @@
 [[IgnoredVulns]]
 id = "GO-2026-5932"
 # golang.org/x/crypto/openpgp is unmaintained and "unsafe by design"; the
-# advisory has no fixed version because the package is frozen upstream. jargo
+# advisory has no fixed version because the package is frozen upstream. voxigo
 # pulls golang.org/x/crypto in only indirectly (via Pion, LiveKit, and others)
 # and never imports the openpgp subpackage: `go mod why golang.org/x/crypto`
 # reports the main module does not need it, and `govulncheck ./...` confirms the

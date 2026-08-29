@@ -6,7 +6,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/gojargo/jargo/telemetry/tracing"
+	"github.com/nuxflix/voxigo/telemetry/tracing"
 )
 
 // The Realtime API is a session rather than a request answered by a reply: the

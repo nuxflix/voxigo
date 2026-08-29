@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/service/wsutil"
+	"github.com/nuxflix/voxigo/service/wsutil"
 )
 
 // wsURL turns an httptest server URL into a WebSocket one.

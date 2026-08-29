@@ -10,9 +10,9 @@ import (
 	"sync"
 
 	"github.com/ebitengine/purego"
-	"github.com/gojargo/jargo/audio"
-	"github.com/gojargo/jargo/audio/resample"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/audio"
+	"github.com/nuxflix/voxigo/audio/resample"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // rnnoiseRate is the only sample rate RNNoise operates at.
@@ -27,7 +27,7 @@ const resampleQuality = resample.QualityQQ
 
 // LibPathEnv points at the librnnoise shared library when it is not on the
 // loader's default search path.
-const LibPathEnv = "JARGO_RNNOISE_LIB"
+const LibPathEnv = "VOXIGO_RNNOISE_LIB"
 
 // librnnoise is bound at run time through purego (no cgo). RNNoise exposes flat
 // exported symbols, so each function binds by name.

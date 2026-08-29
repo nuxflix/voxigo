@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gojargo/jargo/internal/onnxrt"
+	"github.com/nuxflix/voxigo/internal/onnxrt"
 )
 
 //go:embed silero_vad.onnx

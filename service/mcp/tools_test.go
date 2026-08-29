@@ -7,8 +7,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/llm"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/llm"
 	mcpsdk "github.com/modelcontextprotocol/go-sdk/mcp"
 )
 

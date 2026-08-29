@@ -16,14 +16,14 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/service"
-	"github.com/gojargo/jargo/service/settings"
-	"github.com/gojargo/jargo/service/wsservice"
-	"github.com/gojargo/jargo/telemetry/metrics"
-	"github.com/gojargo/jargo/telemetry/tracing"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/service"
+	"github.com/nuxflix/voxigo/service/settings"
+	"github.com/nuxflix/voxigo/service/wsservice"
+	"github.com/nuxflix/voxigo/telemetry/metrics"
+	"github.com/nuxflix/voxigo/telemetry/tracing"
 )
 
 // errNoSession is returned when a Connector reports neither a session nor an

@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/eval"
+	"github.com/nuxflix/voxigo/eval"
 )
 
 func writeFile(t *testing.T, dir, name, body string) {

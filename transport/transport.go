@@ -11,9 +11,9 @@ import (
 	"context"
 	"time"
 
-	"github.com/gojargo/jargo/audio"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/audio"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // Params configures a transport's audio input and output.

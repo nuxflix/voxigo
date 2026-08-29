@@ -1,4 +1,4 @@
-// Package tracing wires OpenTelemetry tracing into a jargo voice agent.
+// Package tracing wires OpenTelemetry tracing into a voxigo voice agent.
 //
 // The service processors emit spans through the global tracer, so
 // instrumentation costs nothing until a TracerProvider is installed — without
@@ -21,7 +21,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
@@ -30,10 +30,10 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
-// instrumentationName identifies jargo's spans.
-const instrumentationName = "github.com/gojargo/jargo"
+// instrumentationName identifies voxigo's spans.
+const instrumentationName = "github.com/nuxflix/voxigo"
 
-// Tracer returns jargo's tracer from the global TracerProvider. Before Init (or
+// Tracer returns voxigo's tracer from the global TracerProvider. Before Init (or
 // any other provider) is installed, this is a no-op tracer.
 func Tracer() trace.Tracer {
 	return otel.Tracer(instrumentationName)
@@ -41,7 +41,7 @@ func Tracer() trace.Tracer {
 
 // Config configures OTLP export.
 type Config struct {
-	// ServiceName labels the traces; defaults to "jargo".
+	// ServiceName labels the traces; defaults to "voxigo".
 	ServiceName string
 	// ServiceVersion is an optional version label.
 	ServiceVersion string
@@ -51,7 +51,7 @@ type Config struct {
 	// Insecure sends over plain HTTP instead of HTTPS.
 	Insecure bool
 	// SampleRatio is the head-sampling ratio in (0,1]. Zero (or less) always
-	// samples — jargo traces are low-volume, one trace per session.
+	// samples — voxigo traces are low-volume, one trace per session.
 	SampleRatio float64
 }
 
@@ -74,7 +74,7 @@ func Init(ctx context.Context, cfg Config) (func(context.Context) error, error) 
 
 	name := cfg.ServiceName
 	if name == "" {
-		name = "jargo"
+		name = "voxigo"
 	}
 	attrs := []attribute.KeyValue{attribute.String("service.name", name)}
 	if cfg.ServiceVersion != "" {

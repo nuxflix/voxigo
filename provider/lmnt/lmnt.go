@@ -3,7 +3,7 @@
 package lmnt
 
 import (
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/internal/validate"
 )
 
 const (
@@ -11,7 +11,7 @@ const (
 	defaultModel = "blizzard"
 	defaultVoice = "leah"
 	defaultLang  = "en"
-	// defaultSampleRate is the PCM rate jargo requests from LMNT.
+	// defaultSampleRate is the PCM rate voxigo requests from LMNT.
 	defaultSampleRate = 24000
 )
 

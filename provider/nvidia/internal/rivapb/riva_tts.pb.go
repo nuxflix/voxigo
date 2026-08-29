@@ -368,7 +368,7 @@ const file_riva_tts_proto_rawDesc = "" +
 	"\x05audio\x18\x01 \x01(\fR\x05audio\x12E\n" +
 	"\x04meta\x18\x02 \x01(\v21.nvidia.riva.tts.SynthesizeSpeechResponseMetadataR\x04meta2\x84\x01\n" +
 	"\x13RivaSpeechSynthesis\x12m\n" +
-	"\x10SynthesizeOnline\x12(.nvidia.riva.tts.SynthesizeSpeechRequest\x1a).nvidia.riva.tts.SynthesizeSpeechResponse\"\x00(\x010\x01BAZ?github.com/gojargo/jargo/provider/nvidia/internal/rivapb;rivapbb\x06proto3"
+	"\x10SynthesizeOnline\x12(.nvidia.riva.tts.SynthesizeSpeechRequest\x1a).nvidia.riva.tts.SynthesizeSpeechResponse\"\x00(\x010\x01BAZ?github.com/nuxflix/voxigo/provider/nvidia/internal/rivapb;rivapbb\x06proto3"
 
 var (
 	file_riva_tts_proto_rawDescOnce sync.Once

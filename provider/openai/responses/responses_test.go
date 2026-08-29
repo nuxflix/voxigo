@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/gojargo/jargo/adapter"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/internal/providertest"
+	"github.com/nuxflix/voxigo/adapter"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/internal/providertest"
 )
 
 // mustRequest builds a request and fails the test if the conversion did.

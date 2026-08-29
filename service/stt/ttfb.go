@@ -6,9 +6,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/telemetry/metrics"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/telemetry/metrics"
 )
 
 // DefaultTTFBTimeout is how long a service waits after the speech ends for the

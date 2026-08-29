@@ -7,8 +7,8 @@ import (
 	"log/slog"
 	"strings"
 
-	"github.com/gojargo/jargo/frames"
-	uctx "github.com/gojargo/jargo/utils/context"
+	"github.com/nuxflix/voxigo/frames"
+	uctx "github.com/nuxflix/voxigo/utils/context"
 )
 
 // The ways a summary generation can fail before it reaches the model.

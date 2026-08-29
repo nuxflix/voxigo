@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 	"github.com/vmihailenco/msgpack/v5"
 )
 

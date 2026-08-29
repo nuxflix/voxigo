@@ -6,7 +6,7 @@ import (
 	"log/slog"
 	"strings"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 const (
@@ -148,7 +148,7 @@ func earliestUnresolvedToolCall(messages []frames.Message, start, end int) int {
 // out of it:
 //
 //   - a system message at the head of the list, which frames the assistant's
-//     behavior and has to survive compression (jargo normally holds the system
+//     behavior and has to survive compression (voxigo normally holds the system
 //     prompt outside the message list, where it is preserved anyway; this covers
 //     a conversation that carries one as a message);
 //   - the minMessagesToKeep most recent messages, which hold the immediate

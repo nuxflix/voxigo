@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/internal/providertest"
+	"github.com/nuxflix/voxigo/internal/providertest"
 )
 
 // TestConfigValidate pins which Config fields the provider requires: either the

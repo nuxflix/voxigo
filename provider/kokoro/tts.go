@@ -1,8 +1,8 @@
 package kokoro
 
 import (
-	"github.com/gojargo/jargo/provider/openai/chat"
-	"github.com/gojargo/jargo/service/tts"
+	"github.com/nuxflix/voxigo/provider/openai/chat"
+	"github.com/nuxflix/voxigo/service/tts"
 )
 
 // NewTTS builds a Kokoro TTS service. Kokoro-FastAPI returns 24 kHz PCM, which

@@ -1,7 +1,7 @@
 // Package exotel is the wsserver.Serializer for Exotel Media Streaming (the
 // Voicebot applet). Unlike the μ-law telephony providers, Exotel streams raw
 // 16-bit signed little-endian PCM (base64-encoded) at 8 kHz mono; this
-// serializer base64-codes it to and from jargo audio frames and emits a "clear"
+// serializer base64-codes it to and from voxigo audio frames and emits a "clear"
 // message on barge-in. Exotel provides no media-stream hang-up API, so ending
 // the call is left to the applet flow.
 package exotel
@@ -11,9 +11,9 @@ import (
 	"encoding/json"
 	"sync"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/transport/wsserver"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/transport/wsserver"
 )
 
 // Serializer implements wsserver.Serializer.

@@ -5,8 +5,8 @@ import (
 	"encoding/binary"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/transport"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/transport"
 )
 
 func TestInt16ToPCMRoundTrip(t *testing.T) {

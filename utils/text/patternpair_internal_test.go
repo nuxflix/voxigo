@@ -3,7 +3,7 @@ package text
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // A run that closed but is still sitting in the buffer must not be taken for

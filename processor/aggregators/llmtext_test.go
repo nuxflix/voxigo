@@ -3,8 +3,8 @@ package aggregators_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor/aggregators"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor/aggregators"
 )
 
 // collectAggregated drains the aggregated-text frames after a short grace

@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor/rtvi"
-	"github.com/gojargo/jargo/transport"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor/rtvi"
+	"github.com/nuxflix/voxigo/transport"
 )
 
 // rtviSerializer is a test serializer whose wire is the one RTVI messages travel

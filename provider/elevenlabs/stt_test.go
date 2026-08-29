@@ -12,8 +12,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/stt"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/stt"
 )
 
 // uploadedSTT is the transcription request as the endpoint received it. The
@@ -170,7 +170,7 @@ func TestTranscribeOptionalFields(t *testing.T) {
 		APIKey:         "k",
 		Language:       language.French,
 		TagAudioEvents: &tag,
-		Keyterms:       []string{"jargo", "pipeline"},
+		Keyterms:       []string{"voxigo", "pipeline"},
 	}, []byte{0, 0})
 
 	if got.field("language_code") != "fra" {
@@ -180,7 +180,7 @@ func TestTranscribeOptionalFields(t *testing.T) {
 		t.Errorf("tag_audio_events = %q, want a lowercase false", got.field("tag_audio_events"))
 	}
 	if len(got.fields["keyterms"]) != 2 ||
-		got.fields["keyterms"][0] != "jargo" || got.fields["keyterms"][1] != "pipeline" {
+		got.fields["keyterms"][0] != "voxigo" || got.fields["keyterms"][1] != "pipeline" {
 		t.Errorf("keyterms = %v, want one field per term", got.fields["keyterms"])
 	}
 }

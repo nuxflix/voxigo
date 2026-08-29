@@ -3,7 +3,7 @@ package text
 import (
 	"strings"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // Aggregation is a run of text an aggregator has completed, and how it was

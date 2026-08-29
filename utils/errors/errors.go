@@ -6,7 +6,7 @@
 // Import it under a name of its own where the standard library's errors package
 // is also needed, for example:
 //
-//	import errs "github.com/gojargo/jargo/utils/errors"
+//	import errs "github.com/nuxflix/voxigo/utils/errors"
 package errors
 
 import (

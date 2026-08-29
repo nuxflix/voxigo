@@ -53,7 +53,7 @@ linters:
     - wastedassign     # wastedassign finds wasted assignment statements
     - whitespace       # Tool for detection of leading and trailing whitespace
   disable:
-    # Relaxed for jargo: these clash with the codebase's idioms.
+    # Relaxed for voxigo: these clash with the codebase's idioms.
     - containedctx     # the processor base intentionally holds a lifetime context
     - contextcheck     # cleanup deliberately uses a fresh context.Background()
     - nlreturn         # blank-line-before-return is pure style

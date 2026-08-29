@@ -3,7 +3,7 @@ package processor
 import (
 	"context"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // HandlerFunc handles a frame that reaches the edge of a pipeline. A source

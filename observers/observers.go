@@ -12,8 +12,8 @@ package observers
 import (
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // skipBroadcastSibling reports whether a frame is the upstream half of a

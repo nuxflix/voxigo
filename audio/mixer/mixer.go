@@ -11,8 +11,8 @@ import (
 	"log/slog"
 	"sync"
 
-	"github.com/gojargo/jargo/audio"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/audio"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // defaultVolume scales the background when none is configured.

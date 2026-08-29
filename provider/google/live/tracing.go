@@ -4,7 +4,7 @@ import (
 	"context"
 	"unicode/utf8"
 
-	"github.com/gojargo/jargo/telemetry/tracing"
+	"github.com/nuxflix/voxigo/telemetry/tracing"
 )
 
 // The Live API is a session rather than a request answered by a reply: the model

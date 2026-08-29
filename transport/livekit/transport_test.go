@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/audio/opus"
-	"github.com/gojargo/jargo/transport"
+	"github.com/nuxflix/voxigo/audio/opus"
+	"github.com/nuxflix/voxigo/transport"
 )
 
 // TestChannels checks an unset channel count means mono. Zero channels is not a

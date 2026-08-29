@@ -10,8 +10,8 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/gojargo/jargo/adapter"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/adapter"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // errCallNotRunning reports a cancellation aimed at a call that has already
@@ -263,7 +263,7 @@ func (b *Base) warnCancelCollisionLocked(name, target string) {
 }
 
 // BuiltinToolHolder is implemented by an adapter the service can add the tools
-// it implements itself to. adapter.Base satisfies it, so every jargo adapter
+// it implements itself to. adapter.Base satisfies it, so every voxigo adapter
 // does.
 type BuiltinToolHolder interface {
 	// SetBuiltin adds a tool sent on every request from now on.

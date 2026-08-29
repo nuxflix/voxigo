@@ -1,4 +1,4 @@
-// Package rtc implements a WebRTC transport for jargo. It terminates a peer
+// Package rtc implements a WebRTC transport for voxigo. It terminates a peer
 // connection, decodes received Opus audio into PCM frames, and encodes outgoing
 // PCM frames into Opus sent over an RTP track.
 //
@@ -84,7 +84,7 @@ func NewConnection(opts ...Option) (*Connection, error) {
 
 	local, err := webrtc.NewTrackLocalStaticSample(
 		webrtc.RTPCodecCapability{MimeType: webrtc.MimeTypeOpus, ClockRate: 48000, Channels: 2},
-		"audio", "jargo",
+		"audio", "voxigo",
 	)
 	if err != nil {
 		_ = pc.Close()

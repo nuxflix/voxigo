@@ -10,8 +10,8 @@ package realtime
 import (
 	"log/slog"
 
-	"github.com/gojargo/jargo/adapter"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/adapter"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // The keys a session payload's function-calling block is built from.

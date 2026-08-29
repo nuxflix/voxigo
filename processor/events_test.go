@@ -6,10 +6,10 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/gojargo/jargo/clock"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/clock"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 // TestBeforeAndAfterFrameEvents checks the four events a processor raises around

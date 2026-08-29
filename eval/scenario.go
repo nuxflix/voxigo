@@ -1,4 +1,4 @@
-// Package eval is a behavioral eval harness for jargo bots. It drives a real
+// Package eval is a behavioral eval harness for voxigo bots. It drives a real
 // bot over RTVI, plays scripted conversation turns, and asserts on the semantic
 // events the bot emits. That is a level above unit tests, which check one
 // processor at a time.
@@ -168,7 +168,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 	"gopkg.in/yaml.v3"
 )
 

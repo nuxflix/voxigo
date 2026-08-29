@@ -1,11 +1,11 @@
 # Changelog
 
-All notable changes to jargo are documented in this file.
+All notable changes to voxigo are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-> **Development status.** While jargo is in early development the version stays
+> **Development status.** While voxigo is in early development the version stays
 > in the `0.0.x` range: the public API is unstable and may change in any
 > release, with no backwards-compatibility guarantees. `0.1.0` will mark the
 > first release intended for wider use.
@@ -90,6 +90,14 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
   so a pipeline that used one does not leave it connected.
 
 ### Changed
+
+- **Renamed the project to voxigo.** The Go module is now
+  `github.com/nuxflix/voxigo`. The CLI is `voxigo` (`cmd/voxigo`). Environment
+  variables `JARGO_*` are now `VOXIGO_*` (`VOXIGO_ONNXRUNTIME_LIB`,
+  `VOXIGO_RNNOISE_LIB`, `VOXIGO_DENOISE`, `NEXT_PUBLIC_VOXIGO_URL`). Docker
+  images and the docs site follow the same name (`nuxflix/voxigo`,
+  `nuxflix.github.io/voxigo`). The resample library stays
+  `github.com/gojargo/go-resample`.
 
 - **Provider defaults tracked upstream.** Cartesia's default TTS model is now
   `sonic-3.6`. Gradium STT transcribes English by default rather than leaving the
@@ -318,7 +326,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
   and transcription to start and a speech timeout to stop.
 
 - **A wake phrase matches through punctuation,** so a service reporting
-  "Hey, Jargo!" wakes a bot listening for "hey jargo". Single activation also
+  "Hey, Voxigo!" wakes a bot listening for "hey voxigo". Single activation also
   no longer sleeps on the turn it just opened: the keepalive window is what
   puts the strategy back to sleep, so the turn the phrase opened can run.
   `WakePhraseStartConfig` gained callbacks for the phrase being detected and
@@ -883,7 +891,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
   published zero as "no wait" instead of keeping whatever they last held.
 
 - **Service spans carry the standard GenAI attributes.** The STT, LLM and TTS
-  spans previously carried keys of jargo's own (`llm.model`, `tts.chars`,
+  spans previously carried keys of voxigo's own (`llm.model`, `tts.chars`,
   `stt.audio_ms`, `llm.ttfb_ms`). They now carry the conventional ones:
   `gen_ai.provider.name`, `gen_ai.request.model`, `metrics.ttfb` in seconds,
   `metrics.character_count`, `metrics.audio_seconds`, plus the request itself
@@ -1353,7 +1361,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
   offered the tool to every other service reading that conversation. It now sits
   on the adapter the service converts through, which renders it in that
   provider's own format. A service that wants to offer one implements
-  `llm.AdapterHolder`; every jargo LLM service does.
+  `llm.AdapterHolder`; every voxigo LLM service does.
 
 - **An OpenAI-compatible endpoint states its adapter rather than a message
   hook.** `chat.Compat.ShapeMessages` is gone; `chat.Compat.Adapter` takes an
@@ -1367,7 +1375,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 - **A summarizer and a judge are built on a service that answers once, not on a
   streaming generator.** `llm.NewSummarizer` and `eval.NewLLMJudge` take an
-  `llm.Inferencer`. Every jargo LLM service satisfies it, so a caller passing one
+  `llm.Inferencer`. Every voxigo LLM service satisfies it, so a caller passing one
   is unaffected.
 
 - **A Gemini request shaper addresses both forms of the method.**
@@ -1464,7 +1472,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
   unchanged, so recalled context still sits outside the cached prefix.
 
 - **Perplexity is sent a conversation it accepts.** Perplexity is stricter than
-  OpenAI about the shape of a message history in three ways, and jargo honored
+  OpenAI about the shape of a message history in three ways, and voxigo honored
   none of them, so a conversation it could not read was sent as though it could:
   roles must strictly alternate, a system message is only accepted at the start,
   and the last message must be a user or tool message. Its adapter now demotes a
@@ -2443,7 +2451,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
   location on a regional endpoint and authorizes with a short-lived OAuth token.
   Credentials are explicit: either a service-account key JSON, which is exchanged
   for a token through a signed assertion, or a token source the application built
-  itself. jargo reads no environment variables, so Application Default
+  itself. voxigo reads no environment variables, so Application Default
   Credentials stay opt-in by passing their token source.
 
 - **`gemini.NewShapedLLM` and `live.NewWithConnector`**, the hooks Vertex hangs
@@ -2769,24 +2777,24 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
   only as token counts and speech is billed per character or per second.
   Characters are counted in runes, so accented text is no longer counted — or
   billed — twice. The model now labels the TTS metrics too, and a new
-  `jargo.stt.audio` counter records transcribed audio.
+  `voxigo.stt.audio` counter records transcribed audio.
 
-- **Behavioral eval harness** (`eval`) and a **`jargo` CLI** (`cmd/jargo`). The
+- **Behavioral eval harness** (`eval`) and a **`voxigo` CLI** (`cmd/voxigo`). The
   harness drives a real bot over RTVI, plays scripted conversation turns from a
   YAML scenario, and asserts on the semantic events the bot emits. Scenarios run
   two ways off one core: in-process from a Go test with `eval.Run(t, path,
   buildBot)` (the bot hosted on a loopback WebSocket via `eval.Handler`), or from
-  the command line against a running bot with `jargo eval run <scenario.yaml>
+  the command line against a running bot with `voxigo eval run <scenario.yaml>
   --bot-url ws://…`. This first iteration covers text-mode scenarios — each user
   turn is delivered as RTVI `send-text`, and expectations match `llm_started`,
   `llm_response` (`text_contains` or an LLM `judge`), and `function_call`
   events in order, each within a `within_ms` latency budget. A `judge:` criterion
-  is graded by an LLM judge (`eval.NewLLMJudge`, backed by any jargo LLM service;
-  `jargo eval run --judge-model …` for the CLI), with verdicts cached per
+  is graded by an LLM judge (`eval.NewLLMJudge`, backed by any voxigo LLM service;
+  `voxigo eval run --judge-model …` for the CLI), with verdicts cached per
   (criterion, reply). **Audio mode** (`Options.UserTTS`) synthesizes each user
   turn and streams it to the bot as microphone audio at real-time cadence, so the
   bot's real VAD, turn detection and STT run — unlocking `user_started_speaking`,
-  `user_stopped_speaking` and `user_transcription` assertions. **`jargo eval
+  `user_stopped_speaking` and `user_transcription` assertions. **`voxigo eval
   suite <manifest.yaml>`** runs many scenarios across bots concurrently and prints
   an aggregate summary.
 - **RTVI text input and richer event surface** (`processor/rtvi`): the processor
@@ -2934,7 +2942,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
   and loads it at run time, so it builds in every configuration and is selected at
   runtime by setting it as the transport's `AudioInFilter` — like any STT/LLM
   service. `New` returns `ErrNotAvailable` when librnnoise is absent (point at a
-  non-standard install with `JARGO_RNNOISE_LIB`); the `-tags rnnoise` build tag and
+  non-standard install with `VOXIGO_RNNOISE_LIB`); the `-tags rnnoise` build tag and
   the passthrough stub are gone. Together with the ONNX backend, the default build
   is now fully cgo-free — `CGO_ENABLED=0 go build ./...` works.
 - Bumped `github.com/pion/opus` to upstream `main`, pulling in the latest CELT
@@ -2943,9 +2951,9 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - The per-provider `examples/voice/<provider>` bots are now self-contained,
   headless **backends**: the shared `run` helper was removed and each example
   inlines the full pipeline and serves only the WebRTC `/offer` endpoint (with
-  CORS), so a single file can be copied as a starting point. jargo is a backend
+  CORS), so a single file can be copied as a starting point. voxigo is a backend
   framework; the browser client is the `nextjs-voicebot` example in
-  [jargo-client-react](https://github.com/gojargo/jargo-client-react).
+  [voxigo-client-react](https://github.com/nuxflix/voxigo-client-react).
 
 ## [0.0.1] - 2026-06-29
 
@@ -2984,7 +2992,7 @@ framework for Go, ported from [Pipecat](https://github.com/pipecat-ai/pipecat).
   tracing) and `twiliobot` bots, plus `examples/voice/<provider>` — one small
   bot per provider, each wiring its STT/LLM/TTS explicitly in Go.
 
-[Unreleased]: https://github.com/gojargo/jargo/compare/v0.0.4...HEAD
-[0.0.4]: https://github.com/gojargo/jargo/compare/v0.0.3...v0.0.4
-[0.0.3]: https://github.com/gojargo/jargo/compare/v0.0.2...v0.0.3
-[0.0.1]: https://github.com/gojargo/jargo/releases/tag/v0.0.1
+[Unreleased]: https://github.com/nuxflix/voxigo/compare/v0.0.4...HEAD
+[0.0.4]: https://github.com/nuxflix/voxigo/compare/v0.0.3...v0.0.4
+[0.0.3]: https://github.com/nuxflix/voxigo/compare/v0.0.2...v0.0.3
+[0.0.1]: https://github.com/nuxflix/voxigo/releases/tag/v0.0.1

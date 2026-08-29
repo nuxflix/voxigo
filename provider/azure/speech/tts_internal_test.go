@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/language"
 )
 
 // ForceLocale wraps the text in SSML's <lang> element, which is what pins a

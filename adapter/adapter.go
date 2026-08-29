@@ -1,4 +1,4 @@
-// Package adapter converts jargo's universal conversation context into the
+// Package adapter converts voxigo's universal conversation context into the
 // request each LLM provider takes.
 //
 // A provider's wire format is its own: one takes the system prompt as a leading
@@ -20,7 +20,7 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // ConversionError reports that a conversation could not be mapped into a

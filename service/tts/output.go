@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // defaultSilenceAfterStop is how much silence pads an utterance when padding is

@@ -3,9 +3,9 @@ package chat
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/adapter"
-	openaiadapter "github.com/gojargo/jargo/adapter/openai"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/adapter"
+	openaiadapter "github.com/nuxflix/voxigo/adapter/openai"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // bodyOf runs one generation against a recording server and returns the request

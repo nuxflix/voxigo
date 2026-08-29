@@ -9,8 +9,8 @@ import (
 	"testing"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/stt"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/stt"
 )
 
 func wsURL(httpURL string) string {

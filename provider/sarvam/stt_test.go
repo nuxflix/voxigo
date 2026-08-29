@@ -13,10 +13,10 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/stt"
-	"github.com/gojargo/jargo/service/wsutil"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/stt"
+	"github.com/nuxflix/voxigo/service/wsutil"
 )
 
 // sttSession is what the fake transcription endpoint saw.

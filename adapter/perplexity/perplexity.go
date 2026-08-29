@@ -10,9 +10,9 @@ package perplexity
 import (
 	"slices"
 
-	"github.com/gojargo/jargo/adapter"
-	"github.com/gojargo/jargo/adapter/openai"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/adapter"
+	"github.com/nuxflix/voxigo/adapter/openai"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // Adapter converts a universal conversation into a Perplexity chat-completions

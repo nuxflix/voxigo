@@ -10,10 +10,10 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/service/tts"
-	errs "github.com/gojargo/jargo/utils/errors"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/service/tts"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 const (

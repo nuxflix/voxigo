@@ -5,7 +5,7 @@ short; the README and `docs/` cover usage in depth.
 
 ## What this is
 
-jargo is a WebRTC-native, audio-first conversational-AI framework for Go — a
+voxigo is a WebRTC-native, audio-first conversational-AI framework for Go — a
 port of [Pipecat](https://github.com/pipecat-ai/pipecat). Library code lives at
 the module root; runnable bots live in `examples/`.
 
@@ -31,8 +31,8 @@ sudo apt-get install -y libopus-dev   # for -tags libopus
 - `go build -tags libopus ./...` — opt into the C Opus encoder (better speech;
   the default is the pure-Go SILK encoder). Needs cgo.
 - The **ONNX Runtime** and **RNNoise** shared libraries are located at run time.
-  Point at non-standard installs with `JARGO_ONNXRUNTIME_LIB` and
-  `JARGO_RNNOISE_LIB`.
+  Point at non-standard installs with `VOXIGO_ONNXRUNTIME_LIB` and
+  `VOXIGO_RNNOISE_LIB`.
 
 Formatting and lint are enforced by **golangci-lint** (`.golangci.yml`):
 
@@ -58,7 +58,7 @@ worth knowing:
 - `make docs-check`: build the site and fail on unresolved documentation links.
 - `make deps`, `make deps-onnx`, `make deps-rnnoise`: install the cgo headers
   and the two native runtimes above. The last two need no root: they install
-  under `.native/` and print the `JARGO_*_LIB` values to export.
+  under `.native/` and print the `VOXIGO_*_LIB` values to export.
 - `make vuln`, `make secrets`: the govulncheck and gitleaks scans CI gates on.
 
 ## Conventions

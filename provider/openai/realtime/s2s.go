@@ -13,11 +13,11 @@ import (
 	"sync"
 
 	"github.com/coder/websocket"
-	realtimeadapter "github.com/gojargo/jargo/adapter/realtime"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/service/llm"
-	"github.com/gojargo/jargo/service/wsutil"
+	realtimeadapter "github.com/nuxflix/voxigo/adapter/realtime"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/service/llm"
+	"github.com/nuxflix/voxigo/service/wsutil"
 )
 
 // Service is the Realtime speech-to-speech processor.

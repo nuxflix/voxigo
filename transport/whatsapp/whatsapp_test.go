@@ -14,7 +14,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/transport/rtc"
+	"github.com/nuxflix/voxigo/transport/rtc"
 	"github.com/pion/webrtc/v4"
 )
 

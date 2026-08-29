@@ -13,10 +13,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 // uploaded is the transcription request as the endpoint received it: the form

@@ -3,8 +3,8 @@ package assemblyai_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/provider/assemblyai"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/provider/assemblyai"
 )
 
 // TestConfigValidate pins which Config fields the provider requires.

@@ -3,8 +3,8 @@ package speech_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/provider/azure/speech"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/provider/azure/speech"
 )
 
 // TestConfigValidateTTS pins which TTSConfig fields the provider requires.

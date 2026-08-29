@@ -9,11 +9,11 @@ import (
 	"maps"
 	"net/http"
 
-	"github.com/gojargo/jargo/adapter"
-	geminiadapter "github.com/gojargo/jargo/adapter/gemini"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/llm"
-	errs "github.com/gojargo/jargo/utils/errors"
+	"github.com/nuxflix/voxigo/adapter"
+	geminiadapter "github.com/nuxflix/voxigo/adapter/gemini"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/llm"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 // RequestShaper customizes how a generateContent request is addressed and

@@ -6,11 +6,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/service/tts"
-	"github.com/gojargo/jargo/transport/wsserver/rtviws"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/service/tts"
+	"github.com/nuxflix/voxigo/transport/wsserver/rtviws"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 const (

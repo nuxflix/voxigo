@@ -11,10 +11,10 @@ import (
 	"sync"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/internal/query"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/stt"
-	"github.com/gojargo/jargo/service/wsutil"
+	"github.com/nuxflix/voxigo/internal/query"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/stt"
+	"github.com/nuxflix/voxigo/service/wsutil"
 )
 
 // NewSTT builds an AssemblyAI streaming STT service.

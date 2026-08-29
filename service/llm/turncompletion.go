@@ -8,8 +8,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // Turn-completion gating lives on the LLM service rather than beside it,
@@ -316,7 +316,7 @@ func (c UserTurnCompletionConfig) prompt(t IncompleteType) string {
 }
 
 // turnCompletionState is the gating state of one service. Upstream runs on a
-// single event loop and needs no lock; jargo reaches this from the frame
+// single event loop and needs no lock; voxigo reaches this from the frame
 // goroutine and from the re-prompt timer, so it carries its own.
 type turnCompletionState struct {
 	mu sync.Mutex

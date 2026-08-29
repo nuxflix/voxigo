@@ -3,7 +3,7 @@ package eval_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/eval"
+	"github.com/nuxflix/voxigo/eval"
 )
 
 // Tests for the entry points a bot's own test file calls. They stand the bot up

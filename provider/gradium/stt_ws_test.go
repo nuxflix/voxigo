@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/language"
 )
 
 // Tests for the transcription session. Gradium acknowledges a setup handshake

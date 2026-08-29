@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/gojargo/jargo/telemetry/metrics"
+	"github.com/nuxflix/voxigo/telemetry/metrics"
 	"go.opentelemetry.io/otel"
 	sdkmetric "go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/metric/metricdata"
@@ -35,8 +35,8 @@ func TestRecordsInstruments(t *testing.T) {
 		}
 	}
 	for _, want := range []string{
-		"jargo.ttfb", "jargo.processing", "jargo.llm.tokens",
-		"jargo.tts.characters", "jargo.stt.audio",
+		"voxigo.ttfb", "voxigo.processing", "voxigo.llm.tokens",
+		"voxigo.tts.characters", "voxigo.stt.audio",
 	} {
 		if !names[want] {
 			t.Fatalf("missing instrument %q; got %v", want, names)

@@ -1,5 +1,5 @@
 // Command localaudio echoes the local microphone straight back to the local
-// speaker using jargo's pure-Go local-audio transport. It needs no API keys and
+// speaker using voxigo's pure-Go local-audio transport. It needs no API keys and
 // no browser — just a running PulseAudio or PipeWire server — so it is a quick
 // way to check that capture and playback work. Wear headphones: echoing the mic
 // to the speaker will otherwise feed back.
@@ -16,11 +16,11 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/transport"
-	"github.com/gojargo/jargo/transport/localaudio"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/transport"
+	"github.com/nuxflix/voxigo/transport/localaudio"
 )
 
 const sampleRate = 24000
@@ -30,7 +30,7 @@ func main() {
 	params.AudioInSampleRate = sampleRate
 	params.AudioOutSampleRate = sampleRate
 
-	t, err := localaudio.New(localaudio.Config{AppName: "jargo-echo", Params: params})
+	t, err := localaudio.New(localaudio.Config{AppName: "voxigo-echo", Params: params})
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -8,7 +8,7 @@
 // cgo: the package always builds (no build tag, CGO_ENABLED=0 friendly) and
 // dlopens librnnoise at run time. New returns ErrNotAvailable when the library
 // cannot be located, so a caller can fall back to running without it. Point at a
-// non-standard install with the JARGO_RNNOISE_LIB environment variable.
+// non-standard install with the VOXIGO_RNNOISE_LIB environment variable.
 //
 // RNNoise operates on 48 kHz mono audio in 480-sample (10 ms) frames; the filter
 // buffers partial frames and resamples to and from 48 kHz when the transport

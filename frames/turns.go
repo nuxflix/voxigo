@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gojargo/jargo/audio/turn"
-	"github.com/gojargo/jargo/audio/vad"
+	"github.com/nuxflix/voxigo/audio/turn"
+	"github.com/nuxflix/voxigo/audio/vad"
 )
 
 // VADUserStartedSpeakingFrame reports that a voice-activity detector heard the

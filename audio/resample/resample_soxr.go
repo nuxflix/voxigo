@@ -8,15 +8,15 @@ package resample
 
 // Thin wrappers so the spec constructors and their constants are resolved by the
 // C compiler rather than relying on cgo macro/enum exposure.
-static soxr_io_spec_t      jargo_io_int16(void)   { return soxr_io_spec(SOXR_INT16_I, SOXR_INT16_I); }
-static soxr_quality_spec_t jargo_quality(unsigned long recipe) { return soxr_quality_spec(recipe, 0); }
-static soxr_runtime_spec_t jargo_runtime_1t(void) { return soxr_runtime_spec(1); }
+static soxr_io_spec_t      voxigo_io_int16(void)   { return soxr_io_spec(SOXR_INT16_I, SOXR_INT16_I); }
+static soxr_quality_spec_t voxigo_quality(unsigned long recipe) { return soxr_quality_spec(recipe, 0); }
+static soxr_runtime_spec_t voxigo_runtime_1t(void) { return soxr_runtime_spec(1); }
 
-static unsigned long jargo_recipe_vhq(void) { return SOXR_VHQ; }
-static unsigned long jargo_recipe_hq(void)  { return SOXR_HQ;  }
-static unsigned long jargo_recipe_mq(void)  { return SOXR_MQ;  }
-static unsigned long jargo_recipe_lq(void)  { return SOXR_LQ;  }
-static unsigned long jargo_recipe_qq(void)  { return SOXR_QQ;  }
+static unsigned long voxigo_recipe_vhq(void) { return SOXR_VHQ; }
+static unsigned long voxigo_recipe_hq(void)  { return SOXR_HQ;  }
+static unsigned long voxigo_recipe_mq(void)  { return SOXR_MQ;  }
+static unsigned long voxigo_recipe_lq(void)  { return SOXR_LQ;  }
+static unsigned long voxigo_recipe_qq(void)  { return SOXR_QQ;  }
 */
 import "C"
 
@@ -39,17 +39,17 @@ var (
 func recipeFor(q Quality) C.ulong {
 	switch q {
 	case QualityVHQ:
-		return C.jargo_recipe_vhq()
+		return C.voxigo_recipe_vhq()
 	case QualityHQ:
-		return C.jargo_recipe_hq()
+		return C.voxigo_recipe_hq()
 	case QualityMQ:
-		return C.jargo_recipe_mq()
+		return C.voxigo_recipe_mq()
 	case QualityLQ:
-		return C.jargo_recipe_lq()
+		return C.voxigo_recipe_lq()
 	case QualityQQ:
-		return C.jargo_recipe_qq()
+		return C.voxigo_recipe_qq()
 	default:
-		return C.jargo_recipe_vhq()
+		return C.voxigo_recipe_vhq()
 	}
 }
 
@@ -85,9 +85,9 @@ func NewWithConfig(inRate, outRate, channels int, cfg Config) (*Resampler, error
 		return r, nil
 	}
 
-	ioSpec := C.jargo_io_int16()
-	qSpec := C.jargo_quality(recipeFor(cfg.Quality))
-	rtSpec := C.jargo_runtime_1t() // single-threaded: one resampler per stream
+	ioSpec := C.voxigo_io_int16()
+	qSpec := C.voxigo_quality(recipeFor(cfg.Quality))
+	rtSpec := C.voxigo_runtime_1t() // single-threaded: one resampler per stream
 
 	var serr C.soxr_error_t
 	r.soxr = C.soxr_create(
@@ -175,9 +175,9 @@ func resampleAll(pcm []byte, inRate, outRate, channels int, q Quality) ([]byte, 
 	outFrames := inFrames*outRate/inRate + 64
 	out := make([]byte, outFrames*bytesPerFrame)
 
-	ioSpec := C.jargo_io_int16()
-	qSpec := C.jargo_quality(recipeFor(q))
-	rtSpec := C.jargo_runtime_1t()
+	ioSpec := C.voxigo_io_int16()
+	qSpec := C.voxigo_quality(recipeFor(q))
+	rtSpec := C.voxigo_runtime_1t()
 
 	var idone, odone C.size_t
 	serr := C.soxr_oneshot(

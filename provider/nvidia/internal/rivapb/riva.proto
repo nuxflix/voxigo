@@ -9,7 +9,7 @@ syntax = "proto3";
 //	go generate ./provider/nvidia/internal/rivapb
 package nvidia.riva.asr;
 
-option go_package = "github.com/gojargo/jargo/provider/nvidia/internal/rivapb;rivapb";
+option go_package = "github.com/nuxflix/voxigo/provider/nvidia/internal/rivapb;rivapb";
 
 import "riva_audio.proto";
 

@@ -1,4 +1,4 @@
-// Command voicebot is the full-featured voice agent built on jargo: microphone
+// Command voicebot is the full-featured voice agent built on voxigo: microphone
 // audio comes in over WebRTC, Deepgram transcribes it, an Anthropic LLM reasons
 // over it, ElevenLabs speaks the reply, and the audio goes back out over WebRTC.
 // On top of the core STT -> LLM -> TTS pipeline it adds turn-taking and barge-in
@@ -15,7 +15,7 @@
 // turns on when MEM0_HOST is set; tracing and metrics when
 // OTEL_EXPORTER_OTLP_ENDPOINT is set.
 //
-// jargo itself reads no environment variables: the library takes explicit
+// voxigo itself reads no environment variables: the library takes explicit
 // Config structs, and this app is responsible for sourcing and validating them.
 package main
 
@@ -30,23 +30,23 @@ import (
 	"log/slog"
 	"net/http"
 
-	"github.com/gojargo/jargo/audio/opus"
-	"github.com/gojargo/jargo/audio/turn"
-	"github.com/gojargo/jargo/audio/vad"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/processor/aggregators"
-	"github.com/gojargo/jargo/processor/turns"
-	"github.com/gojargo/jargo/processor/vadproc"
-	"github.com/gojargo/jargo/provider/anthropic"
-	"github.com/gojargo/jargo/provider/deepgram"
-	"github.com/gojargo/jargo/provider/elevenlabs"
-	"github.com/gojargo/jargo/provider/mem0"
-	"github.com/gojargo/jargo/telemetry/metrics"
-	"github.com/gojargo/jargo/telemetry/tracing"
-	"github.com/gojargo/jargo/transport"
-	"github.com/gojargo/jargo/transport/rtc"
+	"github.com/nuxflix/voxigo/audio/opus"
+	"github.com/nuxflix/voxigo/audio/turn"
+	"github.com/nuxflix/voxigo/audio/vad"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/processor/aggregators"
+	"github.com/nuxflix/voxigo/processor/turns"
+	"github.com/nuxflix/voxigo/processor/vadproc"
+	"github.com/nuxflix/voxigo/provider/anthropic"
+	"github.com/nuxflix/voxigo/provider/deepgram"
+	"github.com/nuxflix/voxigo/provider/elevenlabs"
+	"github.com/nuxflix/voxigo/provider/mem0"
+	"github.com/nuxflix/voxigo/telemetry/metrics"
+	"github.com/nuxflix/voxigo/telemetry/tracing"
+	"github.com/nuxflix/voxigo/transport"
+	"github.com/nuxflix/voxigo/transport/rtc"
 	"github.com/pion/webrtc/v4"
 	"github.com/spf13/viper"
 )
@@ -86,7 +86,7 @@ func run() error {
 	http.HandleFunc("/offer", func(w http.ResponseWriter, r *http.Request) { handleOffer(w, r, v) })
 
 	addr := v.GetString("addr")
-	slog.Info("jargo voicebot listening", "url", "http://localhost"+addr)
+	slog.Info("voxigo voicebot listening", "url", "http://localhost"+addr)
 	return http.ListenAndServe(addr, nil)
 }
 
@@ -98,13 +98,13 @@ func setupTelemetry(v *viper.Viper) func() {
 		return func() {}
 	}
 	var shutdowns []func(context.Context) error
-	if sd, err := tracing.Init(context.Background(), tracing.Config{ServiceName: "jargo-voicebot"}); err != nil {
+	if sd, err := tracing.Init(context.Background(), tracing.Config{ServiceName: "voxigo-voicebot"}); err != nil {
 		slog.Error("tracing init failed", "err", err)
 	} else {
 		shutdowns = append(shutdowns, sd)
 		slog.Info("OpenTelemetry tracing enabled")
 	}
-	if sd, err := metrics.Init(context.Background(), metrics.Config{ServiceName: "jargo-voicebot"}); err != nil {
+	if sd, err := metrics.Init(context.Background(), metrics.Config{ServiceName: "voxigo-voicebot"}); err != nil {
 		slog.Error("metrics init failed", "err", err)
 	} else {
 		shutdowns = append(shutdowns, sd)
@@ -298,7 +298,7 @@ func buildMemory(v *viper.Viper) *mem0.Service {
 func buildTurnStack() (*vadproc.Processor, *turns.Config) {
 	vd, err := vad.NewSilero()
 	if err != nil {
-		slog.Warn("turn taking disabled: Silero VAD unavailable (set JARGO_ONNXRUNTIME_LIB)", "err", err)
+		slog.Warn("turn taking disabled: Silero VAD unavailable (set VOXIGO_ONNXRUNTIME_LIB)", "err", err)
 		return nil, nil
 	}
 	tr, err := turn.NewSmartTurnV3()

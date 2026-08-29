@@ -3,7 +3,7 @@ package processor
 import (
 	"context"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // FilterFunc reports whether a frame is allowed to pass through a FunctionFilter.

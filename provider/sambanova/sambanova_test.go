@@ -3,8 +3,8 @@ package sambanova_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/provider/sambanova"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/provider/sambanova"
 )
 
 // TestNewLLM checks the SambaNova Cloud shim wires the right service name and

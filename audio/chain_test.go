@@ -5,8 +5,8 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/gojargo/jargo/audio"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/audio"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // The failures the fake filters report.

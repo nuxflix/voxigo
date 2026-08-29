@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/stt"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/stt"
 )
 
 // newTestStream builds a stream with no connection under it. The reader

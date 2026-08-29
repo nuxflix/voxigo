@@ -1,7 +1,7 @@
-jargo
-=====
+voxigo
+======
 
-jargo is a Go port of Pipecat (https://github.com/pipecat-ai/pipecat), the
+voxigo is a Go port of Pipecat (https://github.com/pipecat-ai/pipecat), the
 real-time voice and multimodal AI pipeline framework created by Daily.
 
 The upstream project is licensed under the BSD 2-Clause License,
@@ -9,10 +9,10 @@ Copyright (c) 2024-2026, Daily. That license is reproduced verbatim in the
 LICENSE file and its copyright notice is retained in full, as required.
 
 "Pipecat" is a name/mark of Daily and is referenced here solely for accurate
-attribution of the upstream work. jargo is an independent project and is not
+attribution of the upstream work. voxigo is an independent project and is not
 affiliated with, sponsored by, or endorsed by Daily.
 
-Go port copyright (c) 2026 the jargo authors.
+Go port copyright (c) 2026 the voxigo authors.
 
 
 Third-party dependencies
@@ -25,13 +25,13 @@ github.com/pion/webrtc and github.com/pion/opus (a pure-Go Opus codec).
 Voice activity and end-of-turn detection use the ONNX Runtime via
 github.com/yalue/onnxruntime_go (MIT License). The ONNX Runtime itself
 (https://onnxruntime.ai, MIT License) is supplied by the operator and is not
-distributed with jargo.
+distributed with voxigo.
 
 
 Embedded models
 ---------------
 
-jargo embeds two ONNX models, used unmodified:
+voxigo embeds two ONNX models, used unmodified:
 
   - Silero VAD (audio/vad/silero_vad.onnx), from
     https://github.com/snakers4/silero-vad, copyright (c) Silero Team,

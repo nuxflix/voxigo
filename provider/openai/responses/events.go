@@ -6,8 +6,8 @@ import (
 	"maps"
 	"slices"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/llm"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/llm"
 )
 
 // Event types the services read. The Responses API streams the same events over

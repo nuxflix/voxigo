@@ -12,14 +12,14 @@
 //
 // Kyutai's other self-hosted models, the Delayed Streams Modeling speech-to-text
 // and text-to-speech served by moshi-server, are in
-// [github.com/gojargo/jargo/provider/kyutai/moshi]. They are a separate server
+// [github.com/nuxflix/voxigo/provider/kyutai/moshi]. They are a separate server
 // speaking a separate protocol.
 package pockettts
 
 import (
 	"errors"
 
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/internal/validate"
 )
 
 // Sentinel errors for the synthesis request.

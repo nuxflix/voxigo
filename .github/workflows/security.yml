@@ -73,12 +73,12 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       # govulncheck builds the packages to compute the reachable call graph;
-      # jargo links libsoxr through cgo, so the dev headers must be present.
+      # voxigo links libsoxr through cgo, so the dev headers must be present.
       - run: sudo apt-get update && sudo apt-get install -y libsoxr-dev
       - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version-file: go.mod
-      # Reports only vulnerabilities jargo's code actually reaches, so this gates
+      # Reports only vulnerabilities voxigo's code actually reaches, so this gates
       # the build. Stdlib advisories are cleared by the latest 1.26.x toolchain
       # that setup-go resolves from go.mod. The govulncheck version is pinned in
       # the Makefile, which installs it and runs the scan.

@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 func TestQueueSystemPriority(t *testing.T) {

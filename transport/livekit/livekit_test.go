@@ -3,7 +3,7 @@ package livekit
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 func TestValidate(t *testing.T) {

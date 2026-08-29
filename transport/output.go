@@ -8,10 +8,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/audio"
-	"github.com/gojargo/jargo/audio/dtmf"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/audio"
+	"github.com/nuxflix/voxigo/audio/dtmf"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // errNativeDTMFUnimplemented is returned by a transport that reports native DTMF

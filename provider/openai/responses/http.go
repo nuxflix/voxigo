@@ -8,10 +8,10 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/gojargo/jargo/adapter"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/llm"
-	errs "github.com/gojargo/jargo/utils/errors"
+	"github.com/nuxflix/voxigo/adapter"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/llm"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 // HTTPService streams a Responses turn over one request.

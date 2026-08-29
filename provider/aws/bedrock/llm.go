@@ -6,7 +6,7 @@ import (
 	"github.com/anthropics/anthropic-sdk-go/bedrock"
 	awsconfig "github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/credentials"
-	"github.com/gojargo/jargo/provider/anthropic"
+	"github.com/nuxflix/voxigo/provider/anthropic"
 )
 
 // loadOptions builds the AWS config load options from the static fields. An

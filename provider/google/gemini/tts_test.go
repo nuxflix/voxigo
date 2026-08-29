@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/language"
 )
 
 // errDownstream stands in for a downstream consumer that has gone away.

@@ -10,11 +10,11 @@ import (
 	"testing"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/tts"
-	uctx "github.com/gojargo/jargo/utils/context"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/tts"
+	uctx "github.com/nuxflix/voxigo/utils/context"
 )
 
 // session is what the fake synthesis endpoint saw: the headers it was dialed

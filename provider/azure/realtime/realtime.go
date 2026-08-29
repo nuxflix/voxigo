@@ -11,8 +11,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/gojargo/jargo/internal/validate"
-	openairealtime "github.com/gojargo/jargo/provider/openai/realtime"
+	"github.com/nuxflix/voxigo/internal/validate"
+	openairealtime "github.com/nuxflix/voxigo/provider/openai/realtime"
 )
 
 // defaultAPIVersion is a recent Azure OpenAI Realtime API version.

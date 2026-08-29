@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // TestAsyncToolMessagesRoundTrip checks the three stages of the protocol survive

@@ -8,7 +8,7 @@ package bedrock
 import (
 	"time"
 
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/internal/validate"
 )
 
 // Config configures the Amazon Bedrock LLM provider.

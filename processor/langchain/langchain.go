@@ -1,8 +1,8 @@
 // Package langchain bridges an external "chain" — any streaming text generator,
-// such as a LangChain-style runnable or a custom agent — into a jargo pipeline.
+// such as a LangChain-style runnable or a custom agent — into a voxigo pipeline.
 // The Processor takes the latest user message from the LLM context, invokes the
 // chain, and streams its output downstream as an LLM response, so a chain can
-// stand in for a jargo LLM service.
+// stand in for a voxigo LLM service.
 package langchain
 
 import (
@@ -10,8 +10,8 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // Chain is a streaming text generator. It receives the latest user input and

@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor/aggregators"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor/aggregators"
 )
 
 // Ported from upstream's summarizer suite. Upstream keeps the system prompt as

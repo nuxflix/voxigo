@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/llm"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/llm"
 	mcpsdk "github.com/modelcontextprotocol/go-sdk/mcp"
 )
 
@@ -27,7 +27,7 @@ func TestValidate(t *testing.T) {
 }
 
 // testClient spins up an in-process MCP server exposing one "greet" tool and
-// returns a jargo MCP client connected to it over an in-memory transport.
+// returns a voxigo MCP client connected to it over an in-memory transport.
 func testClient(t *testing.T, filter []string) *Client {
 	t.Helper()
 	return testClientWith(t, Config{ToolsFilter: filter})

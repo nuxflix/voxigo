@@ -5,7 +5,7 @@ weight: 1
 
 # Architecture
 
-A jargo bot is a **chain of processors** that passes **frames** to each other.
+A voxigo bot is a **chain of processors** that passes **frames** to each other.
 Audio arrives from a transport at one end, text and audio flow through the
 services in the middle, and synthesized speech leaves through the same transport
 at the other end.
@@ -16,7 +16,7 @@ two nouns.
 ## The shape of a bot
 
 Here is a complete voice agent: the pipeline from
-[`examples/voice/openai`](https://github.com/gojargo/jargo/tree/main/examples/voice/openai),
+[`examples/voice/openai`](https://github.com/nuxflix/voxigo/tree/main/examples/voice/openai),
 which is the reference wiring:
 
 ```mermaid

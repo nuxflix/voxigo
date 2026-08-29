@@ -3,8 +3,8 @@ package fireworks_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/provider/fireworks"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/provider/fireworks"
 )
 
 // TestNewLLM checks the Fireworks AI shim wires the right service name and

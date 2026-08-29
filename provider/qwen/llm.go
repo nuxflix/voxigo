@@ -1,6 +1,6 @@
 package qwen
 
-import "github.com/gojargo/jargo/provider/openai/chat"
+import "github.com/nuxflix/voxigo/provider/openai/chat"
 
 // NewLLM builds a Qwen (DashScope) LLM service.
 func NewLLM(cfg chat.LLMConfig) *chat.LLMService {

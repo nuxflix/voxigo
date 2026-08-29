@@ -1,8 +1,8 @@
-# jargo is primarily a library; goreleaser ships the runnable example bots as
+# voxigo is primarily a library; goreleaser ships the runnable example bots as
 # release artifacts. See https://goreleaser.com.
 version: 2
 
-project_name: jargo
+project_name: voxigo
 
 before:
   hooks:
@@ -16,7 +16,7 @@ before:
 builds:
   - id: echo
     main: ./examples/echo
-    binary: jargo-echo
+    binary: voxigo-echo
     env:
       - CGO_ENABLED=1
     goos: [linux]
@@ -25,7 +25,7 @@ builds:
       - -s -w
   - id: voicebot
     main: ./examples/voicebot
-    binary: jargo-voicebot
+    binary: voxigo-voicebot
     env:
       - CGO_ENABLED=1
     goos: [linux]

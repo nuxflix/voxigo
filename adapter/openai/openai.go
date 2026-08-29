@@ -11,8 +11,8 @@ import (
 	"log/slog"
 	"maps"
 
-	"github.com/gojargo/jargo/adapter"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/adapter"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // The message roles the chat-completions API defines.

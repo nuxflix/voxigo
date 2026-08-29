@@ -1,5 +1,5 @@
-// Command jargo is the command-line entry point for jargo tooling. Today it
-// hosts the behavioral eval runner (jargo eval run); the subcommand tree leaves
+// Command voxigo is the command-line entry point for voxigo tooling. Today it
+// hosts the behavioral eval runner (voxigo eval run); the subcommand tree leaves
 // room for more as the toolchain grows.
 package main
 
@@ -29,11 +29,11 @@ func run() int {
 	return 0
 }
 
-// rootCmd builds the top-level jargo command.
+// rootCmd builds the top-level voxigo command.
 func rootCmd() *cobra.Command {
 	root := &cobra.Command{
-		Use:          "jargo",
-		Short:        "Tooling for building and testing jargo voice agents",
+		Use:          "voxigo",
+		Short:        "Tooling for building and testing voxigo voice agents",
 		SilenceUsage: true,
 	}
 	root.AddCommand(evalCmd())

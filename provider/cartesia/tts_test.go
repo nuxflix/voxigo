@@ -3,8 +3,8 @@ package cartesia
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/service/tts"
-	uctx "github.com/gojargo/jargo/utils/context"
+	"github.com/nuxflix/voxigo/service/tts"
+	uctx "github.com/nuxflix/voxigo/utils/context"
 )
 
 // timedSynthesizer must satisfy tts.WordTimestamps so the base takes the

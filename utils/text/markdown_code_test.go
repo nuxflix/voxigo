@@ -3,7 +3,7 @@ package text_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/utils/text"
+	"github.com/nuxflix/voxigo/utils/text"
 )
 
 // Tests for the state the Markdown filter carries between calls. A code block or

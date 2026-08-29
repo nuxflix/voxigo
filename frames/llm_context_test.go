@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // TestContextMutators covers the setters a mid-session reconfiguration uses:

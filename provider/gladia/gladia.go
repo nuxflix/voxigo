@@ -8,7 +8,7 @@ import (
 	"errors"
 	"time"
 
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/internal/validate"
 )
 
 // errStatus is returned when the session REST call responds with a non-2xx
@@ -94,7 +94,7 @@ type Config struct {
 	// vocabulary, translation, NER, sentiment, etc.) through verbatim; nil omits it.
 	RealtimeProcessing map[string]any
 	// MessagesConfig filters received messages; nil defaults to partial+final
-	// transcripts, matching jargo's needs.
+	// transcripts, matching voxigo's needs.
 	MessagesConfig *MessagesConfig
 	// EnableVAD lets Gladia's own voice-activity detection drive the turn. With
 	// it set the service reports when the user starts and stops speaking, the

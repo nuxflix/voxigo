@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
 )
 
 // errNoSyncBranches is returned by NewSyncParallel when no branch is supplied.

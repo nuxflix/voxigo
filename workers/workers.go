@@ -37,10 +37,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/gojargo/jargo/bus"
-	"github.com/gojargo/jargo/pipeline/jobcontext"
-	"github.com/gojargo/jargo/registry"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/bus"
+	"github.com/nuxflix/voxigo/pipeline/jobcontext"
+	"github.com/nuxflix/voxigo/registry"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 // The events a worker raises. Attach handlers with the Add method it inherits

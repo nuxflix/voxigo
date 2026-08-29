@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/bus"
-	"github.com/gojargo/jargo/registry"
-	"github.com/gojargo/jargo/workers"
+	"github.com/nuxflix/voxigo/bus"
+	"github.com/nuxflix/voxigo/registry"
+	"github.com/nuxflix/voxigo/workers"
 )
 
 // The runner: what adding a worker does, what running does, and how ending and

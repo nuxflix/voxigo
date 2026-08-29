@@ -3,7 +3,7 @@ package kokoro_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/provider/kokoro"
+	"github.com/nuxflix/voxigo/provider/kokoro"
 )
 
 func TestConfigValidate(t *testing.T) {

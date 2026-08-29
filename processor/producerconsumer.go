@@ -4,7 +4,7 @@ import (
 	"context"
 	"sync"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // FrameTransformer rewrites a frame on its way from a producer to a consumer.

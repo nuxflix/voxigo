@@ -1,4 +1,4 @@
-# Plumber config for jargo's GitHub Actions pipelines.
+# Plumber config for voxigo's GitHub Actions pipelines.
 # Required for `plumber analyze` (see .github/workflows/security.yml). Findings
 # are reported to the Security tab; the workflow runs with soft-fail, so
 # below-threshold compliance does not fail the build. Generate/refresh with
@@ -8,7 +8,7 @@ version: "2.0"
 github:
   controls:
     # Actions should be pinned by commit SHA; actions/* and github/* are trusted
-    # to use tags (jargo pins the rest by tag — reported, not failed for now).
+    # to use tags (voxigo pins the rest by tag — reported, not failed for now).
     actionsMustBePinnedByCommitSha:
       enabled: true
       trustedOwners:
@@ -19,7 +19,7 @@ github:
       trustGithubOfficialActions: true
       trustSameOrgActions: true
       minimumStars: 0
-      # The non-official third-party actions jargo relies on, vetted and pinned
+      # The non-official third-party actions voxigo relies on, vetted and pinned
       # by commit SHA in the workflows. Listed explicitly so the source check
       # passes without lowering the bar for everything else.
       trustedGithubActions:

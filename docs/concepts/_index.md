@@ -5,12 +5,12 @@ weight: 2
 
 # Concepts
 
-A jargo bot is a **chain of processors** that passes **frames** to each other.
+A voxigo bot is a **chain of processors** that passes **frames** to each other.
 These six pages are that sentence, unpacked.
 
 The engine is small: `frames`, `processor` and `pipeline` are about 2,000 lines
 between them. It is worth reading properly once rather than guessing at it
-later. Everything else in jargo, transports and services included, is a processor
+later. Everything else in voxigo, transports and services included, is a processor
 plugged into it.
 
 Read in order:

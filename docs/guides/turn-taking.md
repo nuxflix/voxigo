@@ -5,7 +5,7 @@ weight: 1
 
 # Turn-taking: VAD + Smart Turn
 
-jargo does natural turn-taking: the bot waits for a real end-of-turn instead of
+voxigo does natural turn-taking: the bot waits for a real end-of-turn instead of
 any pause, and the user can interrupt it mid-sentence (barge-in). Two local ONNX
 models drive this:
 
@@ -25,18 +25,18 @@ needs no C toolchain at build time, and the default `CGO_ENABLED=0` build works.
 The runtime shared library is **not** bundled; download a
 build for your platform from the
 [releases page](https://github.com/microsoft/onnxruntime/releases) and point
-jargo at it:
+voxigo at it:
 
 ```sh
 # Linux
-export JARGO_ONNXRUNTIME_LIB=/path/to/libonnxruntime.so
+export VOXIGO_ONNXRUNTIME_LIB=/path/to/libonnxruntime.so
 # macOS
-export JARGO_ONNXRUNTIME_LIB=/path/to/libonnxruntime.dylib
+export VOXIGO_ONNXRUNTIME_LIB=/path/to/libonnxruntime.dylib
 # Windows
-set JARGO_ONNXRUNTIME_LIB=C:\path\to\onnxruntime.dll
+set VOXIGO_ONNXRUNTIME_LIB=C:\path\to\onnxruntime.dll
 ```
 
-If `JARGO_ONNXRUNTIME_LIB` is unset, jargo looks for the library by its
+If `VOXIGO_ONNXRUNTIME_LIB` is unset, voxigo looks for the library by its
 conventional name on the loader's default search path
 (`libonnxruntime.so`/`.dylib`/`onnxruntime.dll`). When the runtime cannot be
 loaded, the voice bot still runs. It falls back to STT endpointing for
@@ -110,11 +110,11 @@ input while the bot speaks or a tool call runs.
 
 ## Implementation notes
 
-- VAD gating is **confidence-only**: jargo trusts Silero's neural confidence
+- VAD gating is **confidence-only**: voxigo trusts Silero's neural confidence
   rather than adding a separate volume threshold.
 - Feature extraction for Smart Turn is a pure-Go reimplementation of Whisper's
   log-mel features; it and both models are validated to within `1e-3` of the
   reference Python implementation by unit tests.
 - Smart Turn runs inside the `TurnAnalyzerStop` strategy, driven by the turn
-  controller (~tens of ms per end-of-turn). See [benchmarks](https://github.com/gojargo/jargo-benchmarks)
+  controller (~tens of ms per end-of-turn). See [benchmarks](https://github.com/nuxflix/voxigo-benchmarks)
   for the performance picture and the planned FFT optimization.

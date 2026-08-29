@@ -4,8 +4,8 @@ import (
 	"encoding/binary"
 	"testing"
 
-	"github.com/gojargo/jargo/audio/mixer"
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/audio/mixer"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 const rate = 16000

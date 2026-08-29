@@ -9,7 +9,7 @@
 // between resending the whole history every turn and sending one message.
 //
 // Both consume an LLMContextFrame and emit LLM response frames like every other
-// jargo LLM service, and both support tool calling.
+// voxigo LLM service, and both support tool calling.
 package responses
 
 import (
@@ -23,12 +23,12 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gojargo/jargo/adapter"
-	responsesadapter "github.com/gojargo/jargo/adapter/responses"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/service/llm"
-	errs "github.com/gojargo/jargo/utils/errors"
+	"github.com/nuxflix/voxigo/adapter"
+	responsesadapter "github.com/nuxflix/voxigo/adapter/responses"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/service/llm"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 const (

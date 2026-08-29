@@ -12,8 +12,8 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/stt"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/stt"
 )
 
 // Tests for the transcription session. Speechmatics acknowledges the start

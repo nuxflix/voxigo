@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // event is a manual-reset event. Waiters block until it is set; clearing it

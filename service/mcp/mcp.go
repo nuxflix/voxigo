@@ -1,4 +1,4 @@
-// Package mcp connects a jargo LLM to Model Context Protocol tool servers. It
+// Package mcp connects a voxigo LLM to Model Context Protocol tool servers. It
 // lists a server's tools, exposes them on an LLMContext, and registers a handler
 // per tool that proxies calls to the server, so an MCP server's tools become
 // ordinary function calls the model can make.
@@ -15,8 +15,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/llm"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/llm"
 	mcpsdk "github.com/modelcontextprotocol/go-sdk/mcp"
 )
 
@@ -111,7 +111,7 @@ func Connect(ctx context.Context, cfg Config) (*Client, error) {
 }
 
 func connect(ctx context.Context, tr mcpsdk.Transport, cfg Config) (*Client, error) {
-	client := mcpsdk.NewClient(&mcpsdk.Implementation{Name: "jargo", Version: "0.0.1"}, nil)
+	client := mcpsdk.NewClient(&mcpsdk.Implementation{Name: "voxigo", Version: "0.0.1"}, nil)
 	session, err := client.Connect(ctx, tr, nil)
 	if err != nil {
 		return nil, err
@@ -126,7 +126,7 @@ func connect(ctx context.Context, tr mcpsdk.Transport, cfg Config) (*Client, err
 	return c, nil
 }
 
-// Tools lists the server's tools converted to jargo tools, honoring the filter.
+// Tools lists the server's tools converted to voxigo tools, honoring the filter.
 //
 // Each carries its own handler, so putting the result on an LLMContext is all it
 // takes: the LLM service registers what the context advertises and drops it

@@ -5,7 +5,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/gojargo/jargo/audio/opus"
+	"github.com/nuxflix/voxigo/audio/opus"
 )
 
 // sineFrame builds one 20 ms mono frame of S16LE PCM at the given frequency.

@@ -1,11 +1,11 @@
-# Hugo configuration for the jargo documentation site.
+# Hugo configuration for the voxigo documentation site.
 #
 # This directory holds only site machinery — theme config, layouts, styles. All
 # prose lives in ../docs and is mounted below, so there is exactly one copy of
 # every page and it stays readable on GitHub.
 
-baseURL = "https://gojargo.github.io/jargo/"
-title = "jargo"
+baseURL = "https://nuxflix.github.io/voxigo/"
+title = "voxigo"
 languageCode = "en-us"
 
 enableGitInfo = true
@@ -85,7 +85,7 @@ enableRobotsTXT = true
   # repo-relative path itself. See the comment there.
   [params.editURL]
     enable = true
-    base = "https://github.com/gojargo/jargo/edit/main"
+    base = "https://github.com/nuxflix/voxigo/edit/main"
 
   [params.search]
     enable = true
@@ -101,7 +101,7 @@ enableRobotsTXT = true
     weight = 1
   [[menu.main]]
     name = "Go reference"
-    url = "https://pkg.go.dev/github.com/gojargo/jargo"
+    url = "https://pkg.go.dev/github.com/nuxflix/voxigo"
     weight = 2
   [[menu.main]]
     name = "Search"
@@ -110,20 +110,20 @@ enableRobotsTXT = true
       type = "search"
   [[menu.main]]
     name = "GitHub"
-    url = "https://github.com/gojargo/jargo"
+    url = "https://github.com/nuxflix/voxigo"
     weight = 4
     [menu.main.params]
       icon = "github"
 
 [[menu.sidebar]]
   name = "Examples ↗"
-  url = "https://github.com/gojargo/jargo/tree/main/examples"
+  url = "https://github.com/nuxflix/voxigo/tree/main/examples"
   weight = 10
 [[menu.sidebar]]
   name = "Benchmarks ↗"
-  url = "https://github.com/gojargo/jargo-benchmarks"
+  url = "https://github.com/nuxflix/voxigo-benchmarks"
   weight = 11
 [[menu.sidebar]]
   name = "Changelog ↗"
-  url = "https://github.com/gojargo/jargo/blob/main/CHANGELOG.md"
+  url = "https://github.com/nuxflix/voxigo/blob/main/CHANGELOG.md"
   weight = 12

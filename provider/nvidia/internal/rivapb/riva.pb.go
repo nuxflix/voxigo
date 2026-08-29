@@ -803,7 +803,7 @@ const file_riva_proto_rawDesc = "" +
 	"\rlanguage_code\x18\x04 \x03(\tR\flanguageCode2\xe2\x01\n" +
 	"\x15RivaSpeechRecognition\x12T\n" +
 	"\tRecognize\x12!.nvidia.riva.asr.RecognizeRequest\x1a\".nvidia.riva.asr.RecognizeResponse\"\x00\x12s\n" +
-	"\x12StreamingRecognize\x12*.nvidia.riva.asr.StreamingRecognizeRequest\x1a+.nvidia.riva.asr.StreamingRecognizeResponse\"\x00(\x010\x01BAZ?github.com/gojargo/jargo/provider/nvidia/internal/rivapb;rivapbb\x06proto3"
+	"\x12StreamingRecognize\x12*.nvidia.riva.asr.StreamingRecognizeRequest\x1a+.nvidia.riva.asr.StreamingRecognizeResponse\"\x00(\x010\x01BAZ?github.com/nuxflix/voxigo/provider/nvidia/internal/rivapb;rivapbb\x06proto3"
 
 var (
 	file_riva_proto_rawDescOnce sync.Once

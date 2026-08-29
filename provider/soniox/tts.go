@@ -8,12 +8,12 @@ import (
 	"strings"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/tts"
-	"github.com/gojargo/jargo/service/wsutil"
-	uctx "github.com/gojargo/jargo/utils/context"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/tts"
+	"github.com/nuxflix/voxigo/service/wsutil"
+	uctx "github.com/nuxflix/voxigo/utils/context"
 )
 
 const (
@@ -29,9 +29,9 @@ const (
 	// keyStreamID is the field naming the stream a message belongs to.
 	keyStreamID = "stream_id"
 	// ttsStreamID names the single stream each synthesis opens. Soniox
-	// multiplexes concurrent streams over one connection by this id; jargo
+	// multiplexes concurrent streams over one connection by this id; voxigo
 	// synthesizes one sentence per connection, so a constant is enough.
-	ttsStreamID = "jargo"
+	ttsStreamID = "voxigo"
 )
 
 // TTSConfig configures the Soniox streaming TTS service.

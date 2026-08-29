@@ -1,11 +1,11 @@
-// Command eval is a tiny demo bot for the jargo eval harness. It serves an eval
+// Command eval is a tiny demo bot for the voxigo eval harness. It serves an eval
 // endpoint over a plain WebSocket — no WebRTC, no API keys — so you can drive it
 // with the CLI or from a Go test.
 //
 // Run it and eval it from the command line:
 //
 //	go run ./examples/eval    # serves ws://localhost:8080
-//	go run ./cmd/jargo eval run examples/eval/scenarios/greeting.yaml --bot-url ws://localhost:8080
+//	go run ./cmd/voxigo eval run examples/eval/scenarios/greeting.yaml --bot-url ws://localhost:8080
 //
 // Or run the same scenario in-process:
 //
@@ -24,17 +24,17 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gojargo/jargo/eval"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/processor/aggregators"
+	"github.com/nuxflix/voxigo/eval"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/processor/aggregators"
 )
 
 func main() {
 	const addr = ":8080"
 	http.Handle("/", eval.Handler(buildBot))
-	slog.Info("jargo eval demo bot listening", "url", "ws://localhost"+addr)
+	slog.Info("voxigo eval demo bot listening", "url", "ws://localhost"+addr)
 	log.Fatal(http.ListenAndServe(addr, nil))
 }
 

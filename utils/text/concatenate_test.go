@@ -3,7 +3,7 @@ package text_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/utils/text"
+	"github.com/nuxflix/voxigo/utils/text"
 )
 
 // The two kinds of piece mix inside one turn, so each case here is a shape the

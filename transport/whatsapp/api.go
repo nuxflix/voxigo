@@ -9,7 +9,7 @@ import (
 	"io"
 	"net/http"
 
-	errs "github.com/gojargo/jargo/utils/errors"
+	errs "github.com/nuxflix/voxigo/utils/errors"
 )
 
 // Sentinel errors for the Graph API calls.

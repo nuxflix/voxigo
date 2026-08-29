@@ -1,6 +1,6 @@
 // Package telnyx is the wsserver.Serializer for Telnyx Media Streaming. Telnyx
 // streams call audio as base64 companded 8 kHz mono (μ-law or A-law) in JSON
-// text messages; this serializer converts those to and from jargo audio frames,
+// text messages; this serializer converts those to and from voxigo audio frames,
 // emits a "clear" message on barge-in, and optionally hangs the call up over
 // Telnyx's REST API when the pipeline ends.
 package telnyx
@@ -14,9 +14,9 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/transport/wsserver"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/transport/wsserver"
 )
 
 // Serializer implements wsserver.Serializer.

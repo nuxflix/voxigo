@@ -1,8 +1,8 @@
 package perplexity
 
 import (
-	perplexityadapter "github.com/gojargo/jargo/adapter/perplexity"
-	"github.com/gojargo/jargo/provider/openai/chat"
+	perplexityadapter "github.com/nuxflix/voxigo/adapter/perplexity"
+	"github.com/nuxflix/voxigo/provider/openai/chat"
 )
 
 // NewLLM builds a Perplexity LLM service. Perplexity speaks the OpenAI

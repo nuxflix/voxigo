@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 #
-# jargo runtime base image.
+# voxigo runtime base image.
 #
 # A distroless image carrying the native shared libraries a compiled bot loads
 # at run time: the ONNX Runtime (VAD + turn detection) and RNNoise (the optional
@@ -10,9 +10,9 @@
 # shell and no package manager, so the attack surface is small, and the default
 # user is non-root.
 #
-# Ship a bot by copying a jargo binary (built with the jargo-build base) in:
+# Ship a bot by copying a voxigo binary (built with the voxigo-build base) in:
 #
-#   FROM gojargo/jargo
+#   FROM nuxflix/voxigo
 #   COPY --from=build /out/bot /usr/local/bin/bot
 #   ENTRYPOINT ["/usr/local/bin/bot"]
 
@@ -55,15 +55,15 @@ COPY --from=libs /usr/lib/x86_64-linux-gnu/libopus.so.0* /usr/lib/x86_64-linux-g
 
 # The ONNX Runtime is loaded at run time by the explicit path in this env var.
 COPY --from=libs /usr/local/lib/libonnxruntime.so /usr/local/lib/libonnxruntime.so
-ENV JARGO_ONNXRUNTIME_LIB=/usr/local/lib/libonnxruntime.so
+ENV VOXIGO_ONNXRUNTIME_LIB=/usr/local/lib/libonnxruntime.so
 
 # RNNoise for the optional purego denoiser, also loaded by explicit path.
 COPY --from=libs /usr/local/lib/librnnoise.so.0* /usr/local/lib/
-ENV JARGO_RNNOISE_LIB=/usr/local/lib/librnnoise.so.0
+ENV VOXIGO_RNNOISE_LIB=/usr/local/lib/librnnoise.so.0
 
 # The distroless base already defaults to the non-root user; state it
 # explicitly so it is enforced and visible to scanners.
 USER nonroot
 
-# jargo example bots serve on :8080 (informational; downstream can override).
+# voxigo example bots serve on :8080 (informational; downstream can override).
 EXPOSE 8080

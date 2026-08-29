@@ -12,8 +12,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gojargo/jargo/processor/rtvi"
-	"github.com/gojargo/jargo/service/tts"
+	"github.com/nuxflix/voxigo/processor/rtvi"
+	"github.com/nuxflix/voxigo/service/tts"
 )
 
 // defaultTimeout is the latency budget for an expectation that sets no
@@ -122,7 +122,7 @@ type session struct {
 	// The reader goroutine owns everything below, and nothing else reads it.
 	// Upstream translates on its single event loop, which is what makes the
 	// interruption discard safe there; keeping translation on one goroutine is
-	// how jargo gets the same guarantee.
+	// how voxigo gets the same guarantee.
 	//
 	// llmBuf accumulates bot-llm-text between bot-llm-started and bot-llm-stopped.
 	llmBuf strings.Builder

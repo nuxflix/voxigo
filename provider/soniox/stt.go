@@ -10,10 +10,10 @@ import (
 	"sync"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/settings"
-	"github.com/gojargo/jargo/service/stt"
-	"github.com/gojargo/jargo/service/wsutil"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/settings"
+	"github.com/nuxflix/voxigo/service/stt"
+	"github.com/nuxflix/voxigo/service/wsutil"
 )
 
 // NewSTT builds a Soniox streaming STT service.
@@ -112,7 +112,7 @@ func setOpt[T any](o *settings.Opt[T], v *T) {
 type connector struct {
 	cfg Config
 	// live is what may change while the pipeline runs: the model and the
-	// language, which is the set Soniox treats as changeable and that jargo's
+	// language, which is the set Soniox treats as changeable and that voxigo's
 	// configuration carries.
 	live *Settings
 }

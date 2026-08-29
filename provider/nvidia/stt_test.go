@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/provider/nvidia/internal/rivapb"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/provider/nvidia/internal/rivapb"
 	"google.golang.org/grpc"
 )
 

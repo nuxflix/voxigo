@@ -1,6 +1,6 @@
 package stt
 
-import "github.com/gojargo/jargo/audio"
+import "github.com/nuxflix/voxigo/audio"
 
 // WAV wraps 16-bit PCM in a minimal RIFF/WAVE container. Batch transcription
 // APIs accept an audio file rather than raw PCM, so segmented providers wrap the

@@ -10,13 +10,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/adapter"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/processor/aggregators"
-	"github.com/gojargo/jargo/service/llm"
-	"github.com/gojargo/jargo/utils/events"
+	"github.com/nuxflix/voxigo/adapter"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/processor/aggregators"
+	"github.com/nuxflix/voxigo/service/llm"
+	"github.com/nuxflix/voxigo/utils/events"
 )
 
 // fakeToolGen requests one tool call on its first turn, then answers with text.

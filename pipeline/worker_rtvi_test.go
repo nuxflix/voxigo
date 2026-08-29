@@ -3,8 +3,8 @@ package pipeline_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor/rtvi"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor/rtvi"
 )
 
 // A client talks to a session over RTVI, so a worker adds the processor and its

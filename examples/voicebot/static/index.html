@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>jargo · voicebot</title>
+  <title>voxigo · voicebot</title>
   <style>
     body { font-family: system-ui, sans-serif; max-width: 36rem; margin: 4rem auto; padding: 0 1rem; }
     button { font-size: 1rem; padding: 0.6rem 1.2rem; cursor: pointer; }
@@ -16,7 +16,7 @@
   </style>
 </head>
 <body>
-  <h1>jargo voicebot</h1>
+  <h1>voxigo voicebot</h1>
   <p>Click start, allow the microphone, and talk. Deepgram transcribes, Claude
      replies, ElevenLabs speaks it back. Transcripts appear below.</p>
   <button id="start">Start</button>
@@ -50,7 +50,7 @@
         const dc = pc.createDataChannel("rtvi");
         dc.onopen = () => dc.send(JSON.stringify({
           label: "rtvi-ai", type: "client-ready", id: "web-1",
-          data: { version: "2.0.0", about: { library: "jargo-voicebot" } },
+          data: { version: "2.0.0", about: { library: "voxigo-voicebot" } },
         }));
         dc.onmessage = (e) => {
           const msg = JSON.parse(e.data);

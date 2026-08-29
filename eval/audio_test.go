@@ -5,14 +5,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/eval"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/processor/aggregators"
-	"github.com/gojargo/jargo/processor/rtvi"
-	"github.com/gojargo/jargo/processor/turns"
-	"github.com/gojargo/jargo/service/tts"
+	"github.com/nuxflix/voxigo/eval"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/processor/aggregators"
+	"github.com/nuxflix/voxigo/processor/rtvi"
+	"github.com/nuxflix/voxigo/processor/turns"
+	"github.com/nuxflix/voxigo/service/tts"
 )
 
 const audioRate = 16000

@@ -3,8 +3,8 @@ package sarvam_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/internal/providertest"
-	"github.com/gojargo/jargo/provider/sarvam"
+	"github.com/nuxflix/voxigo/internal/providertest"
+	"github.com/nuxflix/voxigo/provider/sarvam"
 )
 
 // TestConfigValidateSTT pins which STTConfig fields the provider requires.

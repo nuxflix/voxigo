@@ -6,8 +6,8 @@ package cartesia
 import (
 	"errors"
 
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/language"
 )
 
 // errProtocol is returned when Cartesia reports an error message.
@@ -22,7 +22,7 @@ const (
 	defaultModel   = "sonic-3.6"
 	// defaultVoiceID is a public Cartesia voice.
 	defaultVoiceID = "694f9389-aac1-45b6-b726-9d9369183238"
-	// defaultSampleRate is the PCM rate jargo requests from Cartesia.
+	// defaultSampleRate is the PCM rate voxigo requests from Cartesia.
 	defaultSampleRate = 24000
 	defaultEncoding   = "pcm_s16le"
 	defaultContainer  = "raw"

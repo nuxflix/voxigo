@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/language"
 )
 
 // TestQueryDefaults checks the opinionated Deepgram params are omitted when

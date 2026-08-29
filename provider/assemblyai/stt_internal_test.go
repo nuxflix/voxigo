@@ -3,7 +3,7 @@ package assemblyai
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/language"
 )
 
 // Declared languages resolve to the codes AssemblyAI names them by, collapsing

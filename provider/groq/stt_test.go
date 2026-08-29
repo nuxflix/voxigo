@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/language"
-	"github.com/gojargo/jargo/service/stt"
+	"github.com/nuxflix/voxigo/language"
+	"github.com/nuxflix/voxigo/service/stt"
 )
 
 // Tests for the transcription request. Groq's endpoint is OpenAI-compatible and

@@ -3,7 +3,7 @@ package whispercpp_test
 import (
 	"testing"
 
-	"github.com/gojargo/jargo/provider/whispercpp"
+	"github.com/nuxflix/voxigo/provider/whispercpp"
 )
 
 func TestConfigValidate(t *testing.T) {

@@ -1,6 +1,6 @@
 package deepseek
 
-import "github.com/gojargo/jargo/provider/openai/chat"
+import "github.com/nuxflix/voxigo/provider/openai/chat"
 
 // NewLLM builds a DeepSeek LLM service.
 func NewLLM(cfg chat.LLMConfig) *chat.LLMService {

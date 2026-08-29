@@ -1,4 +1,4 @@
-// Package mem0 adds long-term memory to a jargo voice agent, backed by a mem0
+// Package mem0 adds long-term memory to a voxigo voice agent, backed by a mem0
 // server (https://github.com/mem0ai/mem0).
 //
 // It is a frame processor placed between the user aggregator and the LLM. On
@@ -20,7 +20,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/gojargo/jargo/internal/validate"
+	"github.com/nuxflix/voxigo/internal/validate"
 )
 
 // errStatus is returned when mem0 answers with a non-2xx status.

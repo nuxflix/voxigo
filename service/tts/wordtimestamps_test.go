@@ -8,13 +8,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/pipeline"
-	"github.com/gojargo/jargo/processor/aggregators"
-	"github.com/gojargo/jargo/service/tts"
-	uctx "github.com/gojargo/jargo/utils/context"
-	"github.com/gojargo/jargo/utils/events"
-	"github.com/gojargo/jargo/utils/text"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/pipeline"
+	"github.com/nuxflix/voxigo/processor/aggregators"
+	"github.com/nuxflix/voxigo/service/tts"
+	uctx "github.com/nuxflix/voxigo/utils/context"
+	"github.com/nuxflix/voxigo/utils/events"
+	"github.com/nuxflix/voxigo/utils/text"
 )
 
 // timedWord is one spoken token the fake provider reports, with its start offset

@@ -3,7 +3,7 @@ package rtvi
 import (
 	"fmt"
 
-	"github.com/gojargo/jargo/frames"
+	"github.com/nuxflix/voxigo/frames"
 )
 
 // ConfigureObserverFrame reconfigures a running Observer. It lets a trusted,

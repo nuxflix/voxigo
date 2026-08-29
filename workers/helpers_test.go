@@ -7,10 +7,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/bus"
-	"github.com/gojargo/jargo/pipeline/jobcontext"
-	"github.com/gojargo/jargo/registry"
-	"github.com/gojargo/jargo/workers"
+	"github.com/nuxflix/voxigo/bus"
+	"github.com/nuxflix/voxigo/pipeline/jobcontext"
+	"github.com/nuxflix/voxigo/registry"
+	"github.com/nuxflix/voxigo/workers"
 )
 
 // The suites here are ported from upstream's worker and job-group suites.

@@ -7,8 +7,8 @@ import (
 	"errors"
 	"time"
 
-	"github.com/gojargo/jargo/internal/validate"
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/internal/validate"
+	"github.com/nuxflix/voxigo/language"
 )
 
 // errStatus is returned when the API responds with a non-200 status.

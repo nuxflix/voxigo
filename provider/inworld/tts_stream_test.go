@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gojargo/jargo/language"
+	"github.com/nuxflix/voxigo/language"
 )
 
 // errDownstreamGone stands in for the pipeline going away mid-stream.

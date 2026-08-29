@@ -7,13 +7,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/processor"
-	"github.com/gojargo/jargo/service/settings"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/processor"
+	"github.com/nuxflix/voxigo/service/settings"
 )
 
 // Ported from upstream's turn-completion suite. Upstream drives the mixin by
-// mocking push_frame on the object; jargo links capturing processors on both
+// mocking push_frame on the object; voxigo links capturing processors on both
 // sides instead, so the frames are observed where they actually arrive and the
 // completion broadcast is seen in both directions as upstream asserts.
 

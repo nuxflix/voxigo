@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/gojargo/jargo/service/stt"
+	"github.com/nuxflix/voxigo/service/stt"
 )
 
 // Tests for the realtime transcription session. Mistral takes the model on the

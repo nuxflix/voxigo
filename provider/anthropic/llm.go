@@ -7,10 +7,10 @@ import (
 	sdk "github.com/anthropics/anthropic-sdk-go"
 	"github.com/anthropics/anthropic-sdk-go/option"
 	"github.com/anthropics/anthropic-sdk-go/packages/param"
-	"github.com/gojargo/jargo/adapter"
-	anthropicadapter "github.com/gojargo/jargo/adapter/anthropic"
-	"github.com/gojargo/jargo/frames"
-	"github.com/gojargo/jargo/service/llm"
+	"github.com/nuxflix/voxigo/adapter"
+	anthropicadapter "github.com/nuxflix/voxigo/adapter/anthropic"
+	"github.com/nuxflix/voxigo/frames"
+	"github.com/nuxflix/voxigo/service/llm"
 )
 
 // Service is a streaming Anthropic LLM processor.
