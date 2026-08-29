@@ -14,6 +14,15 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Added
 
+- **RMS energy and silence trimming.** `audio.RMS` reports the root-mean-square
+  amplitude of a 16-bit PCM chunk. `audio.TrimSilence` drops leading and
+  trailing silence, and `processor.NewAudioTrim` applies that to every audio
+  frame on the pipeline.
+
+- **The last spoken user turn.** `frames.LLMContext.LastUserText` returns the
+  text of the most recent user message, skipping tool-result placeholders that
+  share the user role.
+
 - **A user turn processor.** `turns.NewUserTurnProcessor` decides the user's
   turn in a processor of its own, so the decision can be made once and shared
   by several aggregators, or placed at a particular point in the pipeline. The

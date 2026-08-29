@@ -465,6 +465,22 @@ func (c *LLMContext) Messages() []Message {
 	return cloneMessages(c.messages)
 }
 
+// LastUserText returns the text of the most recent user turn, skipping tool
+// result messages (those are written as the user role so they sit next to the
+// call they answer). An empty string means no spoken user turn is in the
+// conversation yet.
+func (c *LLMContext) LastUserText() string {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	for i := len(c.messages) - 1; i >= 0; i-- {
+		m := c.messages[i]
+		if m.Role == RoleUser && len(m.ToolResults) == 0 {
+			return m.Text
+		}
+	}
+	return ""
+}
+
 // MessagesFor returns the messages to send to the named provider: every
 // universal one, plus the provider's own, and none written for a different
 // provider. It is what an adapter reads rather than Messages, so a conversation

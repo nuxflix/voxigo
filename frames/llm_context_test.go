@@ -244,3 +244,25 @@ func TestSetMessagesDoesNotAliasTheCaller(t *testing.T) {
 		t.Errorf("context result = %q, want it untouched by the caller's slice", got)
 	}
 }
+
+// TestLastUserText returns the most recent spoken user turn and skips the user
+// role that only carries a tool result.
+func TestLastUserText(t *testing.T) {
+	c := frames.NewLLMContext("system")
+	if got := c.LastUserText(); got != "" {
+		t.Errorf("LastUserText() = %q, want empty on a new context", got)
+	}
+
+	c.AddUserMessage("first")
+	c.AddAssistantMessage("reply")
+	c.AddUserMessage("second")
+	if got := c.LastUserText(); got != "second" {
+		t.Errorf("LastUserText() = %q, want the later user turn", got)
+	}
+
+	c.AddAssistantToolCall(frames.ToolCall{ID: "c1", Name: "get_weather"})
+	c.AddToolResult(frames.ToolResult{ID: "c1", Name: "get_weather", Content: "sunny"})
+	if got := c.LastUserText(); got != "second" {
+		t.Errorf("LastUserText() = %q, want the spoken turn, not the tool result", got)
+	}
+}

@@ -3,6 +3,7 @@ package audio
 import (
 	"bytes"
 	"encoding/binary"
+	"math"
 
 	"github.com/nuxflix/voxigo/audio/g711"
 	"github.com/nuxflix/voxigo/audio/resample"
@@ -33,6 +34,60 @@ func IsSilence(pcm []byte) bool {
 		}
 	}
 	return true
+}
+
+// RMS is the root-mean-square amplitude of a chunk of 16-bit signed PCM. It is
+// the usual energy measure for a buffer: a silent chunk is near zero, speech is
+// typically a few hundred to a few thousand, and a full-scale square wave is
+// 32767. An empty buffer, or one that does not complete a sample, is 0.
+func RMS(pcm []byte) float64 {
+	n := 0
+	var sum float64
+	for i := 0; i+1 < len(pcm); i += 2 {
+		s := float64(int16(binary.LittleEndian.Uint16(pcm[i:])))
+		sum += s * s
+		n++
+	}
+	if n == 0 {
+		return 0
+	}
+	return math.Sqrt(sum / float64(n))
+}
+
+// TrimSilence drops leading and trailing silent samples from a chunk of 16-bit
+// signed PCM, using the same threshold as IsSilence. What remains is a copy, so
+// a later write to the input cannot reach it. An all-silent or empty buffer
+// comes back empty. A trailing odd byte is ignored, as it is on IsSilence.
+func TrimSilence(pcm []byte) []byte {
+	n := len(pcm) - len(pcm)%2
+	start := 0
+	for start+1 < n {
+		if absSample(pcm, start) > speakingThreshold {
+			break
+		}
+		start += 2
+	}
+	end := n
+	for end >= start+2 {
+		if absSample(pcm, end-2) > speakingThreshold {
+			break
+		}
+		end -= 2
+	}
+	if start >= end {
+		return nil
+	}
+	out := make([]byte, end-start)
+	copy(out, pcm[start:end])
+	return out
+}
+
+func absSample(pcm []byte, i int) int {
+	sample := int(int16(binary.LittleEndian.Uint16(pcm[i:])))
+	if sample < 0 {
+		sample = -sample
+	}
+	return sample
 }
 
 // MixAudio sums two streams of 16-bit signed PCM sample by sample, clipping the

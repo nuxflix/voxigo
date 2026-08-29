@@ -64,6 +64,68 @@ func equal(got []int16, want ...int16) bool {
 	return true
 }
 
+func TestRMS(t *testing.T) {
+	tests := []struct {
+		name string
+		in   []byte
+		want float64
+	}{
+		{"empty", nil, 0},
+		{"silence", pcm(0, 0, 0), 0},
+		{"the 3-4-5 triangle", pcm(3, 4), 5},
+		{"constant amplitude", pcm(100, -100), 100},
+		{"odd trailing byte is ignored", append(pcm(3, 4), 0xFF), 5},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := audio.RMS(tt.in)
+			if mathAbs(got-tt.want) > 1e-9 {
+				t.Errorf("RMS() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func mathAbs(v float64) float64 {
+	if v < 0 {
+		return -v
+	}
+	return v
+}
+
+func TestTrimSilence(t *testing.T) {
+	tests := []struct {
+		name string
+		in   []byte
+		want []int16
+	}{
+		{"empty", nil, nil},
+		{"all silence", pcm(0, 0, 10), nil},
+		{"leading and trailing drop away", pcm(0, 100, 200, 0), []int16{100, 200}},
+		{"at the threshold is still silence", pcm(20, 100, -20), []int16{100}},
+		{"speech only is unchanged", pcm(100, -200), []int16{100, -200}},
+		{"odd trailing byte is ignored", append(pcm(0, 100, 0), 0xFF), []int16{100}},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := samples(audio.TrimSilence(tt.in))
+			if !equal(got, tt.want...) {
+				t.Errorf("TrimSilence() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+
+	t.Run("returns a copy", func(t *testing.T) {
+		in := pcm(0, 100, 0)
+		out := audio.TrimSilence(in)
+		in[2] = 0
+		in[3] = 0
+		if got := samples(out); !equal(got, 100) {
+			t.Errorf("mutating the input reached the result: %v", got)
+		}
+	})
+}
+
 func TestMixAudio(t *testing.T) {
 	tests := []struct {
 		name string

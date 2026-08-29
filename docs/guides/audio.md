@@ -150,6 +150,10 @@ buffer holds audio in memory.
 
 ## Other pieces
 
+- **`audio.RMS`**: the root-mean-square amplitude of a 16-bit PCM chunk, for an
+  energy gate or a level meter that should not depend on a single peak sample.
+- **`audio.TrimSilence`** / **`processor.NewAudioTrim`**: drop leading and
+  trailing silence from a buffer or from every audio frame on the pipeline.
 - **`audio/onset`**: finds the first audible sample in a PCM stream, so
   time-to-first-audio metrics measure real speech rather than leading silence.
 - **`audio/chain.go`**: composes several `audio.Filter`s into one.
