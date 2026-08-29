@@ -244,3 +244,22 @@ func TestSetMessagesDoesNotAliasTheCaller(t *testing.T) {
 		t.Errorf("context result = %q, want it untouched by the caller's slice", got)
 	}
 }
+
+// TestAssistantTexts collects spoken assistant turns and ignores tool calls.
+func TestAssistantTexts(t *testing.T) {
+	c := frames.NewLLMContext("system")
+	if got := c.AssistantTexts(); len(got) != 0 {
+		t.Errorf("AssistantTexts() = %v, want empty", got)
+	}
+
+	c.AddUserMessage("hello")
+	c.AddAssistantMessage("one")
+	c.AddUserMessage("again")
+	c.AddAssistantMessage("two")
+	c.AddAssistantToolCall(frames.ToolCall{ID: "c1", Name: "get_weather"})
+
+	got := c.AssistantTexts()
+	if len(got) != 2 || got[0] != "one" || got[1] != "two" {
+		t.Errorf("AssistantTexts() = %v, want [one two]", got)
+	}
+}

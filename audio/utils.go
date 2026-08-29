@@ -35,6 +35,33 @@ func IsSilence(pcm []byte) bool {
 	return true
 }
 
+// Clamp limits each 16-bit signed sample to ±maxAbs. Values already inside the
+// range are left alone. A negative maxAbs is treated as zero. The result is a
+// copy. An empty buffer, or one that does not complete a sample, comes back
+// empty.
+func Clamp(pcm []byte, maxAbs int) []byte {
+	if maxAbs < 0 {
+		maxAbs = 0
+	}
+	if maxAbs > 32767 {
+		maxAbs = 32767
+	}
+	n := len(pcm) - len(pcm)%2
+	out := make([]byte, n)
+	limit := int32(maxAbs)
+	for i := 0; i+1 < n; i += 2 {
+		s := int32(int16(binary.LittleEndian.Uint16(pcm[i:])))
+		switch {
+		case s > limit:
+			s = limit
+		case s < -limit:
+			s = -limit
+		}
+		binary.LittleEndian.PutUint16(out[i:], uint16(int16(s)))
+	}
+	return out
+}
+
 // MixAudio sums two streams of 16-bit signed PCM sample by sample, clipping the
 // result to the 16-bit range. The streams need not be the same length: the
 // shorter one is treated as though it were padded with silence, so the result is

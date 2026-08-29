@@ -64,6 +64,28 @@ func equal(got []int16, want ...int16) bool {
 	return true
 }
 
+func TestClamp(t *testing.T) {
+	tests := []struct {
+		name   string
+		in     []byte
+		maxAbs int
+		want   []int16
+	}{
+		{"empty", nil, 100, nil},
+		{"inside the range is unchanged", pcm(50, -50), 100, []int16{50, -50}},
+		{"peaks are limited", pcm(200, -200, 10), 100, []int16{100, -100, 10}},
+		{"a negative limit is zero", pcm(50, -50), -1, []int16{0, 0}},
+		{"odd trailing byte is ignored", append(pcm(200), 0xFF), 100, []int16{100}},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := samples(audio.Clamp(tt.in, tt.maxAbs)); !equal(got, tt.want...) {
+				t.Errorf("Clamp() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
 func TestMixAudio(t *testing.T) {
 	tests := []struct {
 		name string

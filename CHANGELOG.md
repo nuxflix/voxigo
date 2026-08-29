@@ -14,6 +14,13 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Added
 
+- **A hard limiter.** `audio.Clamp` and `processor.NewAudioClamp` cap each
+  sample at ±maxAbs, so a loud burst is flattened rather than scaling the
+  whole utterance.
+
+- **Spoken assistant turns as text.** `frames.LLMContext.AssistantTexts`
+  returns every plain assistant reply in order, skipping tool-call turns.
+
 - **A user turn processor.** `turns.NewUserTurnProcessor` decides the user's
   turn in a processor of its own, so the decision can be made once and shared
   by several aggregators, or placed at a particular point in the pipeline. The
