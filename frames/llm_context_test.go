@@ -244,3 +244,27 @@ func TestSetMessagesDoesNotAliasTheCaller(t *testing.T) {
 		t.Errorf("context result = %q, want it untouched by the caller's slice", got)
 	}
 }
+
+func TestTranscriptAndClearMessages(t *testing.T) {
+	c := frames.NewLLMContext("be brief")
+	c.AddUserMessage("hello")
+	c.AddAssistantMessage("hi there")
+	c.AddMessage(frames.Message{Role: frames.RoleAssistant, ToolCalls: []frames.ToolCall{{ID: "1", Name: "lookup"}}})
+
+	got := c.Transcript()
+	want := "user: hello\nassistant: hi there"
+	if got != want {
+		t.Fatalf("Transcript() = %q, want %q", got, want)
+	}
+
+	c.ClearMessages()
+	if len(c.Messages()) != 0 {
+		t.Fatalf("ClearMessages left %d messages", len(c.Messages()))
+	}
+	if !strings.Contains(c.System(), "be brief") {
+		t.Error("ClearMessages dropped the system prompt")
+	}
+	if c.Transcript() != "" {
+		t.Fatalf("Transcript() after clear = %q", c.Transcript())
+	}
+}

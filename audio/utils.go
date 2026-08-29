@@ -35,6 +35,52 @@ func IsSilence(pcm []byte) bool {
 	return true
 }
 
+// Peak is the largest absolute 16-bit sample in pcm. Silence and an empty
+// buffer report 0. A trailing odd byte is ignored.
+func Peak(pcm []byte) int {
+	peak := 0
+	for i := 0; i+1 < len(pcm); i += 2 {
+		sample := int(int16(binary.LittleEndian.Uint16(pcm[i:])))
+		if sample < 0 {
+			sample = -sample
+		}
+		if sample > peak {
+			peak = sample
+		}
+	}
+	return peak
+}
+
+// PeakNormalize scales pcm so its peak matches target, clipping if the scale
+// overflows. target <= 0 or a silent buffer leaves the samples unchanged. A
+// target above 32767 is treated as full scale.
+func PeakNormalize(pcm []byte, target int) []byte {
+	if target > 32767 {
+		target = 32767
+	}
+	peak := Peak(pcm)
+	if len(pcm) < 2 || target <= 0 || peak == 0 || peak == target {
+		return pcm
+	}
+	gain := float64(target) / float64(peak)
+	out := make([]byte, len(pcm))
+	copy(out, pcm)
+	for i := 0; i+1 < len(out); i += 2 {
+		s := float64(int16(binary.LittleEndian.Uint16(out[i:]))) * gain
+		var clipped int32
+		switch {
+		case s > 32767:
+			clipped = 32767
+		case s < -32768:
+			clipped = -32768
+		default:
+			clipped = int32(s)
+		}
+		binary.LittleEndian.PutUint16(out[i:], uint16(clampInt16(clipped)))
+	}
+	return out
+}
+
 // MixAudio sums two streams of 16-bit signed PCM sample by sample, clipping the
 // result to the 16-bit range. The streams need not be the same length: the
 // shorter one is treated as though it were padded with silence, so the result is

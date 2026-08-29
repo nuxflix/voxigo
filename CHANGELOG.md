@@ -14,6 +14,18 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Added
 
+- **Peak normalization.** `audio.Peak` and `audio.PeakNormalize` measure and
+  raise a PCM buffer to a target peak. `processor.NewAudioNormalize` does that
+  to every audio frame, so a quiet microphone can sit at a consistent level.
+
+- **A mute processor.** `processor.NewAudioMute` replaces audio with silence
+  while armed, without changing frame length, and can be flipped from another
+  goroutine.
+
+- **A readable transcript.** `frames.LLMContext.Transcript` joins conversation
+  turns as `role: text` lines. `ClearMessages` drops the turns and leaves the
+  system prompt, tools and recall.
+
 - **A user turn processor.** `turns.NewUserTurnProcessor` decides the user's
   turn in a processor of its own, so the decision can be made once and shared
   by several aggregators, or placed at a particular point in the pipeline. The
