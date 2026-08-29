@@ -71,6 +71,40 @@ func InterleaveStereo(left, right []byte) []byte {
 	return out
 }
 
+// DeinterleaveStereo splits a stereo stream of 16-bit signed PCM (left first:
+// L, R, L, R and so on) back into two mono streams. A trailing half-frame is
+// dropped, because a sample without its pair is not a complete frame. The
+// results are copies, so a later write to the input cannot reach them.
+func DeinterleaveStereo(stereo []byte) (left, right []byte) {
+	n := len(stereo) - len(stereo)%4
+	left = make([]byte, n/2)
+	right = make([]byte, n/2)
+	for i := 0; i+3 < n; i += 4 {
+		copy(left[i/2:], stereo[i:i+2])
+		copy(right[i/2:], stereo[i+2:i+4])
+	}
+	return left, right
+}
+
+// Invert flips the polarity of a chunk of 16-bit signed PCM. The most negative
+// sample has no positive counterpart and is clipped to 32767. The result is a
+// copy. An empty buffer, or one that does not complete a sample, comes back
+// empty.
+func Invert(pcm []byte) []byte {
+	n := len(pcm) - len(pcm)%2
+	out := make([]byte, n)
+	for i := 0; i+1 < n; i += 2 {
+		s := int32(int16(binary.LittleEndian.Uint16(pcm[i:])))
+		if s == -32768 {
+			s = 32767
+		} else {
+			s = -s
+		}
+		binary.LittleEndian.PutUint16(out[i:], uint16(int16(s)))
+	}
+	return out
+}
+
 // clampInt16 saturates a widened sample to the 16-bit range.
 func clampInt16(v int32) int16 {
 	switch {

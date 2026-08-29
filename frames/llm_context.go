@@ -465,6 +465,15 @@ func (c *LLMContext) Messages() []Message {
 	return cloneMessages(c.messages)
 }
 
+// IsEmpty reports whether the conversation has no messages yet. The system
+// prompt is not a message, so a freshly built context is empty even when it
+// carries a prompt.
+func (c *LLMContext) IsEmpty() bool {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	return len(c.messages) == 0
+}
+
 // MessagesFor returns the messages to send to the named provider: every
 // universal one, plus the provider's own, and none written for a different
 // provider. It is what an adapter reads rather than Messages, so a conversation

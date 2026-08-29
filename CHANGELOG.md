@@ -14,6 +14,13 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Added
 
+- **Stereo split and polarity invert.** `audio.DeinterleaveStereo` undoes
+  `InterleaveStereo`. `audio.Invert` and `processor.NewAudioInvert` flip the
+  sign of every sample, clipping the most negative value.
+
+- **An empty-conversation check.** `frames.LLMContext.IsEmpty` reports whether
+  any messages have been written. The system prompt alone does not count.
+
 - **A user turn processor.** `turns.NewUserTurnProcessor` decides the user's
   turn in a processor of its own, so the decision can be made once and shared
   by several aggregators, or placed at a particular point in the pipeline. The

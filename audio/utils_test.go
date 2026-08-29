@@ -106,6 +106,48 @@ func TestInterleaveStereo(t *testing.T) {
 	}
 }
 
+func TestDeinterleaveStereo(t *testing.T) {
+	t.Run("undoes InterleaveStereo", func(t *testing.T) {
+		left, right := audio.DeinterleaveStereo(audio.InterleaveStereo(pcm(1, 2), pcm(-1, -2)))
+		if !equal(samples(left), 1, 2) || !equal(samples(right), -1, -2) {
+			t.Errorf("got left %v right %v", samples(left), samples(right))
+		}
+	})
+	t.Run("drops a trailing half-frame", func(t *testing.T) {
+		in := append(pcm(1, -1, 2, -2), 0x03, 0x00)
+		left, right := audio.DeinterleaveStereo(in)
+		if !equal(samples(left), 1, 2) || !equal(samples(right), -1, -2) {
+			t.Errorf("got left %v right %v", samples(left), samples(right))
+		}
+	})
+	t.Run("empty", func(t *testing.T) {
+		left, right := audio.DeinterleaveStereo(nil)
+		if len(left) != 0 || len(right) != 0 {
+			t.Errorf("got left %v right %v", left, right)
+		}
+	})
+}
+
+func TestInvert(t *testing.T) {
+	tests := []struct {
+		name string
+		in   []byte
+		want []int16
+	}{
+		{"empty", nil, nil},
+		{"flips sign", pcm(100, -50), []int16{-100, 50}},
+		{"the most negative sample clips", pcm(-32768), []int16{32767}},
+		{"odd trailing byte is ignored", append(pcm(10), 0xFF), []int16{-10}},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := samples(audio.Invert(tt.in)); !equal(got, tt.want...) {
+				t.Errorf("Invert() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
 // readWAV pulls the format fields and the data payload back out of a WAV file,
 // so a test can check what a reader would actually see.
 func readWAV(t *testing.T, wav []byte) (numChannels, sampleWidth, sampleRate int, data []byte) {

@@ -24,7 +24,7 @@ long-lived aggregate shared between the aggregators and the LLM service, and it
 convo.AddUserMessage("What's the weather?")
 convo.AddAssistantMessage("Sunny and 22 degrees.")
 msgs := convo.Messages()          // a copy
-n := convo.EstimatedTokens()
+empty := convo.IsEmpty()          // false once a turn is written
 
 convo.SetSystem("You are terse.") // swap the prompt mid-conversation
 convo.SetTools(tools)             // change advertised tools

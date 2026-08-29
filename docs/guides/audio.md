@@ -150,6 +150,10 @@ buffer holds audio in memory.
 
 ## Other pieces
 
+- **`audio.DeinterleaveStereo`**: splits an interleaved stereo buffer back into
+  left and right mono streams.
+- **`audio.Invert`** / **`processor.NewAudioInvert`**: flip polarity on a buffer
+  or on every audio frame, for a session wired out of phase.
 - **`audio/onset`**: finds the first audible sample in a PCM stream, so
   time-to-first-audio metrics measure real speech rather than leading silence.
 - **`audio/chain.go`**: composes several `audio.Filter`s into one.

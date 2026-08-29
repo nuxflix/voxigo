@@ -244,3 +244,20 @@ func TestSetMessagesDoesNotAliasTheCaller(t *testing.T) {
 		t.Errorf("context result = %q, want it untouched by the caller's slice", got)
 	}
 }
+
+// TestIsEmpty treats only the message list as the conversation: a prompt
+// alone is still empty.
+func TestIsEmpty(t *testing.T) {
+	c := frames.NewLLMContext("system")
+	if !c.IsEmpty() {
+		t.Error("a new context should be empty")
+	}
+	c.AddUserMessage("hello")
+	if c.IsEmpty() {
+		t.Error("a context with a user turn should not be empty")
+	}
+	c.SetMessages(nil)
+	if !c.IsEmpty() {
+		t.Error("clearing the messages should make the context empty again")
+	}
+}
