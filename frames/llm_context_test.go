@@ -245,26 +245,21 @@ func TestSetMessagesDoesNotAliasTheCaller(t *testing.T) {
 	}
 }
 
-func TestTranscriptAndClearMessages(t *testing.T) {
-	c := frames.NewLLMContext("be brief")
+// TestAssistantTexts collects spoken assistant turns and ignores tool calls.
+func TestAssistantTexts(t *testing.T) {
+	c := frames.NewLLMContext("system")
+	if got := c.AssistantTexts(); len(got) != 0 {
+		t.Errorf("AssistantTexts() = %v, want empty", got)
+	}
+
 	c.AddUserMessage("hello")
-	c.AddAssistantMessage("hi there")
-	c.AddMessage(frames.Message{Role: frames.RoleAssistant, ToolCalls: []frames.ToolCall{{ID: "1", Name: "lookup"}}})
+	c.AddAssistantMessage("one")
+	c.AddUserMessage("again")
+	c.AddAssistantMessage("two")
+	c.AddAssistantToolCall(frames.ToolCall{ID: "c1", Name: "get_weather"})
 
-	got := c.Transcript()
-	want := "user: hello\nassistant: hi there"
-	if got != want {
-		t.Fatalf("Transcript() = %q, want %q", got, want)
-	}
-
-	c.ClearMessages()
-	if len(c.Messages()) != 0 {
-		t.Fatalf("ClearMessages left %d messages", len(c.Messages()))
-	}
-	if !strings.Contains(c.System(), "be brief") {
-		t.Error("ClearMessages dropped the system prompt")
-	}
-	if c.Transcript() != "" {
-		t.Fatalf("Transcript() after clear = %q", c.Transcript())
+	got := c.AssistantTexts()
+	if len(got) != 2 || got[0] != "one" || got[1] != "two" {
+		t.Errorf("AssistantTexts() = %v, want [one two]", got)
 	}
 }

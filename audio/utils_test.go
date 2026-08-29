@@ -64,26 +64,25 @@ func equal(got []int16, want ...int16) bool {
 	return true
 }
 
-func TestPeak(t *testing.T) {
-	if got := audio.Peak(nil); got != 0 {
-		t.Fatalf("Peak(nil) = %d, want 0", got)
+func TestClamp(t *testing.T) {
+	tests := []struct {
+		name   string
+		in     []byte
+		maxAbs int
+		want   []int16
+	}{
+		{"empty", nil, 100, nil},
+		{"inside the range is unchanged", pcm(50, -50), 100, []int16{50, -50}},
+		{"peaks are limited", pcm(200, -200, 10), 100, []int16{100, -100, 10}},
+		{"a negative limit is zero", pcm(50, -50), -1, []int16{0, 0}},
+		{"odd trailing byte is ignored", append(pcm(200), 0xFF), 100, []int16{100}},
 	}
-	if got := audio.Peak(pcm(10, -40, 25)); got != 40 {
-		t.Fatalf("Peak() = %d, want 40", got)
-	}
-}
-
-func TestPeakNormalize(t *testing.T) {
-	got := audio.PeakNormalize(pcm(1000, -2000), 4000)
-	if !equal(samples(got), 2000, -4000) {
-		t.Fatalf("PeakNormalize() = %v, want 2000, -4000", samples(got))
-	}
-	if !equal(samples(audio.PeakNormalize(pcm(0, 0), 4000)), 0, 0) {
-		t.Fatal("silent buffer should stay silent")
-	}
-	same := pcm(4000)
-	if got := audio.PeakNormalize(same, 4000); !equal(samples(got), 4000) {
-		t.Fatalf("already at target = %v", samples(got))
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := samples(audio.Clamp(tt.in, tt.maxAbs)); !equal(got, tt.want...) {
+				t.Errorf("Clamp() = %v, want %v", got, tt.want)
+			}
+		})
 	}
 }
 
