@@ -14,6 +14,20 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Added
 
+- **Audio gain.** `audio.ApplyGain` scales 16-bit PCM and clips, and
+  `processor.NewAudioGain` applies that to every audio frame that passes
+  through, so a session can raise or lower the microphone or the spoken output
+  without changing the transport.
+
+- **A conversation window.** `frames.LLMContext.KeepLastMessages` keeps only the
+  last n messages, leaving the system prompt, tools and recall alone. Long
+  sessions can bound what the model is shown without rewriting the rest of the
+  context.
+
+- **A readiness endpoint and a version command.** `health.Handler` serves a
+  small JSON `{"status":"ok"}` probe. The echo example mounts it at `/healthz`.
+  `voxigo version` prints the module version from build info.
+
 - **A user turn processor.** `turns.NewUserTurnProcessor` decides the user's
   turn in a processor of its own, so the decision can be made once and shared
   by several aggregators, or placed at a particular point in the pipeline. The

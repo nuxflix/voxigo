@@ -35,6 +35,32 @@ func IsSilence(pcm []byte) bool {
 	return true
 }
 
+// ApplyGain scales 16-bit signed PCM by gain and clips each sample to the
+// 16-bit range. A gain of 1 leaves the buffer unchanged (the same slice is
+// returned). A gain of 0 is silence. Negative gain inverts the phase. A trailing
+// odd byte is left as it was, matching IsSilence and MixAudio.
+func ApplyGain(pcm []byte, gain float64) []byte {
+	if len(pcm) < 2 || gain == 1 {
+		return pcm
+	}
+	out := make([]byte, len(pcm))
+	copy(out, pcm)
+	for i := 0; i+1 < len(out); i += 2 {
+		s := float64(int16(binary.LittleEndian.Uint16(out[i:]))) * gain
+		var clipped int32
+		switch {
+		case s > 32767:
+			clipped = 32767
+		case s < -32768:
+			clipped = -32768
+		default:
+			clipped = int32(s)
+		}
+		binary.LittleEndian.PutUint16(out[i:], uint16(clampInt16(clipped)))
+	}
+	return out
+}
+
 // MixAudio sums two streams of 16-bit signed PCM sample by sample, clipping the
 // result to the 16-bit range. The streams need not be the same length: the
 // shorter one is treated as though it were padded with silence, so the result is
