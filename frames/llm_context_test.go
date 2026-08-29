@@ -244,3 +244,34 @@ func TestSetMessagesDoesNotAliasTheCaller(t *testing.T) {
 		t.Errorf("context result = %q, want it untouched by the caller's slice", got)
 	}
 }
+
+// TestMessageCountAndLastAssistantText cover the two readers that avoid
+// copying the conversation: a length, and the last spoken assistant turn.
+func TestMessageCountAndLastAssistantText(t *testing.T) {
+	c := frames.NewLLMContext("system")
+	if c.MessageCount() != 0 {
+		t.Errorf("MessageCount() = %d, want 0", c.MessageCount())
+	}
+	if got := c.LastAssistantText(); got != "" {
+		t.Errorf("LastAssistantText() = %q, want empty on a new context", got)
+	}
+
+	c.AddUserMessage("hello")
+	c.AddAssistantMessage("first reply")
+	c.AddUserMessage("again")
+	c.AddAssistantMessage("second reply")
+	if c.MessageCount() != 4 {
+		t.Errorf("MessageCount() = %d, want 4", c.MessageCount())
+	}
+	if got := c.LastAssistantText(); got != "second reply" {
+		t.Errorf("LastAssistantText() = %q, want the later assistant turn", got)
+	}
+
+	c.AddAssistantToolCall(frames.ToolCall{ID: "c1", Name: "get_weather"})
+	if c.MessageCount() != 5 {
+		t.Errorf("MessageCount() = %d, want the tool call counted", c.MessageCount())
+	}
+	if got := c.LastAssistantText(); got != "second reply" {
+		t.Errorf("LastAssistantText() = %q, want the spoken turn, not the tool call", got)
+	}
+}

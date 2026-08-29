@@ -465,6 +465,29 @@ func (c *LLMContext) Messages() []Message {
 	return cloneMessages(c.messages)
 }
 
+// MessageCount is how many turns are in the conversation, tool-call and
+// tool-result messages included. It does not copy the list.
+func (c *LLMContext) MessageCount() int {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	return len(c.messages)
+}
+
+// LastAssistantText returns the text of the most recent plain assistant turn
+// (one carrying no tool calls or results). An empty string means no spoken
+// assistant turn is in the conversation yet.
+func (c *LLMContext) LastAssistantText() string {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	for i := len(c.messages) - 1; i >= 0; i-- {
+		m := c.messages[i]
+		if m.Role == RoleAssistant && len(m.ToolCalls) == 0 && len(m.ToolResults) == 0 {
+			return m.Text
+		}
+	}
+	return ""
+}
+
 // MessagesFor returns the messages to send to the named provider: every
 // universal one, plus the provider's own, and none written for a different
 // provider. It is what an adapter reads rather than Messages, so a conversation

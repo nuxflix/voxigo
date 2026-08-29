@@ -35,6 +35,34 @@ func IsSilence(pcm []byte) bool {
 	return true
 }
 
+// RemoveDCOffset subtracts the mean sample value from a chunk of 16-bit signed
+// PCM, so a microphone that sits off zero does not look like constant energy.
+// The result is a copy, clipped to the 16-bit range. An empty buffer, or one
+// that does not complete a sample, is returned unchanged.
+func RemoveDCOffset(pcm []byte) []byte {
+	n := len(pcm) - len(pcm)%2
+	if n == 0 {
+		return pcm
+	}
+	var sum int64
+	count := n / 2
+	for i := 0; i+1 < n; i += 2 {
+		sum += int64(int16(binary.LittleEndian.Uint16(pcm[i:])))
+	}
+	mean := int32(sum / int64(count))
+	if mean == 0 {
+		out := make([]byte, n)
+		copy(out, pcm[:n])
+		return out
+	}
+	out := make([]byte, n)
+	for i := 0; i+1 < n; i += 2 {
+		s := int32(int16(binary.LittleEndian.Uint16(pcm[i:]))) - mean
+		binary.LittleEndian.PutUint16(out[i:], uint16(clampInt16(s)))
+	}
+	return out
+}
+
 // MixAudio sums two streams of 16-bit signed PCM sample by sample, clipping the
 // result to the 16-bit range. The streams need not be the same length: the
 // shorter one is treated as though it were padded with silence, so the result is

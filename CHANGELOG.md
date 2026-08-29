@@ -14,6 +14,15 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Added
 
+- **DC-offset removal.** `audio.RemoveDCOffset` subtracts the mean sample from
+  a 16-bit PCM chunk, and `processor.NewAudioDCBlock` applies that to every
+  audio frame on the pipeline, so a biased microphone does not look like energy.
+
+- **Conversation length and the last spoken assistant turn.**
+  `frames.LLMContext.MessageCount` is the number of messages without copying
+  them. `LastAssistantText` returns the most recent plain assistant reply,
+  skipping tool-call turns.
+
 - **A user turn processor.** `turns.NewUserTurnProcessor` decides the user's
   turn in a processor of its own, so the decision can be made once and shared
   by several aggregators, or placed at a particular point in the pipeline. The
