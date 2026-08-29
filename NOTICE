@@ -1,5 +1,5 @@
 voxigo
-=====
+======
 
 voxigo is a Go port of Pipecat (https://github.com/pipecat-ai/pipecat), the
 real-time voice and multimodal AI pipeline framework created by Daily.
