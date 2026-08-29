@@ -491,18 +491,27 @@ func (c *LLMContext) Messages() []Message {
 	return cloneMessages(c.messages)
 }
 
-// AssistantTexts returns the text of every plain assistant turn, in order,
-// skipping tool-call messages. The slice is a copy.
-func (c *LLMContext) AssistantTexts() []string {
+// MessageCount is how many turns are in the conversation, tool-call and
+// tool-result messages included. It does not copy the list.
+func (c *LLMContext) MessageCount() int {
 	c.mu.Lock()
 	defer c.mu.Unlock()
-	out := make([]string, 0)
-	for _, m := range c.messages {
+	return len(c.messages)
+}
+
+// LastAssistantText returns the text of the most recent plain assistant turn
+// (one carrying no tool calls or results). An empty string means no spoken
+// assistant turn is in the conversation yet.
+func (c *LLMContext) LastAssistantText() string {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	for i := len(c.messages) - 1; i >= 0; i-- {
+		m := c.messages[i]
 		if m.Role == RoleAssistant && len(m.ToolCalls) == 0 && len(m.ToolResults) == 0 {
-			out = append(out, m.Text)
+			return m.Text
 		}
 	}
-	return out
+	return ""
 }
 
 // MessagesFor returns the messages to send to the named provider: every

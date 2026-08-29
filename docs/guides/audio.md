@@ -154,8 +154,9 @@ buffer holds audio in memory.
 
 ## Other pieces
 
-- **`audio.Clamp`** / **`processor.NewAudioClamp`**: a hard limiter that caps
-  each sample at ±maxAbs without scaling the rest of the buffer.
+- **`audio.RemoveDCOffset`** / **`processor.NewAudioDCBlock`**: subtract the
+  mean sample from a buffer or from every audio frame, so a microphone that sits
+  off zero does not look like constant energy.
 - **`audio/onset`**: finds the first audible sample in a PCM stream, so
   time-to-first-audio metrics measure real speech rather than leading silence.
 - **`audio/chain.go`**: composes several `audio.Filter`s into one.

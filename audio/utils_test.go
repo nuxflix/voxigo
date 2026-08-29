@@ -64,26 +64,36 @@ func equal(got []int16, want ...int16) bool {
 	return true
 }
 
-func TestClamp(t *testing.T) {
+func TestRemoveDCOffset(t *testing.T) {
 	tests := []struct {
-		name   string
-		in     []byte
-		maxAbs int
-		want   []int16
+		name string
+		in   []byte
+		want []int16
 	}{
-		{"empty", nil, 100, nil},
-		{"inside the range is unchanged", pcm(50, -50), 100, []int16{50, -50}},
-		{"peaks are limited", pcm(200, -200, 10), 100, []int16{100, -100, 10}},
-		{"a negative limit is zero", pcm(50, -50), -1, []int16{0, 0}},
-		{"odd trailing byte is ignored", append(pcm(200), 0xFF), 100, []int16{100}},
+		{"empty", nil, nil},
+		{"already centered", pcm(10, -10), []int16{10, -10}},
+		{"constant bias becomes silence", pcm(100, 100, 100), []int16{0, 0, 0}},
+		{"mean is subtracted sample by sample", pcm(110, 90), []int16{10, -10}},
+		{"odd trailing byte is ignored", append(pcm(100, 100), 0xFF), []int16{0, 0}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := samples(audio.Clamp(tt.in, tt.maxAbs)); !equal(got, tt.want...) {
-				t.Errorf("Clamp() = %v, want %v", got, tt.want)
+			got := samples(audio.RemoveDCOffset(tt.in))
+			if !equal(got, tt.want...) {
+				t.Errorf("RemoveDCOffset() = %v, want %v", got, tt.want)
 			}
 		})
 	}
+
+	t.Run("returns a copy", func(t *testing.T) {
+		in := pcm(100, 100)
+		out := audio.RemoveDCOffset(in)
+		in[0] = 0xFF
+		in[1] = 0x7F
+		if got := samples(out); !equal(got, 0, 0) {
+			t.Errorf("mutating the input reached the result: %v", got)
+		}
+	})
 }
 
 func TestMixAudio(t *testing.T) {

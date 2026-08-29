@@ -14,12 +14,14 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Added
 
-- **A hard limiter.** `audio.Clamp` and `processor.NewAudioClamp` cap each
-  sample at ±maxAbs, so a loud burst is flattened rather than scaling the
-  whole utterance.
+- **DC-offset removal.** `audio.RemoveDCOffset` subtracts the mean sample from
+  a 16-bit PCM chunk, and `processor.NewAudioDCBlock` applies that to every
+  audio frame on the pipeline, so a biased microphone does not look like energy.
 
-- **Spoken assistant turns as text.** `frames.LLMContext.AssistantTexts`
-  returns every plain assistant reply in order, skipping tool-call turns.
+- **Conversation length and the last spoken assistant turn.**
+  `frames.LLMContext.MessageCount` is the number of messages without copying
+  them. `LastAssistantText` returns the most recent plain assistant reply,
+  skipping tool-call turns.
 
 - **A user turn processor.** `turns.NewUserTurnProcessor` decides the user's
   turn in a processor of its own, so the decision can be made once and shared

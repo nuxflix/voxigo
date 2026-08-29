@@ -35,29 +35,30 @@ func IsSilence(pcm []byte) bool {
 	return true
 }
 
-// Clamp limits each 16-bit signed sample to ±maxAbs. Values already inside the
-// range are left alone. A negative maxAbs is treated as zero. The result is a
-// copy. An empty buffer, or one that does not complete a sample, comes back
-// empty.
-func Clamp(pcm []byte, maxAbs int) []byte {
-	if maxAbs < 0 {
-		maxAbs = 0
-	}
-	if maxAbs > 32767 {
-		maxAbs = 32767
-	}
+// RemoveDCOffset subtracts the mean sample value from a chunk of 16-bit signed
+// PCM, so a microphone that sits off zero does not look like constant energy.
+// The result is a copy, clipped to the 16-bit range. An empty buffer, or one
+// that does not complete a sample, is returned unchanged.
+func RemoveDCOffset(pcm []byte) []byte {
 	n := len(pcm) - len(pcm)%2
-	out := make([]byte, n)
-	limit := int32(maxAbs)
+	if n == 0 {
+		return pcm
+	}
+	var sum int64
+	count := n / 2
 	for i := 0; i+1 < n; i += 2 {
-		s := int32(int16(binary.LittleEndian.Uint16(pcm[i:])))
-		switch {
-		case s > limit:
-			s = limit
-		case s < -limit:
-			s = -limit
-		}
-		binary.LittleEndian.PutUint16(out[i:], uint16(int16(s)))
+		sum += int64(int16(binary.LittleEndian.Uint16(pcm[i:])))
+	}
+	mean := int32(sum / int64(count))
+	if mean == 0 {
+		out := make([]byte, n)
+		copy(out, pcm[:n])
+		return out
+	}
+	out := make([]byte, n)
+	for i := 0; i+1 < n; i += 2 {
+		s := int32(int16(binary.LittleEndian.Uint16(pcm[i:]))) - mean
+		binary.LittleEndian.PutUint16(out[i:], uint16(clampInt16(s)))
 	}
 	return out
 }
