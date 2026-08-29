@@ -29,6 +29,8 @@ n := convo.EstimatedTokens()
 convo.SetSystem("You are terse.") // swap the prompt mid-conversation
 convo.SetTools(tools)             // change advertised tools
 convo.SetToolChoice(frames.ToolChoiceAuto)
+text := convo.Transcript()        // "user: …\nassistant: …"
+convo.ClearMessages()             // drop turns, keep the prompt
 ```
 
 A `Message` is a role plus text, and optionally tool calls or tool results:
