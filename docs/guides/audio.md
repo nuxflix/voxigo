@@ -89,6 +89,10 @@ Treat the error as "run without it" rather than fatal, so the bot works on
 machines that do not have the library. `AudioInFilter` takes any `audio.Filter`,
 so a custom one (gain, a high-pass, your own model) drops in the same way.
 
+`audio.PeakNormalize` raises a buffer to a target peak. `processor.NewAudioNormalize`
+does that in the pipeline. `processor.NewAudioMute` replaces audio with silence
+while armed, keeping the frame length so the rest of the pipeline still ticks.
+
 Denoising helps in genuinely noisy rooms and can hurt otherwise: it removes
 information the VAD uses. Measure before shipping it.
 
